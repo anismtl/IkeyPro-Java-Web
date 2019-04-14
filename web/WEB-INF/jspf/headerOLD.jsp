@@ -6,18 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-<%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<c:set var="loc" value="en_US"/>
-
-<c:if test="${!(empty param.bundle)}">
-    <c:set var="loc" value="${param.bundle}"/>
-</c:if>
-
-<fmt:setLocale  value="${loc}"  />
-
-<fmt:bundle basename="app">
-    
 <header class="header">
 
 		<!-- Top Bar -->
@@ -32,27 +20,27 @@
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
-										<a href="#"><fmt:message key="PEnglishLangue"/><i class="fas fa-chevron-down"></i></a>
+										<a href="#">English<i class="fas fa-chevron-down"></i></a>
 										<ul>
-                                                                                    <li><a href="#"><fmt:message key="PItalianoLangue"/></a></li>
-                                                                                    <li><a href="#"><fmt:message key="PEspagnolLangue"/></a></li>
-                                                                                    <li><a href="#"><fmt:message key="PMandarinLangue"/></a></li>
-                                                                                    <li><a href="#"><fmt:message key="PFrancaisLangue"/></a></li>   
+											<li><a href="#">Francais</a></li>
+											<li><a href="#">Spanish</a></li>
+											
 										</ul>
 									</li>
 									<li>
 										<a href="#">$ US Dollar<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li><a href="#">$ CA Dollar</a></li>
-											<li><a href="#">GBP British Pound</a></li>											
+											<li><a href="#">GBP British Pound</a></li>
+											
 										</ul>
 									</li>
 								</ul>
 							</div>
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="#"><fmt:message key="PRegister"/></a></div>
-								<div><a href="#"><fmt:message key="PSignIn"/></a></div>
+								<div><a href="#">Register</a></div>
+								<div><a href="#">Sign in</a></div>
 							</div>
 						</div>
 					</div>
@@ -89,6 +77,8 @@
                                                                                                   <c:forEach var = "ligne" items="${ListCat}">
                                                                                                   <li><a class="clc" href="#"> ${ligne.categorie}</a></li>
                                                                                                   </c:forEach>
+													
+												
 												</ul>
 											</div>
 										</div>
@@ -115,7 +105,7 @@
 										<div class="cart_count"><span>100</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#"><fmt:message key="PCart"/></a></div>
+										<div class="cart_text"><a href="#">Cart</a></div>
 										<div class="cart_price">$85</div>
 									</div>
 								</div>
@@ -140,7 +130,7 @@
 							<div class="cat_menu_container">
 								<div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
 									<div class="cat_burger"><span></span><span></span><span></span></div>
-									<div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
+									<div class="cat_menu_text">categories</div>
 								</div>
 
 								<ul class="cat_menu">
@@ -153,9 +143,9 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="index.jsp"><fmt:message key="PHome"/><i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="index.jsp">Home<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
-										<a href="#"><fmt:message key="PSuperDeals"/><i class="fas fa-chevron-down"></i></a>
+										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li>
 												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
@@ -171,7 +161,7 @@
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
+										<a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li>
 												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
@@ -187,7 +177,7 @@
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="#"><fmt:message key="PPages"/><i class="fas fa-chevron-down"></i></a>
+										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
@@ -199,7 +189,7 @@
 										</ul>
 									</li>
 									<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="contact.html"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
@@ -238,20 +228,19 @@
 								<li class="page_menu_item has-children">
 									<a href="#">Language<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
-										<li><a href="#"><fmt:message key="PEnglishLangue"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#"><fmt:message key="PItalianoLangue"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#"><fmt:message key="PEspagnolLangue"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#"><fmt:message key="PMandarinLangue"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#"><fmt:message key="PFrancaisLangue"/><i class="fa fa-angle-down"></i></a></li>                                                                                
+										<li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
 								<li class="page_menu_item has-children">
-									<a href="#"><fmt:message key="PCurrency"/><i class="fa fa-angle-down"></i></a>
+									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
-										<li><a href="#">US <fmt:message key="PDollarCurrency"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">EUR <fmt:message key="PEuroCurrency"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">GBP <fmt:message key="PBritishPoundCurrency"/><i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">JPY <fmt:message key="PYuanCurrency"/><i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
 								<li class="page_menu_item">
@@ -306,5 +295,7 @@
 				</div>
 			</div>
 		</div>
+
 	</header>
-</fmt:bundle>                  
+
+                  
