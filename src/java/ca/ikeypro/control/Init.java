@@ -20,13 +20,16 @@ import ca.ikeypro.model.Categorie;
 import ca.ikeypro.model.DataManagerCategorie;
 import ca.ikeypro.model.DataManagerProduit;
 import ca.ikeypro.model.Produit;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
  * @author Anis
  */
 public class Init extends HttpServlet {
-   DataManager dataManager;
+
+    DataManager dataManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,30 +46,34 @@ public class Init extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
-List<Categorie> ListeCategories = dataManager.getListeCategorie();
+            Locale locale = Locale.getDefault();
+
+            ResourceBundle bundle = ResourceBundle.getBundle("app", locale);
+            session.setAttribute("bundle", bundle);
+            List<Categorie> ListeCategories = dataManager.getListeCategorie();
 //session.setAttribute("ListCat", ListeCategories);
-     List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
-   request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
- request.getServletContext().setAttribute("ListCat", ListeCategories);
-       RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
-       dispatcher.forward(request, response); 
+            List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+            request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+            request.getServletContext().setAttribute("ListCat", ListeCategories);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+            dispatcher.forward(request, response);
         }
     }
-                      @Override
-    public void init(ServletConfig config) throws ServletException{
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
         dataManager = new DataManager();
         dataManager.setDbURL(config.getInitParameter("dbURL"));
         dataManager.setDbUserName(config.getInitParameter("dbUserName"));
         dataManager.setDbPassword(config.getInitParameter("dbPassword"));
-        try{
-           Class.forName(config.getInitParameter("jdbcDriver"));
-        }
-        catch (Exception ex)
-        {
+        try {
+            Class.forName(config.getInitParameter("jdbcDriver"));
+        } catch (Exception ex) {
             System.out.println("Initialize connector string");
             ex.printStackTrace();
-        }}
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
