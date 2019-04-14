@@ -8,13 +8,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<c:set var="loc" value="en_US"/>
 
-<c:if test="${!(empty param.bundle)}">
-    <c:set var="loc" value="${param.bundle}"/>
-</c:if>
 
-<fmt:setLocale  value="${loc}"  />
+
+
 
 <fmt:bundle basename="app">
     

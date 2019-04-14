@@ -1720,6 +1720,7 @@
                                                                 <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/${ligne.image}" alt=""></div>
                                                                 <div class="product_content">
                                                                     <div class="product_price">$${ligne.prix}</div>
+                                                                    <div class="product_name"><div><a>${ligne.editeur}</a></div></div>
                                                                     <div class="product_name"><div><a href="product.html">${ligne.produit}</a></div></div>
                                                                     <div class="product_extras">
                                                                         <div class="product_color">
