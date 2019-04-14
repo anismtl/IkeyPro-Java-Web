@@ -55,6 +55,7 @@
                                                           <b>Plateforme:</b></as> ${prod.plateforme}  <br/>
                                                         <b>Langue:</b></as> ${prod.langue}  <br/>
                                                         <b>Release Date:</b></as> ${prod.dateRelease}  <br/>
+                                                         <b>Edition :</b></as> ${prod.edition}  <br/>
                                                 </div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
