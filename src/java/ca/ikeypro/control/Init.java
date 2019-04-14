@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ca.ikeypro.model.Categorie;
 import ca.ikeypro.model.DataManagerCategorie;
+import ca.ikeypro.model.DataManagerProduit;
 import ca.ikeypro.model.Produit;
 
 /**
@@ -44,8 +45,8 @@ public class Init extends HttpServlet {
             HttpSession session = request.getSession();
 List<Categorie> ListeCategories = dataManager.getListeCategorie();
 //session.setAttribute("ListCat", ListeCategories);
-     // List<Produit> ListeProd = dataManager.getListeProduit("3");
-     //   session.setAttribute("ListProdui", ListeProd);
+     List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+   request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
  request.getServletContext().setAttribute("ListCat", ListeCategories);
        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
        dispatcher.forward(request, response); 
