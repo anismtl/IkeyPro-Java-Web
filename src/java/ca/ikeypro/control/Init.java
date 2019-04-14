@@ -51,7 +51,7 @@ public class Init extends HttpServlet {
             ResourceBundle bundle = ResourceBundle.getBundle("app", locale);
             session.setAttribute("bundle", bundle);
             List<Categorie> ListeCategories = dataManager.getListeCategorie();
-//session.setAttribute("ListCat", ListeCategories);
+
             List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
             request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
             request.getServletContext().setAttribute("ListCat", ListeCategories);
