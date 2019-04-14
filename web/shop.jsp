@@ -132,7 +132,7 @@
 								<div class="product_content">
 									<div class="product_price">$ ${ligne.prix}</div>
                                                                         <div class="product_name"><div><a>${ligne.editeur}</a></div></div>
-									<div class="product_name"><div><a href="GererProduit?id=${ligne.codeProduit}" tabindex="0">${ligne.produit}</a></div></div>
+									<div class="product_name"><div><a href="Produit?id=${ligne.codeProduit}" tabindex="0">${ligne.produit}</a></div></div>
 								</div>
 								<div class="product_fav"><i class="fas fa-heart"></i></div>
 								<ul class="product_marks">
