@@ -53,7 +53,11 @@ public class DataManagerProduit {
             ResultSet rs = null;
             Statement statement = null;
             try{
-                String requette = "SELECT * FROM PRODUIT";
+                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                        + "P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE"
+                        + " FROM PRODUIT P"
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION";
                 System.out.println(requette);
                 statement = conn.createStatement();
                 rs = statement.executeQuery(requette);
@@ -98,7 +102,12 @@ public class DataManagerProduit {
             ResultSet rs = null;
             Statement statement = null;
             try{
-                String requette = "SELECT * FROM PRODUIT WHERE ID_CATEGORIE =\'"+idCategorie+"\'";
+                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                        + " P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE "
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
+                        + " WHERE ID_CATEGORIE ='" + idCategorie + "'";
                 System.out.println(requette);
                 statement = conn.createStatement();
                 rs = statement.executeQuery(requette);
