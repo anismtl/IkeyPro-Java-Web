@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shop</title>
+<title>IkeyPro - Shop -</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
@@ -39,7 +39,7 @@
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
-			<h2 class="home_title">Smartphones & Tablets</h2>
+			<h2 class="home_title">Software</h2>
 		</div>
 	</div>
 
@@ -136,7 +136,6 @@
 								</div>
 								<div class="product_fav"><i class="fas fa-heart"></i></div>
 								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
 									<li class="product_mark product_new">new</li>
 								</ul>
 							</div>
