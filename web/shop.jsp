@@ -136,7 +136,12 @@
 								</div>
 								<div class="product_fav"><i class="fas fa-heart"></i></div>
 								<ul class="product_marks">
-									<li class="product_mark product_new">new</li>
+                                                                    <c:choose>
+                                                                        <c:when test="${ligne.dateRelease == 2019}"> 
+                                                                           <li class="product_mark product_new">new</li> 
+                                                                        </c:when>
+                                                                    </c:choose>
+									
 								</ul>
 							</div>
 
