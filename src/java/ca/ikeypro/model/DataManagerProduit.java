@@ -197,7 +197,13 @@ public class DataManagerProduit {
             ResultSet rs = null;
             Statement statement = null;
             try{
-                req = "SELECT * FROM PRODUIT WHERE CODE_PRODUIT =\'"+idProduit+"\'";
+                req = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                        + " P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, "
+                        + " EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE "
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
+                        + "WHERE CODE_PRODUIT ='" + idProduit + "'";
                 statement = conn.createStatement();
                 rs = statement.executeQuery(req);
                 if(rs.next()){
