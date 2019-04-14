@@ -205,6 +205,7 @@ public class DataManagerProduit {
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + "WHERE CODE_PRODUIT ='" + idProduit + "'";
                 statement = conn.createStatement();
+                
                 rs = statement.executeQuery(req);
                 if(rs.next()){
                     prod = new Produit();
