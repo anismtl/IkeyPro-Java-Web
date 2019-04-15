@@ -185,7 +185,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.html"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="contact.jsp"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
 
@@ -280,7 +280,7 @@
                                     </ul>
                                 </li>
                                 <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item"><a href="contact.html"><fmt:message key="PContact"/><i class="fa fa-angle-down"></i></a></li>
+                                <li class="page_menu_item"><a href="contact.jsp"><fmt:message key="PContact"/><i class="fa fa-angle-down"></i></a></li>
                             </ul>
 
                             <div class="menu_contact">

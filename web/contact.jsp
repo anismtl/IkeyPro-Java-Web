@@ -42,7 +42,7 @@
 							<div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Phone</div>
-								<div class="contact_info_text">+38 068 005 3570</div>
+								<div class="contact_info_text">+1514 000 0000</div>
 							</div>
 						</div>
 
@@ -51,7 +51,7 @@
 							<div class="contact_info_image"><img src="images/contact_2.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
-								<div class="contact_info_text">fastsales@gmail.com</div>
+								<div class="contact_info_text">ikeypro@gmail.com</div>
 							</div>
 						</div>
 
