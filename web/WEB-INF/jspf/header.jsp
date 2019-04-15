@@ -37,13 +37,7 @@
                                                                                     <li><a href="#"><fmt:message key="PFrancaisLangue"/></a></li>   
 										</ul>
 									</li>
-									<li>
-										<a href="#">$ US Dollar<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">$ CA Dollar</a></li>
-											<li><a href="#">GBP British Pound</a></li>											
-										</ul>
-									</li>
+							
 								</ul>
 							</div>
 							<div class="top_bar_user">
