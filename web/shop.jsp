@@ -9,7 +9,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>IkeyPro - Shop -${param.cat}</title>
+        <title>IkeyPro - Shop -      <c:forEach var = "ligne" items="${ListCat}">
+                            <c:choose>
+                                <c:when test="${ligne.idCategorie==param.cat}"> 
+                                    ${ligne.categorie}
+                                </c:when>
+                            </c:choose>
+                        </c:forEach></title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="OneTech shop project">
@@ -46,7 +52,8 @@
                                     <a>${ligne.categorie}</a>
                                 </c:when>
                             </c:choose>
-                        </c:forEach></h2>
+                        </c:forEach>
+                    </h2>
                 </div>
             </div>
 
