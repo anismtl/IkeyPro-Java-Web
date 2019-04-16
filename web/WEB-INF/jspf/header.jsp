@@ -172,19 +172,8 @@
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
                                     </li>
-                                    <li class="hassubs">
-                                        <a href="#"><fmt:message key="PPages"/><i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+                              
+                                   
                                     <li><a href="contact.jsp"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>

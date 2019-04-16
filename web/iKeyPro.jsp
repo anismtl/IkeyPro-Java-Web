@@ -133,7 +133,7 @@
                             <h1 class="banner_text">new era of smartphones</h1>
                             <div class="banner_price"><span>$530</span>$460</div>
                             <div class="banner_product_name">Apple Iphone 6s</div>
-                            <div class="button banner_button"><a href="#">Shop Now</a></div>
+                            <div class="button banner_button"><a href="GererProduit?id=5">Shop Now</a></div>
                         </div>
                     </div>
                 </div>
