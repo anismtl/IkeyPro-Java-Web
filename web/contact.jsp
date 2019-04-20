@@ -114,7 +114,7 @@
 
 	<!-- Newsletter -->
 
-<jsp:include page="WEB-INF/jspf/newsletter.jspf"/>
+<jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
 
 	<!-- Footer -->
  <jsp:include page="WEB-INF/jspf/footer.jsp"/>
