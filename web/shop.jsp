@@ -261,7 +261,7 @@
                 </div>
 
                 <!-- Newsletter -->
-                <jsp:include page="WEB-INF/jspf/newsletter.jspf"/>
+              <jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
 
 
                 <!-- Footer -->
