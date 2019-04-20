@@ -53,7 +53,9 @@ public class Init extends HttpServlet {
             List<Categorie> ListeCategories = dataManager.getListeCategorie();
 
             List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+            List<Produit> ListeMostViewProduits = DataManagerProduit.getListeMostViewProduits();
             request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+            request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
             request.getServletContext().setAttribute("ListCat", ListeCategories);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
             dispatcher.forward(request, response);
