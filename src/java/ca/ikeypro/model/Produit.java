@@ -24,11 +24,12 @@ public class Produit {
      private String langue;
      private String image;
      private short disponibilite;
+     private int nbconsulte;
 
     public Produit() {
     }
 
-    public Produit(String codeProduit, String categorie, String editeur, String edition, String produit, String plateforme, String dateRelease, double prix, String langue, String image, short disponibilite) {
+    public Produit(String codeProduit, String categorie, String editeur, String edition, String produit, String plateforme, String dateRelease, double prix, String langue, String image, short disponibilite, int nbconsulte) {
         this.codeProduit = codeProduit;
         this.categorie = categorie;
         this.editeur = editeur;
@@ -40,8 +41,10 @@ public class Produit {
         this.langue = langue;
         this.image = image;
         this.disponibilite = disponibilite;
+        this.nbconsulte = nbconsulte;
     }
-     
+
+    
      
      
 
@@ -131,6 +134,14 @@ public class Produit {
 
     public void setDisponibilite(short disponibilite) {
         this.disponibilite = disponibilite;
+    }
+
+    public int getNbconsulte() {
+        return nbconsulte;
+    }
+
+    public void setNbconsulte(int nbconsulte) {
+        this.nbconsulte = nbconsulte;
     }
     
     
