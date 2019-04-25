@@ -129,7 +129,7 @@
                                     <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
                                 </div>
 
-                                <ul class="cat_menu">
+                                <ul class="cat_menu" id="cat">
                                     <c:forEach var = "ligne" items="${ListCat}">
                                         <li><a href="ListeProduits?cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
                                             </c:forEach>

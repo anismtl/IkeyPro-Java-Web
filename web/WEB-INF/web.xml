@@ -32,6 +32,10 @@
         <servlet-name>Contact</servlet-name>
         <servlet-class>ca.ikeypro.control.Contact</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ajax</servlet-name>
+        <servlet-class>ca.ikeypro.control.Ajax</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>Contact</servlet-name>
         <url-pattern>/Contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ajax</servlet-name>
+        <url-pattern>/Ajax</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

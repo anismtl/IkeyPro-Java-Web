@@ -102,7 +102,7 @@ public class DataManagerProduit {
             ResultSet rs = null;
             Statement statement = null;
             try{
-                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
                         + "P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
                         + " FROM PRODUIT P"
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
@@ -115,7 +115,7 @@ public class DataManagerProduit {
                 Produit prod;
                 while(rs.next()){
                     prod = new Produit();
-                    prod.setCodeProduit(rs.getString("CODE_PRODUIT"));
+               prod.setCodeProduit(rs.getString("CODE_PRODUIT"));
                     prod.setProduit(rs.getString("PRODUIT"));
                    prod.setDateRelease(rs.getString("DATE_RELEASE"));
                     prod.setPrix(rs.getDouble("PRIX"));

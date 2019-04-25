@@ -29,6 +29,14 @@ public class Produit {
     public Produit() {
     }
 
+    public Produit(String codeProduit, String produit, double prix, String image, int nbconsulte) {
+        this.codeProduit = codeProduit;
+        this.produit = produit;
+        this.prix = prix;
+        this.image = image;
+        this.nbconsulte = nbconsulte;
+    }
+
     public Produit(String codeProduit, String categorie, String editeur, String edition, String produit, String plateforme, String dateRelease, double prix, String langue, String image, short disponibilite, int nbconsulte) {
         this.codeProduit = codeProduit;
         this.categorie = categorie;

@@ -2814,25 +2814,11 @@
 
                             <!-- Recently Viewed Slider -->
 
-                            <div class="owl-carousel owl-theme viewed_slider">
+                            <div class="row owl-carousel owl-theme viewed_slider" id="des">
 
-                                <!-- Recently Viewed Item -->
-                                <c:forEach var = "ligne" items="${ListeMostViewProduits}">
-                       
-                                         <div class="owl-item">
-                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="images/${ligne.image}" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">$${ligne.prix}</div>
-                                            <div class="viewed_name"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                    </c:forEach>
+                             
+                           
+                               
                             </div>
                         </div>
                     </div>
@@ -2879,7 +2865,7 @@
 
         <!-- Footer -->
         <jsp:include page="WEB-INF/jspf/footer.jsp"/>
-
+<script src="js.js"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="styles/bootstrap4/popper.js"></script>
         <script src="styles/bootstrap4/bootstrap.min.js"></script>

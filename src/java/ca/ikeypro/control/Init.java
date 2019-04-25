@@ -20,6 +20,7 @@ import ca.ikeypro.model.Categorie;
 import ca.ikeypro.model.DataManagerCategorie;
 import ca.ikeypro.model.DataManagerProduit;
 import ca.ikeypro.model.Produit;
+import com.google.gson.Gson;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -89,6 +90,18 @@ public class Init extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+//                       List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+//          Gson gson = new Gson();
+//          String json = gson.toJson(ListeAllProduits);
+//           request.setAttribute("cat", json);
+//           response.setContentType("application/json");
+//             response.setCharacterEncoding("UTF-8");
+//             PrintWriter out = response.getWriter();
+//             out.print(json);
+//             out.flush();
+//        
+        
         processRequest(request, response);
     }
 
