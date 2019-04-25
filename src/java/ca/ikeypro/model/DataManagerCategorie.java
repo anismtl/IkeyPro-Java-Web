@@ -6,7 +6,10 @@
 package ca.ikeypro.model;
 
 import ca.ikeypro.Utilitaire.DataManager;
+import static ca.ikeypro.model.DataManagerProduit.getConnection;
+import static ca.ikeypro.model.DataManagerProduit.putConnection;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,13 +20,52 @@ import java.util.ArrayList;
  * @author Anis
  */
 public class DataManagerCategorie {
-     DataManager dataManager;
+        public static Connection getConnection(){
+        String url="jdbc:oracle:thin:@ikeypro.ca:1521:XE";
+        String user = "ikeypro";
+        String pwd = "ikeypro2019";
+
+        Connection conn = null;
+
+        try {
+            conn = DriverManager.getConnection(url , user , pwd);
+            System.out.println("connection effectuee");
+        } 
+        catch (SQLException ex) {
+            System.out.println("connection impossible");
+            ex.printStackTrace();
+        }
+        return conn;
+    }
     
-      public ArrayList getListeCetegorie()
+       public static void putConnection(Connection conn){
+        if(conn != null){
+            try{
+                conn.close();
+            }
+            catch(SQLException e){
+                System.out.println("incapable de fermer la connection");
+                e.printStackTrace();
+            }
+        }
+    } 
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+      public static ArrayList<Categorie> getListeCetegorie()
 {
-	ArrayList listeCategorie=new ArrayList();
-        Connection conn = dataManager.getConnection();
-	//Connection conn = getConnection();
+
+       
+        ArrayList<Categorie> listeCategorie = new ArrayList();
+        Connection conn = getConnection();
+	
         
   if (conn != null)
     {
@@ -58,7 +100,7 @@ public class DataManagerCategorie {
          	catch (SQLException e)
                 {e.printStackTrace();}
          	
-        dataManager.putConnection(conn);
+        putConnection(conn);
        }//end of finally
    }//end of if
    return listeCategorie;

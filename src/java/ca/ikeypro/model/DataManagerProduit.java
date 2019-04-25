@@ -108,7 +108,7 @@ public class DataManagerProduit {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION"
                         + " ORDER BY NBCONSULT DESC"
-                        + " FETCH FIRST 10 ROWS ONLY";
+                        + " FETCH FIRST 6 ROWS ONLY";
                 System.out.println(requette);
                 statement = conn.createStatement();
                 rs = statement.executeQuery(requette);

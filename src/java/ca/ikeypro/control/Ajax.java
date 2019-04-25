@@ -5,6 +5,9 @@
  */
 package ca.ikeypro.control;
 
+import ca.ikeypro.Utilitaire.DataManager;
+import ca.ikeypro.model.Categorie;
+import ca.ikeypro.model.DataManagerCategorie;
 import ca.ikeypro.model.DataManagerProduit;
 import ca.ikeypro.model.Produit;
 import com.google.gson.Gson;
@@ -21,8 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author Anis
  */
 public class Ajax extends HttpServlet {
-
+DataManager dataManager;
     /**
+     * DataManager dataManager;
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -52,17 +56,30 @@ public class Ajax extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         List<Produit> ListeAllProduits = DataManagerProduit.getListeMostViewProduits();
+         String action = request.getParameter("action");
+         if (action.equals("C")){
+         //List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduitsByCat("2");
+        List<Categorie> ListeCat = DataManagerCategorie.getListeCetegorie();
           Gson gson = new Gson();
-          String json = gson.toJson(ListeAllProduits);
-           request.setAttribute("prod", json);
+          String json = gson.toJson(ListeCat);
+           request.setAttribute("categ", json);
             response.setContentType("application/json");
              response.setCharacterEncoding("UTF-8");
              PrintWriter out = response.getWriter();
              out.print(json);
              out.flush();
- 
+         } else if (action.equals("P"))
+         {
+            List<Produit> ListeAllProduits = DataManagerProduit.getListeMostViewProduits();
+                 Gson gson = new Gson();
+          String json = gson.toJson(ListeAllProduits);
+           request.setAttribute("Categ", json);
+            response.setContentType("application/json");
+             response.setCharacterEncoding("UTF-8");
+             PrintWriter out = response.getWriter();
+             out.print(json);
+             out.flush();
+         }
         
         
         processRequest(request, response);
