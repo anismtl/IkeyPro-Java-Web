@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.control;
 
 import ca.ikeypro.Utilitaire.DataManager;
-import ca.ikeypro.model.Categorie;
-import ca.ikeypro.model.DataManagerCategorie;
-import ca.ikeypro.model.DataManagerProduit;
-import ca.ikeypro.model.Produit;
+import ca.ikeypro.DAO.Categorie;
+import ca.ikeypro.DAO.CategorieDAO;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,15 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author Anis
  */
 public class Ajax extends HttpServlet {
-DataManager dataManager;
+
+    DataManager dataManager;
+
     /**
-     * DataManager dataManager;
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * DataManager dataManager; Processes requests for both HTTP
+     * <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -40,7 +35,6 @@ DataManager dataManager;
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
         }
     }
 
@@ -56,32 +50,29 @@ DataManager dataManager;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String action = request.getParameter("action");
-         if (action.equals("C")){
-         //List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduitsByCat("2");
-        List<Categorie> ListeCat = DataManagerCategorie.getListeCetegorie();
-          Gson gson = new Gson();
-          String json = gson.toJson(ListeCat);
-           request.setAttribute("categ", json);
+        String action = request.getParameter("action");
+        if (action.equals("C")) {
+            //List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduitsByCat("2");
+            List<Categorie> ListeCat = CategorieDAO.getListeCetegorie();
+            Gson gson = new Gson();
+            String json = gson.toJson(ListeCat);
+            request.setAttribute("categ", json);
             response.setContentType("application/json");
-             response.setCharacterEncoding("UTF-8");
-             PrintWriter out = response.getWriter();
-             out.print(json);
-             out.flush();
-         } else if (action.equals("P"))
-         {
-            List<Produit> ListeAllProduits = DataManagerProduit.getListeMostViewProduits();
-                 Gson gson = new Gson();
-          String json = gson.toJson(ListeAllProduits);
-           request.setAttribute("Categ", json);
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.print(json);
+            out.flush();
+        } else if (action.equals("P")) {
+            List<Produit> ListeAllProduits = ProduitDAO.getListeMostViewProduits();
+            Gson gson = new Gson();
+            String json = gson.toJson(ListeAllProduits);
+            request.setAttribute("Categ", json);
             response.setContentType("application/json");
-             response.setCharacterEncoding("UTF-8");
-             PrintWriter out = response.getWriter();
-             out.print(json);
-             out.flush();
-         }
-        
-        
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.print(json);
+            out.flush();
+        }
         processRequest(request, response);
     }
 

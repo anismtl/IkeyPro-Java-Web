@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.control;
 
-import ca.ikeypro.Utilitaire.DataManager;
-import ca.ikeypro.model.DataManagerProduit;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,16 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ca.ikeypro.model.Produit;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 
 /**
- *
  * @author Anis
  */
 public class ListeProduits extends HttpServlet {
-
-    //DataManager dataManager;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,7 +33,7 @@ public class ListeProduits extends HttpServlet {
             HttpSession session = request.getSession();
             String categorie = request.getParameter("cat");
 
-           List<Produit> ListeProd = DataManagerProduit.getListeDesProduitsByCat(categorie);
+           List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
            session.setAttribute("ListProdui", ListeProd);
             //request.getServletContext().setAttribute("ListProd", ListeProduits);
 
@@ -51,7 +41,6 @@ public class ListeProduits extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -90,5 +79,4 @@ public class ListeProduits extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

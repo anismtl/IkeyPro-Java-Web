@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.control;
 
-import ca.ikeapro.DAO.CategorieDAO;
-import ca.ikeypro.Utilitaire.DataManager;
+import ca.ikeypro.DAO.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,9 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ca.ikeypro.model.Categorie;
-import ca.ikeypro.model.DataManagerProduit;
-import ca.ikeypro.model.Produit;
+import ca.ikeypro.DAO.Categorie;
+import ca.ikeypro.DAO.Produit;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -27,7 +20,6 @@ import java.util.ResourceBundle;
  * @author Anis
  */
 public class Init extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,9 +44,9 @@ public class Init extends HttpServlet {
 
             List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
 
-            List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+            List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
 
-            List<Produit> ListeMostViewProduits = DataManagerProduit.getListeMostViewProduits();
+            List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
 
             request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
 
@@ -86,7 +78,7 @@ public class Init extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//                       List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+//                       List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
 //          Gson gson = new Gson();
 //          String json = gson.toJson(ListeAllProduits);
 //           request.setAttribute("cat", json);

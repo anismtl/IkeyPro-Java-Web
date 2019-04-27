@@ -1,29 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.control;
 
-import ca.ikeypro.model.DataManagerProduit;
-import ca.ikeypro.model.Produit;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-
 /**
- *
  * @author Anis
  */
 public class GererProduit extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,17 +27,13 @@ public class GererProduit extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             HttpSession session = request.getSession();
             String id = request.getParameter("id");
-
-            Produit Prod = DataManagerProduit.getProduit(id);
-           session.setAttribute("prod", Prod);
+            Produit Prod = ProduitDAO.getProduit(id);
+            session.setAttribute("prod", Prod);
             //request.getServletContext().setAttribute("ListProd", ListeProduits);
-
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/produit.jsp");
-            dispatcher.forward(request, response);
-        
+            dispatcher.forward(request, response);        
         }
     }
 
