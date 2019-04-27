@@ -1,14 +1,83 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.DAO;
 
 /**
- *
  * @author Judith
  */
 public class Client {
+    private String idClient;
+    private String nomClient;
+    private String prenomClient;
+    private String courriel;
+    private String tel;
+    private String adresseClient;
+    private String motPasse;
+
+    public Client(){}
+    
+    public Client(String idClient, String nomClient, String prenomClient, String courriel, String tel, String adresseClient, String motPasse) {
+        this.idClient = idClient;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
+        this.courriel = courriel;
+        this.tel = tel;
+        this.adresseClient = adresseClient;
+        this.motPasse = motPasse;
+    }
+
+    public String getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
+    }
+
+    public String getNomClient() {
+        return nomClient;
+    }
+
+    public void setNomClient(String nomClient) {
+        this.nomClient = nomClient;
+    }
+
+    public String getPrenomClient() {
+        return prenomClient;
+    }
+
+    public void setPrenomClient(String prenomClient) {
+        this.prenomClient = prenomClient;
+    }
+
+    public String getCourriel() {
+        return courriel;
+    }
+
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getAdresseClient() {
+        return adresseClient;
+    }
+
+    public void setAdresseClient(String adresseClient) {
+        this.adresseClient = adresseClient;
+    }
+
+    public String getMotPasse() {
+        return motPasse;
+    }
+
+    public void setMotPasse(String motPasse) {
+        this.motPasse = motPasse;
+    }
     
 }
