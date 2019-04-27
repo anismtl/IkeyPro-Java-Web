@@ -19,7 +19,6 @@ import javax.servlet.ServletResponse;
  * @author Judith
  */
 public class FilterAuthentication implements Filter {
-
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
 
     @Override
@@ -34,7 +33,8 @@ public class FilterAuthentication implements Filter {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean isAuthentified = ClientDAO.find(username, password);
-        if (username.equals("admin") && password.equals("admin")) {
+        if (isAuthentified)  {
+            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le client {0} vient d'etre authentifié =*=*=*=*=*=*=", username);
             // sends request to next resource
             chain.doFilter(request, response);
         } else {
