@@ -1,7 +1,6 @@
 package ca.ikeypro.DAO;
 /**
- *
- * @author Judith
+ * @author Anis
  */
 public class Categorie {
     private String idCategorie;
@@ -25,4 +24,3 @@ public class Categorie {
         this.categorie = categorie;
     }    
 }
-
