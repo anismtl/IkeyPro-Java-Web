@@ -5,6 +5,7 @@
  */
 package ca.ikeypro.control;
 
+import ca.ikeapro.DAO.CategorieDAO;
 import ca.ikeypro.Utilitaire.DataManager;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,20 +18,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ca.ikeypro.model.Categorie;
-import ca.ikeypro.model.DataManagerCategorie;
 import ca.ikeypro.model.DataManagerProduit;
 import ca.ikeypro.model.Produit;
-import com.google.gson.Gson;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author Anis
  */
 public class Init extends HttpServlet {
-
-    DataManager dataManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,18 +43,27 @@ public class Init extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
+
             Locale locale = Locale.getDefault();
 
             ResourceBundle bundle = ResourceBundle.getBundle("app", locale);
+
             session.setAttribute("bundle", bundle);
-            List<Categorie> ListeCategories = dataManager.getListeCategorie();
+
+            List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
 
             List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
+
             List<Produit> ListeMostViewProduits = DataManagerProduit.getListeMostViewProduits();
+
             request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+
             request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+
             request.getServletContext().setAttribute("ListCat", ListeCategories);
+
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+
             dispatcher.forward(request, response);
         }
     }
@@ -66,16 +71,6 @@ public class Init extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        dataManager = new DataManager();
-        dataManager.setDbURL(config.getInitParameter("dbURL"));
-        dataManager.setDbUserName(config.getInitParameter("dbUserName"));
-        dataManager.setDbPassword(config.getInitParameter("dbPassword"));
-        try {
-            Class.forName(config.getInitParameter("jdbcDriver"));
-        } catch (Exception ex) {
-            System.out.println("Initialize connector string");
-            ex.printStackTrace();
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -90,7 +85,7 @@ public class Init extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
 //                       List<Produit> ListeAllProduits = DataManagerProduit.getListeDesProduits();
 //          Gson gson = new Gson();
 //          String json = gson.toJson(ListeAllProduits);
@@ -101,7 +96,6 @@ public class Init extends HttpServlet {
 //             out.print(json);
 //             out.flush();
 //        
-        
         processRequest(request, response);
     }
 

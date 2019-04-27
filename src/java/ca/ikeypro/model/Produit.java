@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.model;
-
-import java.math.BigDecimal;
 
 /**
  *
@@ -51,10 +44,6 @@ public class Produit {
         this.disponibilite = disponibilite;
         this.nbconsulte = nbconsulte;
     }
-
-    
-     
-     
 
     public String getCodeProduit() {
         return codeProduit;
@@ -150,7 +139,5 @@ public class Produit {
 
     public void setNbconsulte(int nbconsulte) {
         this.nbconsulte = nbconsulte;
-    }
-    
-    
+    }    
 }
