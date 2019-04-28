@@ -20,6 +20,7 @@ public class MyServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         LOG.log(Level.INFO,"\n=*=*=*=*=*=*= Le contexte vient de demarré {0} =*=*=*=*=*=*=", new Date());
+        dataManager = DataManager.getInstance();
         connection = dataManager.getConnection();
     }
     @Override

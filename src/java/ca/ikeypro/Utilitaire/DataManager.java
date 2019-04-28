@@ -22,9 +22,9 @@ public class DataManager {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             this.connection = DriverManager.getConnection(dbURL, dbUserName, dbPassword);
-            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Connection Creation succes =*=*=*=*=*=*=");
+            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La connection a été un succes =*=*=*=*=*=*=");
         } catch (ClassNotFoundException ex) {
-            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Connection Creation Failed =*=*=*=*=*=*=", ex.getMessage());
+            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Connection Creation Failed {0} =*=*=*=*=*=*=",ex.getMessage());
         }
     }
 
@@ -36,9 +36,8 @@ public class DataManager {
         if (connection != null) {
             try {
                 connection.close();
-                LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Close succes =*=*=*=*=*=*=");
-            } catch (SQLException ex) {
-               LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Close Failed =*=*=*=*=*=*=", ex.getMessage());
+            } catch (SQLException e) {
+                LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Database Connection Creation Failed {0} =*=*=*=*=*=*=",e.getMessage());
             }
         }
     }
@@ -47,14 +46,13 @@ public class DataManager {
         try {
             if (instance == null) {
                 instance = new DataManager();
-                LOG.log(Level.INFO, "\n=*=*=*=*=*=*= New instance Database =*=*=*=*=*=*=");                
             } else if (instance.getConnection().isClosed()) {
                 instance = new DataManager();
-                LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Instance Database existed =*=*=*=*=*=*=");                
             }
+            System.out.println("\n=*=*=*=*=*=*=Database a ete bien instansier=*=*=*=*=*=*=");
             return instance;
         } catch (SQLException ex) {
-            Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("\n=*=*=*=*=*=*=Database Connection close Failed : " + ex.getMessage() + "=*=*=*=*=*=*=");
         }
         return instance;
     }
