@@ -98,11 +98,19 @@
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="images/cart.png" alt="">
-                                        <div class="cart_count"><span>${panier.size()}</span></div>
+                                        <div class="cart_count"><span>
+                                                
+                                                <c:if test="${empty panier}">
+                                                0
+                                                </c:if>
+                                                 ${panier.size()}
+                                            </span></div>
                                     </div>
                                     <div class="cart_content">
-                                        <div class="cart_text"><a href="#"><fmt:message key="PCart"/></a></div>
-                                        <div class="cart_price">$${total}</div>
+                                        <div class="cart_text"><a href="panier.jsp"><fmt:message key="PCart"/></a></div>
+                                        <div class="cart_price"> <c:if test="${empty total}">$0</c:if>
+                                             <c:if test="${!empty total}">$${total}</c:if>   
+                                                </div>
                                     </div>
                                 </div>
                             </div>

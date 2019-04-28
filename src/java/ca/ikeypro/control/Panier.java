@@ -95,7 +95,7 @@ public class Panier extends HttpServlet {
                 }               
                 session.setAttribute("total", total);
                  session.setAttribute("panier", buylist);
-                String url = "/iKeyPro.jsp";
+                String url = "/panier.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
