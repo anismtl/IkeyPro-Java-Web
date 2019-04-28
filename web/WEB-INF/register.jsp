@@ -128,7 +128,7 @@
                                        
 
 
-                                <form name="formInscription" action="./ControlleurPrincipal">
+                                <form name="formInscription" action="#">
                                     <input type="hidden" name="action" value="completeInscription" />
                                     <div class="form-row">
                                         <div class="col-md-4">
@@ -195,7 +195,7 @@
 
 
         <!-- Newsletter -->
-        <jsp:include page="WEB-INF/jspf/newsletter.jspf"/>
+        <jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
 
 
         <!-- Footer -->

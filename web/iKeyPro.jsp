@@ -26,7 +26,7 @@
         <body>
             <div class="super_container">
                 <!-- Header -->
-                <jsp:include page="WEB-INF/jspf/header.jsp"/>
+                <jsp:include page="WEB-INF/header.jsp"/>
                 <!-- Menu -->
                 <div class="page_menu">
                     <div class="container">

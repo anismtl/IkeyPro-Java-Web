@@ -37,7 +37,8 @@
                             </div>
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                <div><a href="#"><fmt:message key="PRegister"/></a></div>
+                                <div> <a href="/register.jsp"><fmt:message key="PRegister"/></a></div>
+                             
                                 <div><a href="#"><fmt:message key="PSignIn"/></a></div>
                             </div>
                         </div>
