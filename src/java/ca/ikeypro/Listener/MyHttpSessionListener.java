@@ -22,18 +22,19 @@ public class MyHttpSessionListener implements HttpSessionListener {
 
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
     private int sessionCount = 0;
-    HttpSession session=null;
-
+    HttpSession session = null;
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         synchronized (this) {
             sessionCount++;
-             System.out.println("Now  sessionsCreated   active sessions");
-             session=se.getSession();
-             System.out.println("Session Attribute ctx : " + session);
-             List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-             session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+            System.out.println("Now  sessionsCreated   active sessions");
+            session = se.getSession();
+            System.out.println("Session Attribute ctx : " + session);
+            List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+            session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+            List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
+            session.setAttribute("ListeAllProduits", ListeAllProduits);
 
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient de demarré - {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
@@ -42,7 +43,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         synchronized (this) {
-             System.out.println("Now  sessionsDestroyed  no active sessions");
+            System.out.println("Now  sessionsDestroyed  no active sessions");
             sessionCount--;
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient d'être detruite- {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);

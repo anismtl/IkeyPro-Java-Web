@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
  * @author Anis
  */
 public class Init extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,19 +43,6 @@ public class Init extends HttpServlet {
 
             session.setAttribute("bundle", bundle);
 
-        //    List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
-
-               List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
-               request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
-
-            //List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-
-         
-
-          //  request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
-
-         //   request.getServletContext().setAttribute("ListCat", ListeCategories);
-
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
 
             dispatcher.forward(request, response);
@@ -65,7 +53,6 @@ public class Init extends HttpServlet {
 //    public void init(ServletConfig config) throws ServletException {
 //        super.init(config);
 //    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
