@@ -111,6 +111,7 @@ public class Panier extends HttpServlet {
         //imagine if all this was in a scriptlet...ugly, eh?
         //on récupère l'item choisi par l'utilisateur dans la liste
         String id = req.getParameter("id");
+        String name= req.getParameter("name");
 
         //on récupère la quantité saisie
         String qty = req.getParameter("qty");
@@ -121,6 +122,7 @@ public class Panier extends HttpServlet {
         // à la servlet
         LignePanier p = new LignePanier();
         p.setCodeProduit(id);
+        p.setProduit(name);
         p.setQte(new Integer(qty).intValue());
         p.setPrix(new Float(prix).floatValue());
         p.setImage(image);

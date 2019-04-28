@@ -47,10 +47,7 @@
                                                     <div class="cart_item_title">Name</div>
                                                 
                                                 </div>
-                                                <div class="cart_item_color cart_info_col">
-                                                    <div class="cart_item_title">Color</div>
-                                                  
-                                                </div>
+                                             
                                                 <div class="cart_item_quantity cart_info_col">
                                                     <div class="cart_item_title">Quantity</div>
                                                    
@@ -63,6 +60,10 @@
                                                     <div class="cart_item_title">Total</div>
                                                   
                                                 </div>
+                                                    <div class="cart_item_Action cart_info_col">
+                                                    <div class="cart_item_title">Action</div>
+                                                  
+                                                </div>
                                             </div>  
                                         </li>
                                          <c:forEach var = "ligne" items="${panier}">
@@ -71,12 +72,9 @@
                                             <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                                 <div class="cart_item_name cart_info_col">
                                                   
-                                                    <div class="cart_item_text">${ligne.codeProduit}</div>
+                                                    <div class="cart_item_text"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
                                                 </div>
-                                                <div class="cart_item_color cart_info_col">
-                                                  
-                                                    <div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
-                                                </div>
+                                       
                                                 <div class="cart_item_quantity cart_info_col">
                                                   
                                                     <div class="cart_item_text"> ${ligne.qte}</div>
@@ -87,11 +85,20 @@
                                                 </div>
                                                 <div class="cart_item_total cart_info_col">
                                                   
-                                                    <div class="cart_item_text">$${ligne.qte * ligne.prix}
-                                                    
+                                                    <div class="cart_item_text">$${ligne.qte * ligne.prix} </div>
+                                                </div>
+                                                   <div class="cart_item_total cart_info_col">
                                                   
-                                                    
-                                                    </div>
+                                                    <div class="cart_item_text">        <form name="deleteForm"
+                          action="Panier"
+                          method="POST">
+                       
+                        <button type="submit" value="Delete" type="button" class="btn btn-outline-info">Delete</button>
+
+                        <input type="hidden" name= "delindex" value='${panier.indexOf(ligne)}'>
+
+                        <input type="hidden" name="action" value="DELETE">
+                    </form></div>
                                                 </div>
                                             </div>
                                         </li>

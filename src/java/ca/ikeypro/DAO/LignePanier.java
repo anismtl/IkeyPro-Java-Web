@@ -12,6 +12,7 @@ package ca.ikeypro.DAO;
 public class LignePanier {
 
     private String codeProduit;
+    private String produit;
     private int qte;
     private float prix;
     private String image;
@@ -19,12 +20,23 @@ public class LignePanier {
     public LignePanier() {
     }
 
-    public LignePanier(String codeProduit, int qte, float prix, String image) {
+    public LignePanier(String codeProduit, String produit, int qte, float prix, String image) {
         this.codeProduit = codeProduit;
+        this.produit = produit;
         this.qte = qte;
         this.prix = prix;
         this.image = image;
     }
+
+    public String getProduit() {
+        return produit;
+    }
+
+    public void setProduit(String produit) {
+        this.produit = produit;
+    }
+
+ 
 
     public String getCodeProduit() {
         return codeProduit;
