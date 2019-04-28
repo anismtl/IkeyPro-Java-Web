@@ -42,6 +42,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         synchronized (this) {
+             System.out.println("Now  sessionsDestroyed  no active sessions");
             sessionCount--;
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient d'être detruite- {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
