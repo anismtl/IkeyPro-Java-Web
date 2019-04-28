@@ -42,7 +42,7 @@ public class Init extends HttpServlet {
 
             session.setAttribute("bundle", bundle);
 
-            List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
+        //    List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
 
             List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
 
@@ -52,7 +52,7 @@ public class Init extends HttpServlet {
 
             request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
 
-            request.getServletContext().setAttribute("ListCat", ListeCategories);
+         //   request.getServletContext().setAttribute("ListCat", ListeCategories);
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
 
