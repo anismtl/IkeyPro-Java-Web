@@ -10,16 +10,16 @@ package ca.ikeypro.DAO;
  * @author Anis
  */
 public class LignePanier {
-    
+
     private String codeProduit;
-    private String qte;
+    private int qte;
     private float prix;
     private String image;
 
     public LignePanier() {
     }
 
-    public LignePanier(String codeProduit, String qte, float prix, String image) {
+    public LignePanier(String codeProduit, int qte, float prix, String image) {
         this.codeProduit = codeProduit;
         this.qte = qte;
         this.prix = prix;
@@ -34,11 +34,11 @@ public class LignePanier {
         this.codeProduit = codeProduit;
     }
 
-    public String getQte() {
+    public int getQte() {
         return qte;
     }
 
-    public void setQte(String qte) {
+    public void setQte(int qte) {
         this.qte = qte;
     }
 
@@ -57,6 +57,5 @@ public class LignePanier {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
+
 }

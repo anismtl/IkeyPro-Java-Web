@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="cart_content">
                                         <div class="cart_text"><a href="#"><fmt:message key="PCart"/></a></div>
-                                        <div class="cart_price">$85</div>
+                                        <div class="cart_price">$${total}</div>
                                     </div>
                                 </div>
                             </div>

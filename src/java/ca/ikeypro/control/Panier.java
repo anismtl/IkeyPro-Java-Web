@@ -81,15 +81,27 @@ public class Panier extends HttpServlet {
                     } //end of if name matches
                 } // end of for
 //        
-//        }
-                session.setAttribute("panier", buylist);
+                if (!match) //on ajoute l'item au panier
+                {
+                    buylist.addElement(aCD);
+                }
+       }
+                float total=0;
+                for (int i = 0; i < buylist.size(); i++) {
+                     LignePanier cd = (LignePanier) buylist.elementAt(i);
+                    int qte=cd.getQte();
+                    float prix=cd.getPrix();
+                    total+=qte*prix;
+                }               
+                session.setAttribute("total", total);
+                 session.setAttribute("panier", buylist);
                 String url = "/iKeyPro.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
 
             }
-        }
+        
     }
 
     //méthode utilitaire qui sert à récupérer les différentes
@@ -109,7 +121,7 @@ public class Panier extends HttpServlet {
         // à la servlet
         LignePanier p = new LignePanier();
         p.setCodeProduit(id);
-        p.setQte(qty);
+        p.setQte(new Integer(qty).intValue());
         p.setPrix(new Float(prix).floatValue());
         p.setImage(image);
 //    cd.setArtist(artist);
