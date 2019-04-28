@@ -1,8 +1,11 @@
 package ca.ikeypro.Listener;
 
+import ca.ikeypro.DAO.Categorie;
+import ca.ikeypro.DAO.CategorieDAO;
 import ca.ikeypro.Utilitaire.DataManager;
 import java.sql.Connection;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
@@ -22,6 +25,8 @@ public class MyServletContextListener implements ServletContextListener {
         LOG.log(Level.INFO,"\n=*=*=*=*=*=*= Le contexte vient de demarré {0} =*=*=*=*=*=*=", new Date());
         dataManager = DataManager.getInstance();
         connection = dataManager.getConnection();
+          List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
+          sce.getServletContext().setAttribute("ListCat", ListeCategories);
     }
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
