@@ -57,6 +57,8 @@
                                                     <span><fmt:message key="PQuantity"/> : </span>
                                                     <input id="quantity_input" type="text" pattern="[0-9]*" name="qty" value="1">
                                                     <input type="hidden" name="id" value="${prod.codeProduit}">
+                                                     <input type="hidden" name="prix" value="${prod.prix}">
+                                                     <input type="hidden" name="image" value="${prod.image}">
                                                     <input type="hidden" name="action" value="ADD">
                                                     <div class="quantity_buttons">
                                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
