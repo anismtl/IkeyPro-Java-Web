@@ -20,7 +20,7 @@ public class MyServletContextAttributeListener implements ServletContextAttribut
         //context.setAttribut ("stock", stock);
         String attributeName = event.getName();
         Object attributeValue = event.getValue();
-        System.out.println("Context Attribute added : " + attributeName + " : " + attributeValue);
+        System.out.println("[Context Attribute] Added : " + attributeName + " : " + attributeValue);
     }
 
     @Override

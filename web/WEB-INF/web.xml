@@ -39,6 +39,10 @@
         <servlet-name>Ajax</servlet-name>
         <servlet-class>ca.ikeypro.control.Ajax</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Panier</servlet-name>
+        <servlet-class>ca.ikeypro.control.Panier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
@@ -58,6 +62,10 @@
     <servlet-mapping>
         <servlet-name>Ajax</servlet-name>
         <url-pattern>/Ajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Panier</servlet-name>
+        <url-pattern>/Panier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
