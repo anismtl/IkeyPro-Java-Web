@@ -45,12 +45,13 @@ public class Init extends HttpServlet {
         //    List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
 
             List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
+               request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
 
-            List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+            //List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
 
-            request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+         
 
-            request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+          //  request.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
 
          //   request.getServletContext().setAttribute("ListCat", ListeCategories);
 

@@ -52,7 +52,6 @@ public class Ajax extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action.equals("C")) {
-            //List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduitsByCat("2");
             List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
             Gson gson = new Gson();
             String json = gson.toJson(ListeCat);
@@ -62,9 +61,9 @@ public class Ajax extends HttpServlet {
             out.print(json);
             out.flush();
         } else if (action.equals("P")) {
-            List<Produit> ListeAllProduits = ProduitDAO.getListeMostViewProduits();
+            List<Produit> ListeMostViewProduits = (List<Produit>) request.getSession().getAttribute("ListeMostViewProduits");
             Gson gson = new Gson();
-            String json = gson.toJson(ListeAllProduits);
+            String json = gson.toJson(ListeMostViewProduits);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();

@@ -14,6 +14,9 @@ public class MyHttpSessionAttributeListener implements HttpSessionAttributeListe
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent event) {
+        	String attributeName = event.getName();
+		Object attributeValue = event.getValue();
+		System.out.println("Attribute added : " + attributeName + " : " + attributeValue);
     }
 
     @Override

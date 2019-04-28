@@ -2,6 +2,8 @@ package ca.ikeypro.Listener;
 
 import ca.ikeypro.DAO.Categorie;
 import ca.ikeypro.DAO.CategorieDAO;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 import ca.ikeypro.Utilitaire.DataManager;
 import java.sql.Connection;
 import java.util.Date;
@@ -27,6 +29,9 @@ public class MyServletContextListener implements ServletContextListener {
         connection = dataManager.getConnection();
           List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
           sce.getServletContext().setAttribute("ListCat", ListeCategories);
+//           List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+//            sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+                 
     }
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

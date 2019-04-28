@@ -15,10 +15,10 @@ public class MyServletRequestListener implements ServletRequestListener {
 
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
-        LOG.log(Level.INFO,"\n=*=*=*=*=*=*= La requete {0} vient d'être crée =*=*=*=*=*=*=", sre.getClass().getName());
+       // LOG.log(Level.INFO,"\n=*=*=*=*=*=*= La requete {0} vient d'être crée =*=*=*=*=*=*=", sre.getClass().getName());
     }
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
-        LOG.log(Level.INFO,"\n=*=*=*=*=*=*= La requete {0} vient d'être detruite =*=*=*=*=*=*=", sre.getClass().getName());        
+       // LOG.log(Level.INFO,"\n=*=*=*=*=*=*= La requete {0} vient d'être detruite =*=*=*=*=*=*=", sre.getClass().getName());        
     }    
 }

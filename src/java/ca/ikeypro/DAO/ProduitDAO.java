@@ -247,6 +247,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + "WHERE CODE_PRODUIT ='" + idProduit + "'";
+                System.out.println(req);
                 statement = conn.createStatement();
 
                 rs = statement.executeQuery(req);
