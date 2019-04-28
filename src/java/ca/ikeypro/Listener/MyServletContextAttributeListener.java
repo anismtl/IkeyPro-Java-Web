@@ -16,7 +16,7 @@ public class MyServletContextAttributeListener implements ServletContextAttribut
 
     @Override
     public void attributeAdded(ServletContextAttributeEvent event) {
-        HttpServlet context = (HttpServlet) event.getServletContext();
+      //  HttpServlet context = (HttpServlet) event.getServletContext();
         //context.setAttribut ("stock", stock);
     }
 
@@ -28,7 +28,7 @@ public class MyServletContextAttributeListener implements ServletContextAttribut
 
     @Override
     public void attributeReplaced(ServletContextAttributeEvent arg0) {
-        HttpServlet context = (HttpServlet) arg0.getServletContext();
+     //   HttpServlet context = (HttpServlet) arg0.getServletContext();
         //context.setAttribut ("stock", stock);
     }
 

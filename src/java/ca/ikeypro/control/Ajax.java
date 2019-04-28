@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Ajax extends HttpServlet {
 
-    DataManager dataManager;
+    //DataManager dataManager;
 
     /**
      * DataManager dataManager; Processes requests for both HTTP
@@ -53,10 +53,9 @@ public class Ajax extends HttpServlet {
         String action = request.getParameter("action");
         if (action.equals("C")) {
             //List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduitsByCat("2");
-            List<Categorie> ListeCat = CategorieDAO.getListeCetegorie();
+            List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
             Gson gson = new Gson();
             String json = gson.toJson(ListeCat);
-            request.setAttribute("categ", json);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
@@ -66,7 +65,6 @@ public class Ajax extends HttpServlet {
             List<Produit> ListeAllProduits = ProduitDAO.getListeMostViewProduits();
             Gson gson = new Gson();
             String json = gson.toJson(ListeAllProduits);
-            request.setAttribute("Categ", json);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
