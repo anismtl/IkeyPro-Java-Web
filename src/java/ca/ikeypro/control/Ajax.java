@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Ajax extends HttpServlet {
 
-    //DataManager dataManager;
+  
 
     /**
      * DataManager dataManager; Processes requests for both HTTP
