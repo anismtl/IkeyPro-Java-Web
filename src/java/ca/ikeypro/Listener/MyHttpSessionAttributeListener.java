@@ -16,14 +16,14 @@ public class MyHttpSessionAttributeListener implements HttpSessionAttributeListe
     public void attributeAdded(HttpSessionBindingEvent event) {
         	String attributeName = event.getName();
 		Object attributeValue = event.getValue();
-		System.out.println("Session Attribute added : " + attributeName + " : " + attributeValue);
+		System.out.println("[Session Attribute] Added : " + attributeName + " : " + attributeValue);
     }
 
     @Override
     public void attributeRemoved(HttpSessionBindingEvent event) {
         	String attributeName = event.getName();
 		Object attributeValue = event.getValue();
-		System.out.println("Session Attribute adrempved : " + attributeName + " : " + attributeValue);
+		System.out.println("Session Attribute Removed : " + attributeName + " : " + attributeValue);
     }
 
     @Override

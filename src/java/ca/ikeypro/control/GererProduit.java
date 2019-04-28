@@ -30,7 +30,7 @@ public class GererProduit extends HttpServlet {
             HttpSession session = request.getSession();
             String id = request.getParameter("id");
             Produit Prod = ProduitDAO.getProduit(id);
-            session.setAttribute("prod", Prod);
+            request.setAttribute("prod", Prod);
             //request.getServletContext().setAttribute("ListProd", ListeProduits);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/produit.jsp");
             dispatcher.forward(request, response);        

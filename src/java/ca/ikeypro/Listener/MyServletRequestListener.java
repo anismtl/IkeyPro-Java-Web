@@ -19,6 +19,7 @@ public class MyServletRequestListener implements ServletRequestListener {
     }
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
+        
        // LOG.log(Level.INFO,"\n=*=*=*=*=*=*= La requete {0} vient d'être detruite =*=*=*=*=*=*=", sre.getClass().getName());        
     }    
 }
