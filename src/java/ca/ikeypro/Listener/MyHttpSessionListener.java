@@ -2,12 +2,13 @@ package ca.ikeypro.Listener;
 
 import ca.ikeypro.DAO.Produit;
 import ca.ikeypro.DAO.ProduitDAO;
-import static ca.ikeypro.Listener.MyServletContextListener.connection;
+//import static ca.ikeypro.Listener.MyServletContextListener.connection;
 import ca.ikeypro.Utilitaire.DataManager;
 import java.sql.Connection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -21,22 +22,19 @@ public class MyHttpSessionListener implements HttpSessionListener {
 
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
     private int sessionCount = 0;
-    private static DataManager dataManager;
-    public static Connection connection;
+    HttpSession session=null;
+
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         synchronized (this) {
             sessionCount++;
              System.out.println("Now  sessionsCreated   active sessions");
-        HttpSession session = se.getSession();
-       
-            dataManager = DataManager.getInstance();
-            connection = dataManager.getConnection();
-           
+             session=se.getSession();
+             System.out.println("Session Attribute ctx : " + session);
+             List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+             session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
 
-            List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-            session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient de demarré - {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
     }

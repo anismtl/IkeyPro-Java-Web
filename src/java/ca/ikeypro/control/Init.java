@@ -44,7 +44,7 @@ public class Init extends HttpServlet {
 
         //    List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
 
-            List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
+               List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
                request.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
 
             //List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
@@ -61,10 +61,10 @@ public class Init extends HttpServlet {
         }
     }
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-    }
+//    @Override
+//    public void init(ServletConfig config) throws ServletException {
+//        super.init(config);
+//    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

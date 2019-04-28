@@ -19,23 +19,27 @@ import javax.servlet.annotation.WebListener;
  */
 @WebListener
 public class MyServletContextListener implements ServletContextListener {
-    private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName()); 
+
+    private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
     private static DataManager dataManager;
     public static Connection connection;
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LOG.log(Level.INFO,"\n=*=*=*=*=*=*= Le contexte vient de demarré {0} =*=*=*=*=*=*=", new Date());
+        LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le contexte vient de demarré {0} =*=*=*=*=*=*=", new Date());
         dataManager = DataManager.getInstance();
         connection = dataManager.getConnection();
-          List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
-          sce.getServletContext().setAttribute("ListCat", ListeCategories);
-//           List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-//            sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
-                 
+        List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
+        sce.getServletContext().setAttribute("ListCat", ListeCategories);
+
+//        List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+//        sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+
     }
+
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        LOG.log(Level.INFO,"\n=*=*=*=*=*=*= Le contexte vient d'arreté {0} =*=*=*=*=*=*=", new Date());
+        LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le contexte vient d'arreté {0} =*=*=*=*=*=*=", new Date());
         dataManager.closeConnection();
-    }    
+    }
 }
