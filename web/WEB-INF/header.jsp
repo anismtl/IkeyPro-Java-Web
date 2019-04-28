@@ -98,19 +98,18 @@
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="images/cart.png" alt="">
-                                        <div class="cart_count"><span>
-                                                
-                                                <c:if test="${empty panier}">
-                                                0
-                                                </c:if>
-                                                 ${panier.size()}
-                                            </span></div>
-                                    </div>
-                                    <div class="cart_content">
-                                        <div class="cart_text"><a href="panier.jsp"><fmt:message key="PCart"/></a></div>
+                                        <div class="cart_count"><span>       
+                                                <c:if test="${empty panier}">0</c:if>
+                                                <c:if test="${!empty panier}">${panier.size()}</c:if>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="cart_content">
+                                            <div class="cart_text"><a href="panier.jsp"><fmt:message key="PCart"/></a></div>
                                         <div class="cart_price"> <c:if test="${empty total}">$0</c:if>
-                                             <c:if test="${!empty total}">$${total}</c:if>   
-                                                </div>
+                                            <c:if test="${!empty total}">$${total}</c:if>   
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,27 +117,26 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Main Navigation -->
+            <!-- Main Navigation -->
 
-        <nav class="main_nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+            <nav class="main_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
 
-                        <div class="main_nav_content d-flex flex-row">
+                            <div class="main_nav_content d-flex flex-row">
 
-                            <!-- Categories Menu -->
+                                <!-- Categories Menu -->
 
-                            <div class="cat_menu_container">
-                                <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                                    <div class="cat_burger"><span></span><span></span><span></span></div>
-                                    <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
+                                <div class="cat_menu_container">
+                                    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+                                        <div class="cat_burger"><span></span><span></span><span></span></div>
+                                        <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
                                 </div>
 
                                 <ul class="cat_menu" id="cat">
-                                    
+
                                 </ul>
                             </div>
 
@@ -179,8 +177,8 @@
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
                                     </li>
-                              
-                                   
+
+
                                     <li><a href="contact.jsp"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>

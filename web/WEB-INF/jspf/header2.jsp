@@ -86,15 +86,17 @@
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="images/cart.png" alt="">
-                                        <div class="cart_count"><span>         <c:if test="${empty panier}">
-                                                    0
-                                                </c:if>
-                                                ${panier.size()}</span></div>
-                                    </div>
-                                    <div class="cart_content">
-                                        <div class="cart_text"><a href="panier.jsp"><fmt:message key="PCart"/></a></div>
+                                        <div class="cart_count"><span>       
+                                                <c:if test="${empty panier}">0</c:if>
+                                                <c:if test="${!empty panier}">${panier.size()}</c:if>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="cart_content">
+                                            <div class="cart_text"><a href="panier.jsp"><fmt:message key="PCart"/></a></div>
                                         <div class="cart_price"> <c:if test="${empty total}">$0</c:if>
-                                            <c:if test="${!empty total}">$${total}</c:if> </div>
+                                            <c:if test="${!empty total}">$${total}</c:if>   
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,172 +104,171 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Main Navigation -->
-            <nav class="main_nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="main_nav_content d-flex flex-row">
-                                <!-- Categories Menu -->
-                                <div class="cat_menu_container">
-                                    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                                        <div class="cat_burger"><span></span><span></span><span></span></div>
-                                        <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
+                <!-- Main Navigation -->
+                <nav class="main_nav">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="main_nav_content d-flex flex-row">
+                                    <!-- Categories Menu -->
+                                    <div class="cat_menu_container">
+                                        <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+                                            <div class="cat_burger"><span></span><span></span><span></span></div>
+                                            <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
+                                    </div>
+                                    <ul class="cat_menu">
+                                        <c:forEach var = "ligne" items="${ListCat}">
+                                            <li><a href="ListeProduits?cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
+                                                </c:forEach>
+                                    </ul>
                                 </div>
-                                <ul class="cat_menu">
-                                    <c:forEach var = "ligne" items="${ListCat}">
-                                        <li><a href="ListeProduits?cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
-                                            </c:forEach>
-                                </ul>
-                            </div>
-                            <!-- Main Nav Menu -->
-                            <div class="main_nav_menu ml-auto">
-                                <ul class="standard_dropdown main_nav_dropdown">
-                                    <li><a href="index.jsp"><fmt:message key="PHome"/><i class="fas fa-chevron-down"></i></a></li>
-                                    <li class="hassubs">
-                                        <a href="#"><fmt:message key="PSuperDeals"/><i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                                <ul>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hassubs">
-                                        <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                                <ul>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hassubs">
-                                        <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.jsp">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- Menu Trigger -->
-                            <div class="menu_trigger_container ml-auto">
-                                <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                                    <div class="menu_burger">
-                                        <div class="menu_trigger_text">menu</div>
-                                        <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
+                                <!-- Main Nav Menu -->
+                                <div class="main_nav_menu ml-auto">
+                                    <ul class="standard_dropdown main_nav_dropdown">
+                                        <li><a href="index.jsp"><fmt:message key="PHome"/><i class="fas fa-chevron-down"></i></a></li>
+                                        <li class="hassubs">
+                                            <a href="#"><fmt:message key="PSuperDeals"/><i class="fas fa-chevron-down"></i></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="hassubs">
+                                            <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="hassubs">
+                                            <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
+                                            <ul>
+                                                <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+                                        <li><a href="contact.jsp">Contact<i class="fas fa-chevron-down"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Menu Trigger -->
+                                <div class="menu_trigger_container ml-auto">
+                                    <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                        <div class="menu_burger">
+                                            <div class="menu_trigger_text">menu</div>
+                                            <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-        <!-- Menu -->
-        <div class="page_menu">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="page_menu_content">
-                            <div class="page_menu_search">
-                                <form action="#">
-                                    <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
-                                </form>
-                            </div>
-                            <ul class="page_menu_nav">
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PLanguage"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#"><fmt:message key="PEnglishLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PItalianLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PSpanishLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PMandarinLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PCurrency"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">US <fmt:message key="PDollarCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">EUR <fmt:message key="PEuroCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">GBP <fmt:message key="PBritishPoundCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">JPY <fmt:message key="PYuanCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item">
-                                    <a href="#"><fmt:message key="PHome"/><i class="fa fa-angle-down"></i></a>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PSuperDeals"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#"><fmt:message key="PSuperDeals"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li class="page_menu_item has-children">
-                                            <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                            <ul class="page_menu_selection">
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#"><fmt:message key="PFeaturedBrands"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PTrendingStyles"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#"><fmt:message key="PTrendingStyles"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item"><a href="contact.html"><fmt:message key="PContact"/><i class="fa fa-angle-down"></i></a></li>
-                            </ul>
+            </nav>
+            <!-- Menu -->
+            <div class="page_menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="page_menu_content">
+                                <div class="page_menu_search">
+                                    <form action="#">
+                                        <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+                                    </form>
+                                </div>
+                                <ul class="page_menu_nav">
+                                    <li class="page_menu_item has-children">
+                                        <a href="#"><fmt:message key="PLanguage"/><i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#"><fmt:message key="PEnglishLangue"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#"><fmt:message key="PItalianLangue"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#"><fmt:message key="PSpanishLangue"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#"><fmt:message key="PMandarinLangue"/><i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#"><fmt:message key="PCurrency"/><i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#">US <fmt:message key="PDollarCurrency"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">EUR <fmt:message key="PEuroCurrency"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">GBP <fmt:message key="PBritishPoundCurrency"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">JPY <fmt:message key="PYuanCurrency"/><i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item">
+                                        <a href="#"><fmt:message key="PHome"/><i class="fa fa-angle-down"></i></a>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#"><fmt:message key="PSuperDeals"/><i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#"><fmt:message key="PSuperDeals"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li class="page_menu_item has-children">
+                                                <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
+                                                <ul class="page_menu_selection">
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#"><fmt:message key="PFeaturedBrands"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#"><fmt:message key="PTrendingStyles"/><i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#"><fmt:message key="PTrendingStyles"/><i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
+                                    <li class="page_menu_item"><a href="contact.html"><fmt:message key="PContact"/><i class="fa fa-angle-down"></i></a></li>
+                                </ul>
 
-                            <div class="menu_contact">
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                <div class="menu_contact">
+                                    <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+                                    <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 </fmt:bundle>

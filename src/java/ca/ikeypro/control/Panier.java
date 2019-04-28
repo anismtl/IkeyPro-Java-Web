@@ -35,10 +35,21 @@ public class Panier extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
+        float total=0;
+        session.setAttribute("total", total);
         Vector buylist = (Vector) session.getAttribute("panier");
         String action = request.getParameter("action");
-
-        if (action.equals("ADD")) {
+            if (action.equals("DELETE")) {
+          
+        //on récupère l'indice de l'item à supprimer  
+        String del = request.getParameter("delindex");
+        
+        //on supprime l'item du panier
+        int d = (new Integer(del)).intValue();
+        buylist.removeElementAt(d);
+        
+        // si clic sur ajouter au panier
+      } else  if (action.equals("ADD")) {
 
             //booleen qui va être utilisé pour vérifier si l'item est déjà 
             //dans le panier
@@ -86,7 +97,9 @@ public class Panier extends HttpServlet {
                     buylist.addElement(aCD);
                 }
        }
-                float total=0;
+             
+            }
+           total=0;
                 for (int i = 0; i < buylist.size(); i++) {
                      LignePanier cd = (LignePanier) buylist.elementAt(i);
                     int qte=cd.getQte();
@@ -100,8 +113,6 @@ public class Panier extends HttpServlet {
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
 
-            }
-        
     }
 
     //méthode utilitaire qui sert à récupérer les différentes
