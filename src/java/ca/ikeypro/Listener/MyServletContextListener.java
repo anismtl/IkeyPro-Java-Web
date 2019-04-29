@@ -32,8 +32,8 @@ public class MyServletContextListener implements ServletContextListener {
         List<Categorie> ListeCategories = CategorieDAO.getListeCategorie();
         sce.getServletContext().setAttribute("ListCat", ListeCategories);
 
-//        List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-//        sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+       List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+       sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
 
     }
 

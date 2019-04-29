@@ -21,7 +21,6 @@ public class CategorieDAO {
             String strQuery = "SELECT * FROM CATEGORIE ";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(strQuery);
-            System.out.println(strQuery);
             Categorie cat;
             while (rs.next()) {
                 cat = new Categorie();

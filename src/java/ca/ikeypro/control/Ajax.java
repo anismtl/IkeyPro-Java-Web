@@ -55,7 +55,7 @@ public class Ajax extends HttpServlet {
             out.print(json);
             out.flush();
         } else if (action.equals("P")) {
-            List<Produit> ListeMostViewProduits = (List<Produit>) request.getSession().getAttribute("ListeMostViewProduits");
+            List<Produit> ListeMostViewProduits = (List<Produit>) request.getServletContext().getAttribute("ListeMostViewProduits");
             Gson gson = new Gson();
             String json = gson.toJson(ListeMostViewProduits);
             response.setContentType("application/json");

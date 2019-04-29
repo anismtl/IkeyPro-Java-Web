@@ -40,8 +40,7 @@ public class ProduitDAO {
             return liste;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("not Connected");
-        } finally {
+                  } finally {
             DataManager.getInstance().closeConnection();
         }
         return liste;

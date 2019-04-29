@@ -31,8 +31,8 @@ public class MyHttpSessionListener implements HttpSessionListener {
             System.out.println("Now  sessionsCreated   active sessions");
             session = se.getSession();
             System.out.println("Session Attribute ctx : " + session);
-            List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-            session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+           // List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+          //  session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
             List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
             session.setAttribute("ListeAllProduits", ListeAllProduits);
 
