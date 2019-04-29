@@ -31,10 +31,13 @@ public class MyHttpSessionListener implements HttpSessionListener {
             System.out.println("Now  sessionsCreated   active sessions");
             session = se.getSession();
             System.out.println("Session Attribute ctx : " + session);
-           // List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
-          //  session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
-            List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
-            session.setAttribute("ListeAllProduits", ListeAllProduits);
+            // List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
+            //  session.setAttribute("ListeMostViewProduits", ListeMostViewProduits);
+
+            if (se.getSession() != null) {
+                List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
+                session.setAttribute("ListeAllProduits", ListeAllProduits);
+            }
 
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient de demarré - {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
