@@ -56,7 +56,10 @@
                                                     <div class="cart_item_title">Price</div>
                                                  
                                                 </div>
-
+                                                <div class="cart_item_total cart_info_col">
+                                                    <div class="cart_item_title">Total</div>
+                                                  
+                                                </div>
                                                     <div class="cart_item_Action cart_info_col">
                                                     <div class="cart_item_title">Action</div>
                                                   
@@ -80,7 +83,10 @@
                                                  
                                                     <div class="cart_item_text">${ligne.prix}</div>
                                                 </div>
-
+                                                <div class="cart_item_total cart_info_col">
+                                                  
+                                                    <div class="cart_item_text">$${ligne.qte * ligne.prix} </div>
+                                                </div>
                                                    <div class="cart_item_total cart_info_col">
                                                   
                                                     <div class="cart_item_text">        <form name="deleteForm"
@@ -100,7 +106,13 @@
                                     </ul>
                                 </div>
 
-                           
+                                <!-- Order Total -->
+                                <div class="order_total">
+                                    <div class="order_total_content text-md-right">
+                                        <div class="order_total_title">Order Total:</div>
+                                        <div class="order_total_amount">$${total}</div>
+                                    </div>
+                                </div>
 
                                 <div class="cart_buttons">
                                     <a type="submit" class="button cart_button_clear" href="ListeProduits?cat=2">Magasiner</a>
