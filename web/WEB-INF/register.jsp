@@ -6,9 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:bundle basename="app
-            
-</fmt:bundle>   
+<fmt:bundle basename="app">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -193,3 +191,4 @@
         <script src="js/cart_custom.js"></script>
 </body>
 </html>
+</fmt:bundle>
