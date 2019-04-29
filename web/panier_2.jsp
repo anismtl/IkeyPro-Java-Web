@@ -38,30 +38,55 @@
                             <div class="col-lg-10 offset-lg-1">
                                 <div class="cart_container">
                                     <div class="cart_title">Shopping Cart</div>
+                                    <div class="cart_items">
+                                        <ul class="cart_list">
+                                            
+                                            <li class="cart_item clearfix">
+                                                <div class="cart_item_image"></div>
+                                                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                                    <div class="cart_item_name cart_info_col">
+                                                        <div class="cart_item_title">Name</div>
 
-                                    <c:forEach var = "ligne" items="${panier}">
-                                        <div class="cart_items">
-                                            <ul class="cart_list">
+                                                    </div>
+
+                                                    <div class="cart_item_quantity cart_info_col">
+                                                        <div class="cart_item_title">Quantity</div>
+
+                                                    </div>
+                                                    <div class="cart_item_price cart_info_col">
+                                                        <div class="cart_item_title">Price</div>
+
+                                                    </div>
+
+                                                    <div class="cart_item_Action cart_info_col">
+                                                        <div class="cart_item_title">Action</div>
+
+                                                    </div>
+                                                </div>  
+                                            </li>
+                                            <c:forEach var = "ligne" items="${panier}">
                                                 <li class="cart_item clearfix">
                                                     <div class="cart_item_image"><img src="images/${ligne.image}" alt=""></div>
                                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                                         <div class="cart_item_name cart_info_col">
-                                                            <div class="cart_item_title">Name</div>
+
                                                             <div class="cart_item_text"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
                                                         </div>
+
                                                         <div class="cart_item_quantity cart_info_col">
-                                                            <div class="cart_item_title">Quantity</div>
-                                                            <div class="cart_item_text">${ligne.qte}</div>
+
+                                                            <div class="cart_item_text"> ${ligne.qte}</div>
                                                         </div>
                                                         <div class="cart_item_price cart_info_col">
-                                                            <div class="cart_item_title">Price</div>
-                                                            <div class="cart_item_text">$${ligne.prix}</div>
+
+                                                            <div class="cart_item_text">${ligne.prix}</div>
                                                         </div>
+
                                                         <div class="cart_item_total cart_info_col">
-                                                            <div class="cart_item_title">Action</div>
-                                                            <div class="cart_item_text"> <form name="deleteForm"
-                                                                                               action="Panier"
-                                                                                               method="POST">
+
+                                                            <div class="cart_item_text">        <form name="deleteForm"
+                                                                                                      action="Panier"
+                                                                                                      method="POST">
 
                                                                     <button type="submit" value="Delete" type="button" class="btn btn-sm btn-secondary" role="button">Supprimer</button>
 
@@ -72,10 +97,9 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                    </c:forEach>
-
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
 
 
 
@@ -87,12 +111,12 @@
                                             <a type="button" class="btn btn-lg btn-light" href="Panier?action=VIDER" role="button">Vider Panier</a>
                                         </c:if>
                                         <a type="button" class="btn btn-lg btn-light" href="ListeProduits?cat=2" role="button">Magasiner</a>
-                                        <c:if test="${empty panier}">
-                                            <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?cat=2" role="button">Checkout</a>
-                                        </c:if>
+                                         <c:if test="${empty panier}">
+                                        <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?cat=2" role="button">Checkout</a>
+                                         </c:if>
                                         <c:if test="${!empty panier}">
                                             <a type="button" class="btn btn-lg btn-primary" href="ListeProduits?cat=2" role="button">Checkout</a>
-                                        </c:if>
+                                            </c:if>
                                     </div>
                                 </div>
                             </div>

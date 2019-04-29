@@ -51,10 +51,46 @@ public class Panier extends HttpServlet {
             //on supprime l'item du panier
             int d = (new Integer(del)).intValue();
             buylist.removeElementAt(d);
+            int nb=buylist.size();
+            if (nb==0){
+                 total = 0;
+   
+        session.setAttribute("total", total);
+       // session.setAttribute("panier", buylist);
+        String url = "/ListeProduits?cat=2";
+        ServletContext sc = getServletContext();
+        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        rd.forward(request, response);
+                } else {
+                  total = 0;
+        for (int i = 0; i < buylist.size(); i++) {
+            LignePanier cd = (LignePanier) buylist.elementAt(i);
+            int qte = cd.getQte();
+            float prix = cd.getPrix();
+            total += qte * prix;
+        }
+        session.setAttribute("total", total);
+       // session.setAttribute("panier", buylist);
+        String url = "/panier.jsp";
+        ServletContext sc = getServletContext();
+        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        rd.forward(request, response);
+                
+            }
 
             // si clic sur ajouter au panier
         } else if (action.equals("VIDER")) {
             buylist.removeAllElements();
+              total = 0;
+   
+        session.setAttribute("total", total);
+       // session.setAttribute("panier", buylist);
+        String url = "/ListeProduits?cat=2";
+        ServletContext sc = getServletContext();
+        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        rd.forward(request, response);  
+            
+            
         } else if (action.equals("ADD")) {
 
             //booleen qui va être utilisé pour vérifier si l'item est déjà 
@@ -103,9 +139,7 @@ public class Panier extends HttpServlet {
                     buylist.addElement(aCD);
                 }
             }
-
-        }
-        total = 0;
+          total = 0;
         for (int i = 0; i < buylist.size(); i++) {
             LignePanier cd = (LignePanier) buylist.elementAt(i);
             int qte = cd.getQte();
@@ -118,6 +152,8 @@ public class Panier extends HttpServlet {
         ServletContext sc = getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);
+        }
+        
 
     }
 
