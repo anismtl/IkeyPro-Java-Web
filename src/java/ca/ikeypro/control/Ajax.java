@@ -3,11 +3,14 @@ package ca.ikeypro.control;
 import ca.ikeypro.Utilitaire.DataManager;
 import ca.ikeypro.DAO.Categorie;
 import ca.ikeypro.DAO.CategorieDAO;
+import ca.ikeypro.DAO.NewsletterDAO;
 import ca.ikeypro.DAO.Produit;
 import ca.ikeypro.DAO.ProduitDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Anis
  */
 public class Ajax extends HttpServlet {
-
-  
 
     /**
      * DataManager dataManager; Processes requests for both HTTP
@@ -33,9 +34,23 @@ public class Ajax extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        PrintWriter out = response.getWriter();
+        String action = request.getParameter("action");
+        response.setContentType("application/json");
+        if (action.equals("N")) {
+            String email = request.getParameter("courriel");
+            String resultat = NewsletterDAO.Inscription(email);
+
+            Gson gson = new Gson();
+
+            String json = gson.toJson(resultat);
+
+            System.out.println("Email:"+email);
+            System.out.println("Resultat:"+resultat);
+            out.print(json);
+            out.flush();
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,12 +84,12 @@ public class Ajax extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
-        }else if (action.equals("N")) {
-         //  String courriel=(String) request.getAttribute("courriel");
-        //    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+        } else if (action.equals("N")) {
+            Object courriel = request.getAttribute("courriel");
+            //    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
             Gson gson = new Gson();
-            String json = gson.toJson("Merci");
-            System.out.println(request.getAttribute("courriel"));
+            String json = gson.toJson(courriel);
+            System.out.println(json);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
