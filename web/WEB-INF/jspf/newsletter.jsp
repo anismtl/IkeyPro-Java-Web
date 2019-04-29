@@ -22,14 +22,18 @@
                         
                         <div class="newsletter_content clearfix">
                             
-                            <form action="#" class="newsletter_form">
-                                <input id="Des" type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-                                <button class="newsletter_button" onclick="chercher()"><fmt:message key="PSubscribe"/>   </button>
+                            <form action="#" name="news" class="newsletter_form ">
+                                <input id="email" name="email" type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
+                                <input type="button" class="newsletter_button" onclick="inscription()" value="<fmt:message key="PSubscribe"/>"/>
                             </form>
                                 <div class="newsletter_unsubscribe_link"><a href="#"><fmt:message key="PUnsubscribe"/></a></div>
-                                <span id="resultat"> </span>
+                               
+                               
                         </div>
+                               
                     </div>
+                                <div align="center"> <span id="resultat" align="center"> </span></div>  
+                               
                 </div>
             </div>
         </div>

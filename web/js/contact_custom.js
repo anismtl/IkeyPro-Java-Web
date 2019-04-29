@@ -31,7 +31,7 @@ $(document).ready(function()
 
 	initCustomDropdown();
 	initPageMenu();
-	initGoogleMap();
+	//initGoogleMap();
 
 	$(window).on('resize', function()
 	{

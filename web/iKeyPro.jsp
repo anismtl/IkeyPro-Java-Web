@@ -1319,6 +1319,7 @@
             <!-- Footer -->
             <jsp:include page="WEB-INF/jspf/footer.jsp"/>
             <script src="js.js"></script>
+            <script src="js/newsletter.js"></script>
             <script src="js/jquery-3.3.1.min.js"></script>
             <script src="styles/bootstrap4/popper.js"></script>
             <script src="styles/bootstrap4/bootstrap.min.js"></script>
