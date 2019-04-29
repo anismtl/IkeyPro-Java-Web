@@ -34,22 +34,28 @@ public class Panier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+            if (session == null) {
+      response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
+      
+    }
         response.setContentType("text/html;charset=UTF-8");
-        float total=0;
+        float total = 0;
         session.setAttribute("total", total);
         Vector buylist = (Vector) session.getAttribute("panier");
         String action = request.getParameter("action");
-            if (action.equals("DELETE")) {
-          
-        //on récupère l'indice de l'item à supprimer  
-        String del = request.getParameter("delindex");
-        
-        //on supprime l'item du panier
-        int d = (new Integer(del)).intValue();
-        buylist.removeElementAt(d);
-        
-        // si clic sur ajouter au panier
-      } else  if (action.equals("ADD")) {
+        if (action.equals("DELETE")) {
+
+            //on récupère l'indice de l'item à supprimer  
+            String del = request.getParameter("delindex");
+
+            //on supprime l'item du panier
+            int d = (new Integer(del)).intValue();
+            buylist.removeElementAt(d);
+
+            // si clic sur ajouter au panier
+        } else if (action.equals("VIDER")) {
+            buylist.removeAllElements();
+        } else if (action.equals("ADD")) {
 
             //booleen qui va être utilisé pour vérifier si l'item est déjà 
             //dans le panier
@@ -67,19 +73,19 @@ public class Panier extends HttpServlet {
 
                 //si le panier existe déjà (buylist non null) 
             } else {
-//            
-//          //on vérifie si le CD est déjà dans le panier?
-//          //pour ne pas l'ajouter une autre fois 
+
+                //on vérifie si le CD est déjà dans le panier?
+                //pour ne pas l'ajouter une autre fois 
                 for (int i = 0; i < buylist.size(); i++) {
-////            
-////            on récupère l'item à la position i
+
+                    // on récupère l'item à la position i
                     LignePanier cd = (LignePanier) buylist.elementAt(i);
-////            
-////            // si on trouve l'item dans le panier
+
+                    // si on trouve l'item dans le panier
                     if (cd.getCodeProduit().equals(aCD.getCodeProduit())) {
-////
-////               //on va modifier la quantité en lui ajoutantant la
-////               // nouvelle quantité
+
+                        //on va modifier la quantité en lui ajoutantant la
+                        // nouvelle quantité
                         cd.setQte(cd.getQte() + aCD.getQte());
                         //  cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
 ////
@@ -96,22 +102,22 @@ public class Panier extends HttpServlet {
                 {
                     buylist.addElement(aCD);
                 }
-       }
-             
             }
-           total=0;
-                for (int i = 0; i < buylist.size(); i++) {
-                     LignePanier cd = (LignePanier) buylist.elementAt(i);
-                    int qte=cd.getQte();
-                    float prix=cd.getPrix();
-                    total+=qte*prix;
-                }               
-                session.setAttribute("total", total);
-                 session.setAttribute("panier", buylist);
-                String url = "/panier.jsp";
-                ServletContext sc = getServletContext();
-                RequestDispatcher rd = sc.getRequestDispatcher(url);
-                rd.forward(request, response);
+
+        }
+        total = 0;
+        for (int i = 0; i < buylist.size(); i++) {
+            LignePanier cd = (LignePanier) buylist.elementAt(i);
+            int qte = cd.getQte();
+            float prix = cd.getPrix();
+            total += qte * prix;
+        }
+        session.setAttribute("total", total);
+        session.setAttribute("panier", buylist);
+        String url = "/panier.jsp";
+        ServletContext sc = getServletContext();
+        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        rd.forward(request, response);
 
     }
 
@@ -122,7 +128,7 @@ public class Panier extends HttpServlet {
         //imagine if all this was in a scriptlet...ugly, eh?
         //on récupère l'item choisi par l'utilisateur dans la liste
         String id = req.getParameter("id");
-        String name= req.getParameter("name");
+        String name = req.getParameter("name");
 
         //on récupère la quantité saisie
         String qty = req.getParameter("qty");
