@@ -19,8 +19,8 @@
                         </div>
                         <div class="newsletter_content clearfix">
                             <form action="#" class="newsletter_form">
-                                <input type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-                                <button class="newsletter_button"><fmt:message key="PSubscribe"/></button>
+                                <input id="Des" type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
+                                <button class="newsletter_button" id="bChercher"><fmt:message key="PSubscribe"/></button>
                             </form>
                                 <div class="newsletter_unsubscribe_link"><a href="#"><fmt:message key="PUnsubscribe"/></a></div>
                         </div>

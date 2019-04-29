@@ -69,6 +69,17 @@ public class Ajax extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
+        }else if (action.equals("N")) {
+         //  String courriel=(String) request.getAttribute("courriel");
+        //    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+            Gson gson = new Gson();
+            String json = gson.toJson("Merci");
+            System.out.println(request.getAttribute("courriel"));
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.print(json);
+            out.flush();
         }
         processRequest(request, response);
     }

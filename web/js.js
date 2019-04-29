@@ -1,5 +1,5 @@
 window.onload = Loading;
-//document.getElementById("bChercher").addEventListener("click",chercher);
+document.getElementById("bChercher").addEventListener("click",chercher);
 //document.getElementById("Des").addEventListener("pointerenter",dest_List);
 //document.getElementById("Port").addEventListener("pointerenter",port_List);
 //document.getElementById("Des").addEventListener("change",port_List);
@@ -100,46 +100,45 @@ function port_List() {
 
 function chercher() {
 
-    var val1, val2;
+    var val1;
     val1 = document.getElementById("Des").value;
-    val2 = document.getElementById("Port").value;
-    if (val1 == "---Select---") {
+   // val2 = document.getElementById("Port").value;
+    if (val1 == " ") {
         alert("Champ Destination est Obligatoire");
     }
+    //  alert(val1);
 
-    if (val2 == "---Select---") {
-        alert("Champ Port est Obligatoire");
-    }
     var xhr = new XMLHttpRequest();
-    var reponseJSON, liste, s;
+    var reponseJSON, liste;
     xhr.onreadystatechange = function () {
         console.log(this);
         if (this.readyState == 4 && this.status == 200) {
 
             reponseJSON = this.responseText;
             liste = JSON.parse(reponseJSON);
-            s = ' ';
-            document.getElementById("contentPanel").innerHTML = null;
-            for (i = 0; i < liste.length; i++) {
-                var myCol = $(' <div class="col-sm-4"></div>');
-                var myPanel = $('<div class="card bg-light mb-3"><img class="card-img-top" src="' + liste[i].pic + '" alt="Card image cap"><div class="card-body"><h5>Navire: <a> ' + liste[i].Navire + '</a></h5><h6>DurÃ©e: <a> ' + liste[i].duree + ' jours</a></h6><h6>Date DÃ©part : <a> ' + liste[i].date_depart + '</a></h6><h6>Tarif : <a>' + liste[i].tarif + ' $ CAD</a></h6><h6>Port de dÃ©part:<a>' + liste[i].port_depart + '</a></h6><span class="float-center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add_new_record_modal" >DÃ©tails</button></span> <span class="float-right"><button type="button" class="btn btn-info btn-sm" >RÃ©server</button></span></div></div>');
-                myPanel.appendTo(myCol);
-                myCol.appendTo('#contentPanel');
-                //--   s += '<tr> <th scope="row">' + liste[i].num + '</th>';
-                //    s += "<td>" + liste[i].destination + "</td>";
-                //   s += "<td>" + liste[i].date_depart + "</td>";
-                //   s += "<td>" + liste[i].duree + "</td>";
-                //   s += "<td>" + liste[i].tarif + "</td>";
-                //   s += "<td>" + liste[i].Navire + "</td>";
-                //  s += "<td>" + liste[i].port_depart + "</td></tr> ";
-                //--
-            }
+           document.getElementById("Des").value = liste;
+           // s = ' ';
+//            document.getElementById("contentPanel").innerHTML = null;
+//            for (i = 0; i < liste.length; i++) {
+//                var myCol = $(' <div class="col-sm-4"></div>');
+//                var myPanel = $('<div class="card bg-light mb-3"><img class="card-img-top" src="' + liste[i].pic + '" alt="Card image cap"><div class="card-body"><h5>Navire: <a> ' + liste[i].Navire + '</a></h5><h6>DurÃ©e: <a> ' + liste[i].duree + ' jours</a></h6><h6>Date DÃ©part : <a> ' + liste[i].date_depart + '</a></h6><h6>Tarif : <a>' + liste[i].tarif + ' $ CAD</a></h6><h6>Port de dÃ©part:<a>' + liste[i].port_depart + '</a></h6><span class="float-center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add_new_record_modal" >DÃ©tails</button></span> <span class="float-right"><button type="button" class="btn btn-info btn-sm" >RÃ©server</button></span></div></div>');
+//                myPanel.appendTo(myCol);
+//                myCol.appendTo('#contentPanel');
+//                //--   s += '<tr> <th scope="row">' + liste[i].num + '</th>';
+//                //    s += "<td>" + liste[i].destination + "</td>";
+//                //   s += "<td>" + liste[i].date_depart + "</td>";
+//                //   s += "<td>" + liste[i].duree + "</td>";
+//                //   s += "<td>" + liste[i].tarif + "</td>";
+//                //   s += "<td>" + liste[i].Navire + "</td>";
+//                //  s += "<td>" + liste[i].port_depart + "</td></tr> ";
+//                //--
+//            }
 
-            //  document.getElementById("listeProduits").innerHTML = s;
+            
 
         }
     }
-    xhr.open("GET", "getSearch.php?Destination=" + val1 + "&Port=" + val2, true);
+    xhr.open("GET", "Ajax?action=N&courriel="+val1, true);
     xhr.send();
 }
         
