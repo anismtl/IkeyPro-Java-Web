@@ -1,5 +1,6 @@
 package ca.ikeypro.Utilitaire;
 
+import ca.ikeypro.DAO.Client;
 import ca.ikeypro.DAO.ClientDAO;
 import ca.ikeypro.Listener.MyServletContextListener;
 import java.io.IOException;
@@ -32,8 +33,8 @@ public class FilterAuthentication implements Filter{
         PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        boolean isAuthentified = ClientDAO.find(username, password);
-        if (isAuthentified)  {
+        Client client = ClientDAO.find(username, password);
+        if (client != null)  {
             LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le client {0} vient d'etre authentifié =*=*=*=*=*=*=", username);
             // sends request to next resource
             chain.doFilter(request, response);

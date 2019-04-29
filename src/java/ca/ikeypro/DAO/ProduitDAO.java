@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author Judith
  */
 public class ProduitDAO {
+
     public static ArrayList getListeProduit(String idCategorie) {
         ArrayList liste = new ArrayList();
         Connection conn;
@@ -50,8 +51,6 @@ public class ProduitDAO {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
-            ResultSet rs = null;
-            Statement statement = null;
             try {
                 String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
                         + "P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
@@ -59,8 +58,8 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION";
                 System.out.println(requette);
-                statement = conn.createStatement();
-                rs = statement.executeQuery(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
                 while (rs.next()) {
                     prod = new Produit();
@@ -77,15 +76,10 @@ public class ProduitDAO {
                     prod.setNbconsulte(rs.getInt("NBCONSULT"));
                     listeProduits.add(prod);
                 }
+                return listeProduits;
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
-                try {
-                    rs.close();
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 DataManager.getInstance().closeConnection();
             }
         }
@@ -96,8 +90,6 @@ public class ProduitDAO {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
-            ResultSet rs = null;
-            Statement statement = null;
             try {
                 String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
                         + "P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
@@ -107,8 +99,8 @@ public class ProduitDAO {
                         + " ORDER BY NBCONSULT DESC"
                         + " FETCH FIRST 6 ROWS ONLY";
                 System.out.println(requette);
-                statement = conn.createStatement();
-                rs = statement.executeQuery(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
                 while (rs.next()) {
                     prod = new Produit();
@@ -125,15 +117,10 @@ public class ProduitDAO {
                     prod.setNbconsulte(rs.getInt("NBCONSULT"));
                     listeProduits.add(prod);
                 }
+                return listeProduits;
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
-                try {
-                    rs.close();
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 DataManager.getInstance().closeConnection();
             }
         }
@@ -144,8 +131,6 @@ public class ProduitDAO {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
-            ResultSet rs = null;
-            Statement statement = null;
             try {
                 String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
                         + " P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
@@ -154,8 +139,8 @@ public class ProduitDAO {
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + " WHERE ID_CATEGORIE ='" + idCategorie + "'";
                 System.out.println(requette);
-                statement = conn.createStatement();
-                rs = statement.executeQuery(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
                 while (rs.next()) {
                     prod = new Produit();
@@ -172,15 +157,10 @@ public class ProduitDAO {
                     prod.setNbconsulte(rs.getInt("NBCONSULT"));
                     listeProduits.add(prod);
                 }
+                return listeProduits;
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
-                try {
-                    rs.close();
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 DataManager.getInstance().closeConnection();
             }
         }
@@ -232,15 +212,12 @@ public class ProduitDAO {
 //        return listeProduits;
 //    }
     public static Produit getProduit(String idProduit) {
-        String req;
         int nbconsult = 0;
         Produit prod = new Produit();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
-            ResultSet rs = null;
-            Statement statement = null;
             try {
-                req = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                String req = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
                         + " P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, "
                         + " EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
                         + " FROM PRODUIT P "
@@ -248,9 +225,8 @@ public class ProduitDAO {
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + "WHERE CODE_PRODUIT ='" + idProduit + "'";
                 System.out.println(req);
-                statement = conn.createStatement();
-
-                rs = statement.executeQuery(req);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
                 if (rs.next()) {
                     prod = new Produit();
                     prod.setCodeProduit(rs.getString("CODE_PRODUIT"));
@@ -266,17 +242,10 @@ public class ProduitDAO {
                     prod.setNbconsulte(rs.getInt("NBCONSULT"));
                     nbconsult = prod.getNbconsulte();
                 }
+                return prod;
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
-                try {
-
-                    rs.close();
-                    statement.close();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 DataManager.getInstance().closeConnection();
             }
         }
@@ -285,25 +254,18 @@ public class ProduitDAO {
     }
 
     private static void updateNbConsult(String idProdit, int nbConsult) {
-        String req;
         //Client client = new Client();
         nbConsult++;
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
-            Statement statement = null;
             try {
-                req = "UPDATE PRODUIT SET NBCONSULT=" + nbConsult + " WHERE CODE_PRODUIT=\'" + idProdit + "\'";
+                String req = "UPDATE PRODUIT SET NBCONSULT=" + nbConsult + " WHERE CODE_PRODUIT=\'" + idProdit + "\'";
                 System.out.println(req);
-                statement = conn.createStatement();
+                Statement statement = conn.createStatement();
                 statement.executeUpdate(req);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 DataManager.getInstance().closeConnection();
             }
         }
