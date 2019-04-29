@@ -17,7 +17,6 @@ public class CategorieDAO {
         Connection conn;
         try {
             conn = DataManager.getInstance().getConnection();
-            System.out.println("Categorie Connected");
             String strQuery = "SELECT * FROM CATEGORIE ";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(strQuery);

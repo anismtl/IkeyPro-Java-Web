@@ -153,11 +153,7 @@
                                         <ul>
                                             <li>
                                                 <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                                <ul>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                </ul>
+                                        
                                             </li>
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
@@ -167,15 +163,8 @@
                                     <li class="hassubs">
                                         <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li>
-                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                                <ul>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a> </li>
+                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
