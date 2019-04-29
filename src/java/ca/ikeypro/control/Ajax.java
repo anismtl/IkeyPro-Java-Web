@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,21 +35,41 @@ public class Ajax extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String action = request.getParameter("action");
         response.setContentType("application/json");
-        if (action.equals("N")) {
+        if (action.equals("inscription")) {
             String email = request.getParameter("courriel");
             String resultat = NewsletterDAO.Inscription(email);
-
             Gson gson = new Gson();
-
             String json = gson.toJson(resultat);
-
-            System.out.println("Email:"+email);
-            System.out.println("Resultat:"+resultat);
+            out.print(json);
+            out.flush();
+        } else if (action.equals("desabonner")) {
+            String email = request.getParameter("courriel");
+            String resultat = NewsletterDAO.Desabonner(email);
+            Gson gson = new Gson();
+            String json = gson.toJson(resultat);
+            out.print(json);
+            out.flush();
+        } else if (action.equals("P")) {
+            List<Produit> ListeMostViewProduits = (List<Produit>) request.getSession().getAttribute("ListeMostViewProduits");
+            Gson gson = new Gson();
+            String json = gson.toJson(ListeMostViewProduits);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            // PrintWriter out = response.getWriter();
+            out.print(json);
+            out.flush();
+        } else if (action.equals("C")) {
+            List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+            Gson gson = new Gson();
+            String json = gson.toJson(ListeCat);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+           // PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
         }
@@ -66,37 +89,12 @@ public class Ajax extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("C")) {
-            List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
-            Gson gson = new Gson();
-            String json = gson.toJson(ListeCat);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out = response.getWriter();
-            out.print(json);
-            out.flush();
-        } else if (action.equals("P")) {
-            List<Produit> ListeMostViewProduits = (List<Produit>) request.getSession().getAttribute("ListeMostViewProduits");
-            Gson gson = new Gson();
-            String json = gson.toJson(ListeMostViewProduits);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out = response.getWriter();
-            out.print(json);
-            out.flush();
-        } else if (action.equals("N")) {
-            Object courriel = request.getAttribute("courriel");
-            //    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
-            Gson gson = new Gson();
-            String json = gson.toJson(courriel);
-            System.out.println(json);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out = response.getWriter();
-            out.print(json);
-            out.flush();
+
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Ajax.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processRequest(request, response);
     }
 
     /**
@@ -110,7 +108,11 @@ public class Ajax extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Ajax.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

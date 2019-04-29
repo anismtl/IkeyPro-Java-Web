@@ -5,42 +5,61 @@
  */
 
 function inscription() {
-
-    var mai;
+    var mail;
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     mail = document.getElementById("email").value;
 
     if (mail.match(mailformat)) {
-          document.getElementById("resultat").innerHTML = " ";
+        document.getElementById("resultat").innerHTML = " ";
         var xhr = new XMLHttpRequest();
         var reponseJSON, liste;
         xhr.onreadystatechange = function () {
             console.log(this);
             if (this.readyState == 4 && this.status == 200) {
-
                 reponseJSON = this.responseText;
                 liste = JSON.parse(reponseJSON);
-                //alert(liste);
-
-                s = '<a color="red"><b>' + liste + '</b></a> ';
+                 s = '<br/><a color="red"><b>' + liste + '</b></a> ';
                 document.getElementById("resultat").innerHTML = s;
-
             }
         }
-        xhr.open("POST", "Ajax?action=N&courriel=" + mail, true);
+        xhr.open("POST", "Ajax?action=inscription&courriel=" + mail, true);
         xhr.send();
-    } else if (mail==""){
-       
+    } else if (mail == "") {
         document.getElementById("resultat").innerHTML = "<br/><a><b>Veuilliz saisir votre courriel</b></a>";
-         document.news.email.focus();
+        document.news.email.focus();
     } else {
-        
-          document.getElementById("resultat").innerHTML = "<br/><a><b>Format Courriel Incorrect</b></a> ";
-          document.news.email.value=" ";
-          document.news.email.focus();
+        document.getElementById("resultat").innerHTML = "<br/><a><b>Format Courriel Incorrect</b></a> ";
+        document.news.email.value = " ";
+        document.news.email.focus();
     }
-
-
-
 }
-        
+
+function desabonner() {
+    var mail;
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    mail = document.getElementById("email").value;
+
+    if (mail.match(mailformat)) {
+        document.getElementById("resultat").innerHTML = " ";
+        var xhr = new XMLHttpRequest();
+        var reponseJSON, liste;
+        xhr.onreadystatechange = function () {
+            console.log(this);
+            if (this.readyState == 4 && this.status == 200) {
+                reponseJSON = this.responseText;
+                liste = JSON.parse(reponseJSON);
+                 s = '<br/><a color="red"><b>' + liste + '</b></a> ';
+                document.getElementById("resultat").innerHTML = s;
+            }
+        }
+        xhr.open("POST", "Ajax?action=desabonner&courriel=" + mail, true);
+        xhr.send();
+    } else if (mail == "") {
+        document.getElementById("resultat").innerHTML = "<br/><a><b>Veuilliz saisir votre courriel</b></a>";
+        document.news.email.focus();
+    } else {
+        document.getElementById("resultat").innerHTML = "<br/><a><b>Format Courriel Incorrect</b></a> ";
+        document.news.email.value = " ";
+        document.news.email.focus();
+    }
+}

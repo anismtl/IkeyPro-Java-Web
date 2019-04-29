@@ -26,7 +26,7 @@
                                 <input id="email" name="email" type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
                                 <input type="button" class="newsletter_button" onclick="inscription()" value="<fmt:message key="PSubscribe"/>"/>
                             </form>
-                                <div class="newsletter_unsubscribe_link"><a href="#"><fmt:message key="PUnsubscribe"/></a></div>
+                                <div class="newsletter_unsubscribe_link"><a color="blue" onclick="desabonner();"><fmt:message key="PUnsubscribe"/></a></div>
                                
                                
                         </div>

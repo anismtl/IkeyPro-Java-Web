@@ -42,7 +42,7 @@ function getMostViewProduitList() {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("GET", "Ajax?action=P", true);
+    xhr.open("POST", "Ajax?action=P", true);
     xhr.send();
 }
 
@@ -69,7 +69,7 @@ function getCategoriesList() {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("GET", "Ajax?action=C", true);
+    xhr.open("POST", "Ajax?action=C", true);
     xhr.send();
 }
 
