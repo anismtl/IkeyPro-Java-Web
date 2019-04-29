@@ -103,8 +103,10 @@
                            
 
                                 <div class="cart_buttons">
-                                    <a type="submit" class="button cart_button_clear" href="ListeProduits?cat=2">Magasiner</a>
-                                    <button type="button" class="button cart_button_checkout">Add to Cart</button>
+                                    
+                                    <a type="button" class="button cart_button_clear" href="Panier?action=VIDER">Vider Panier</a>
+                                    <a type="button" class="button cart_button_clear" href="ListeProduits?cat=2">Magasiner</a>
+                                    <a type="button" class="button cart_button_checkout" href="ListeProduits?cat=2">Checkout</a>
                                 </div>
                             </div>
                         </div>
