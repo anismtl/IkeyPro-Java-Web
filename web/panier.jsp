@@ -86,7 +86,7 @@
                                         <c:if test="${!empty panier}">
                                             <a type="button" class="btn btn-lg btn-light" href="Panier?action=VIDER" role="button">Vider Panier</a>
                                         </c:if>
-                                        <a type="button" class="btn btn-lg btn-light" href="ListeProduits?cat=2" role="button">Magasiner</a>
+                                        <a type="button" class="btn btn-lg btn-light" href="ListeProduits?action=categorie&cat=2" role="button">Magasiner</a>
                                         <c:if test="${empty panier}">
                                             <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
                                         </c:if>
