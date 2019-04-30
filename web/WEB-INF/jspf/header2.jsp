@@ -146,17 +146,9 @@
                                         <li class="hassubs">
                                             <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
-                                                <li>
-                                                    <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <c:forEach var = "ligne" items="${ListeEditeurs}">
+                                            <li><a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
+                                            </c:forEach>
                                             </ul>
                                         </li>
                                         <li class="hassubs">
