@@ -28,6 +28,9 @@ public class GererProduit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            // HttpSession session = request.getSession();
+           String action = request.getParameter("action");
+           
+           
             String id = request.getParameter("id");
             Produit Prod = ProduitDAO.getProduit(id);
             request.setAttribute("prod", Prod);
