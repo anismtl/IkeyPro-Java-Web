@@ -19,7 +19,9 @@ public class EditeurDAO {
         try {
             conn = DataManager.getInstance().getConnection();
             System.out.println("Editeur Connected");
-            String strQuery = "SELECT * FROM EDITEUR ";
+            String strQuery = "SELECT * FROM EDITEUR"
+                        + " ORDER BY NBPRODUIT DESC"
+                        + " FETCH FIRST 6 ROWS ONLY";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(strQuery);
             Editeur editeur;

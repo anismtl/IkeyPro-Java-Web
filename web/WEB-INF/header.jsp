@@ -163,10 +163,10 @@
                                     <li class="hassubs">
                                         <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a> </li>
-                                             <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <c:forEach var = "ligne" items="${ListeEditeurs}">
+                                            <li><a href="#">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
+                                            </c:forEach>
+                                     
                                         </ul>
                                     </li>
 
