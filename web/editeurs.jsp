@@ -105,7 +105,7 @@
                                 <!-- Shop Content -->
                                 <div class="shop_content">
                                     <div class="shop_bar clearfix">
-                                        <div class="shop_product_count"><span>${ListProdui.size()}</span> products found</div>
+                                        <div class="shop_product_count"><span>${ListeProdEditeur.size()}</span> products found</div>
                                         <div class="shop_sorting">
                                             <span>Sort by:</span>
                                             <ul>
@@ -122,7 +122,7 @@
                                     <div class="product_grid">
                                         <div class="product_grid_border"></div>
                                         <!-- Product Item -->
-                                        <c:forEach var = "ligne" items="${ListProdui}">
+                                        <c:forEach var = "ligne" items="${ListeProdEditeur}">
                                             <!-- Product Item -->
                                             <div class="product_item is_new">
                                                 <div class="product_border"></div>

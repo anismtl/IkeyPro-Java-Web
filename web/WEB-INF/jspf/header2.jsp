@@ -119,7 +119,7 @@
                                     </div>
                                     <ul class="cat_menu">
                                         <c:forEach var = "ligne" items="${ListCat}">
-                                            <li><a href="ListeProduits?cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
+                                            <li><a href="ListeProduits?action=categorie&cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
                                                 </c:forEach>
                                     </ul>
                                 </div>

@@ -177,7 +177,7 @@ public class ProduitDAO {
                         + " FROM PRODUIT P "
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
-                        + " WHERE ID_EDITEUR ='" + idEditeur + "'";
+                        + " WHERE P.ID_EDITEUR ='" + idEditeur + "'";
                 System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);

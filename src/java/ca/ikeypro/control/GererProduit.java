@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  * @author Anis
  */
 public class GererProduit extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -27,16 +29,15 @@ public class GererProduit extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           // HttpSession session = request.getSession();
-           String action = request.getParameter("action");
-           
-           
+            // HttpSession session = request.getSession();
+
             String id = request.getParameter("id");
             Produit Prod = ProduitDAO.getProduit(id);
             request.setAttribute("prod", Prod);
             //request.getServletContext().setAttribute("ListProd", ListeProduits);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/produit.jsp");
-            dispatcher.forward(request, response);        
+            dispatcher.forward(request, response);
+
         }
     }
 

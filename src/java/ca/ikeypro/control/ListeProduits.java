@@ -16,6 +16,7 @@ import ca.ikeypro.DAO.ProduitDAO;
  * @author Anis
  */
 public class ListeProduits extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,16 +32,31 @@ public class ListeProduits extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            String categorie = request.getParameter("cat");
+            String action = request.getParameter("action");
+            if (action.equals("categorie")) {
 
-           List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
-           session.setAttribute("ListProdui", ListeProd);
-            //request.getServletContext().setAttribute("ListProd", ListeProduits);
+                String categorie = request.getParameter("cat");
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
-            dispatcher.forward(request, response);
+                List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
+                session.setAttribute("ListProdui", ListeProd);
+                //request.getServletContext().setAttribute("ListProd", ListeProduits);
+
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
+                dispatcher.forward(request, response);
+            } else if (action.equals("editeur")) {
+
+                String editeur = request.getParameter("edit");
+
+                List<Produit> ListeProdEditeur = ProduitDAO.getListeDesProduitsByEditeur(editeur);
+                session.setAttribute("ListeProdEditeur", ListeProdEditeur);
+                //request.getServletContext().setAttribute("ListProd", ListeProduits);
+
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/editeurs.jsp");
+                dispatcher.forward(request, response);
+            }
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

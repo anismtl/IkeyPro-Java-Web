@@ -57,7 +57,7 @@ public class Panier extends HttpServlet {
    
         session.setAttribute("total", total);
        // session.setAttribute("panier", buylist);
-        String url = "/ListeProduits?cat=2";
+        String url = "/ListeProduits?action=categorie&cat=2";
         ServletContext sc = getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);
@@ -85,7 +85,7 @@ public class Panier extends HttpServlet {
    
         session.setAttribute("total", total);
        // session.setAttribute("panier", buylist);
-        String url = "/ListeProduits?cat=2";
+        String url = "/ListeProduits?action=categorie&cat=2";
         ServletContext sc = getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);  

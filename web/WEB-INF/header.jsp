@@ -164,7 +164,7 @@
                                         <a href="#"><fmt:message key="PFeaturedBrands"/><i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <c:forEach var = "ligne" items="${ListeEditeurs}">
-                                            <li><a href="${ligne.id_Editeur}">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
+                                            <li><a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
                                             </c:forEach>
                                      
                                         </ul>

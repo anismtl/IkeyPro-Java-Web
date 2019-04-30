@@ -88,10 +88,10 @@
                                         </c:if>
                                         <a type="button" class="btn btn-lg btn-light" href="ListeProduits?cat=2" role="button">Magasiner</a>
                                         <c:if test="${empty panier}">
-                                            <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?cat=2" role="button">Checkout</a>
+                                            <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
                                         </c:if>
                                         <c:if test="${!empty panier}">
-                                            <a type="button" class="btn btn-lg btn-primary" href="ListeProduits?cat=2" role="button">Checkout</a>
+                                            <a type="button" class="btn btn-lg btn-primary" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
                                         </c:if>
                                     </div>
                                 </div>
