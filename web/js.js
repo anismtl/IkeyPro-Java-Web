@@ -115,16 +115,18 @@ function changeLangue(param) {
             if (this.readyState == 4 && this.status == 200) {
 
                 reponseJSON = this.responseText;
-             //   liste = JSON.parse(reponseJSON);
-                //alert(liste);
+               liste = JSON.parse(reponseJSON);
+              //  alert(liste);
 
              //   s = '<a color="red"><b>' + liste + '</b></a> ';
               //  document.getElementById("resultat").innerHTML = s;
+             if (liste='ok'){
               
-             window.location.reload(true);
+           window.location.reload(true);
+              }
             }
         }
-        xhr.open("GET", "Ajax?action=L&langue=" +val, true);
+        xhr.open("POST", "Ajax?action=L&langue=" +val, true);
         xhr.send();
    
 

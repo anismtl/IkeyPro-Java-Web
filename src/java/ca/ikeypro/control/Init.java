@@ -37,17 +37,20 @@ public class Init extends HttpServlet {
 
             HttpSession session = request.getSession();
             String userLang = request.getHeader("accept-language");
-           Locale locale = Locale.getDefault();
+            Locale locale = Locale.getDefault();
 
             ResourceBundle bundle = ResourceBundle.getBundle("app", locale);
-            
-            
-
             session.setAttribute("bundle", bundle);
-               if ((userLang != null) && (userLang.indexOf("fr") != -1)) {
-                  
-               }
-          //  session.setAttribute("zamz", );
+
+            if ((userLang != null) && (userLang.indexOf("fr") != -1)) {
+                request.setAttribute("lang", "fr");
+            } else if ((userLang != null) && (userLang.indexOf("en") != -1)) {
+                request.setAttribute("lang", "en");
+            } else if ((userLang != null) && (userLang.indexOf("es") != -1)) {
+                request.setAttribute("lang", "es");
+            } else {
+                request.setAttribute("lang", "fr");
+            }
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
 

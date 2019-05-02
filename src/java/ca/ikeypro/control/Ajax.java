@@ -77,18 +77,33 @@ public class Ajax extends HttpServlet {
         } else if (action.equals("L")) {
             //System.out.println("Je suis dans L");
             String langue = request.getParameter("langue");
-           // System.out.println("langue recu:" + langue);
+            // System.out.println("langue recu:" + langue);
             if (langue.equals("es")) {
                 System.out.println("langue recu:" + langue);
+               session.removeAttribute("lang");
                 session.setAttribute("lang", "es");
+                Gson gson = new Gson();
+                String json = gson.toJson("ok");
+                out.print(json);
+                out.flush();
 
             } else if (langue.equals("fr")) {
                 System.out.println("langue recu:" + langue);
+              // request.removeAttribute("lang");
                 session.setAttribute("lang", "fr");
+                Gson gson = new Gson();
+                String json = gson.toJson("ok");
+                out.print(json);
+                out.flush();
 
             } else if (langue.equals("en")) {
                 System.out.println("langue recu:" + langue);
+             //  request.removeAttribute("lang");
                 session.setAttribute("lang", "en");
+              Gson gson = new Gson();
+                String json = gson.toJson("ok");
+                out.print(json);
+                out.flush();
 
             }
 

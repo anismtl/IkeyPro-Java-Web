@@ -17,11 +17,11 @@ public class ProduitDAO {
         Connection conn;
         try {
             conn = DataManager.getInstance().getConnection();
-            System.out.println("Produits Connected");
+            //System.out.println("Produits Connected");
             String strQuery = "SELECT * FROM PRODUIT WHERE ID_CATEGORIE =\'" + idCategorie + "\'";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(strQuery);
-            System.out.println(strQuery);
+            //System.out.println(strQuery);
             Produit prod;
             while (rs.next()) {
                 prod = new Produit();
@@ -56,7 +56,7 @@ public class ProduitDAO {
                         + " FROM PRODUIT P"
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION";
-                System.out.println(requette);
+               // System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -97,7 +97,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION"
                         + " ORDER BY NBCONSULT DESC"
                         + " FETCH FIRST 6 ROWS ONLY";
-                System.out.println(requette);
+                //System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -137,7 +137,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + " WHERE ID_CATEGORIE ='" + idCategorie + "'";
-                System.out.println(requette);
+                //System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -178,7 +178,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + " WHERE P.ID_EDITEUR ='" + idEditeur + "'";
-                System.out.println(requette);
+                //System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -270,7 +270,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + "WHERE CODE_PRODUIT ='" + idProduit + "'";
-                System.out.println(req);
+                //System.out.println(req);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(req);
                 if (rs.next()) {
@@ -306,7 +306,7 @@ public class ProduitDAO {
         if (conn != null) {
             try {
                 String req = "UPDATE PRODUIT SET NBCONSULT=" + nbConsult + " WHERE CODE_PRODUIT=\'" + idProdit + "\'";
-                System.out.println(req);
+                //System.out.println(req);
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(req);
             } catch (SQLException ex) {
