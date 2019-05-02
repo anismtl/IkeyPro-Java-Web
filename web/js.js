@@ -98,14 +98,16 @@ function port_List() {
     xhr.send();
 }
 
-function chercher() {
+function changeLangue(param) {
 
-    var val1;
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    val1 = document.getElementById("Des").value;
+    var val;
+    val=param;
+    //alert(val)
+   // val1 = document.getElementById("llang").innerHTML;
+   //val=document.getElementsByTagName("A")[2].innerHTML;
+  //  alert(val);
 
-    if (val1.match(mailformat)) {
-          document.getElementById("resultat").innerHTML = " ";
+         // document.getElementById("resultat").innerHTML = " ";
         var xhr = new XMLHttpRequest();
         var reponseJSON, liste;
         xhr.onreadystatechange = function () {
@@ -113,27 +115,18 @@ function chercher() {
             if (this.readyState == 4 && this.status == 200) {
 
                 reponseJSON = this.responseText;
-                liste = JSON.parse(reponseJSON);
+             //   liste = JSON.parse(reponseJSON);
                 //alert(liste);
 
-                s = '<a color="red"><b>' + liste + '</b></a> ';
-                document.getElementById("resultat").innerHTML = s;
-
+             //   s = '<a color="red"><b>' + liste + '</b></a> ';
+              //  document.getElementById("resultat").innerHTML = s;
+              
+             window.location.reload(true);
             }
         }
-        xhr.open("POST", "Ajax?action=N&courriel=" + val1, true);
+        xhr.open("GET", "Ajax?action=L&langue=" +val, true);
         xhr.send();
-    } else if (val1==""){
-       
-        document.getElementById("resultat").innerHTML = "<br/><a><b>Veuilliz saisir votre courriel</b></a>";
-         document.news.Des.focus();
-    } else {
-        
-          document.getElementById("resultat").innerHTML = "<br/><a><b>Format Courriel Incorrect</b></a> ";
-          document.news.Des.value=" ";
-          document.news.Des.focus();
-    }
-
+   
 
 
 }

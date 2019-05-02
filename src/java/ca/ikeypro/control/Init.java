@@ -36,12 +36,18 @@ public class Init extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
-
-            Locale locale = Locale.getDefault();
+            String userLang = request.getHeader("accept-language");
+           Locale locale = Locale.getDefault();
 
             ResourceBundle bundle = ResourceBundle.getBundle("app", locale);
+            
+            
 
             session.setAttribute("bundle", bundle);
+               if ((userLang != null) && (userLang.indexOf("fr") != -1)) {
+                  
+               }
+          //  session.setAttribute("zamz", );
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
 

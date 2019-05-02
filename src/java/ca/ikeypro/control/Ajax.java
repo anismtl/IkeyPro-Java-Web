@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Anis
@@ -38,6 +39,7 @@ public class Ajax extends HttpServlet {
             throws ServletException, IOException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         response.setContentType("application/json");
         if (action.equals("inscription")) {
@@ -69,9 +71,34 @@ public class Ajax extends HttpServlet {
             String json = gson.toJson(ListeCat);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-           // PrintWriter out = response.getWriter();
+            // PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
+        } else if (action.equals("L")) {
+            //System.out.println("Je suis dans L");
+            String langue = request.getParameter("langue");
+           // System.out.println("langue recu:" + langue);
+            if (langue.equals("es")) {
+                System.out.println("langue recu:" + langue);
+                session.setAttribute("lang", "es");
+
+            } else if (langue.equals("fr")) {
+                System.out.println("langue recu:" + langue);
+                session.setAttribute("lang", "fr");
+
+            } else if (langue.equals("en")) {
+                System.out.println("langue recu:" + langue);
+                session.setAttribute("lang", "en");
+
+            }
+
+//            Gson gson = new Gson();
+//            String json = gson.toJson(ListeCat);
+//            response.setContentType("application/json");
+//            response.setCharacterEncoding("UTF-8");
+//           // PrintWriter out = response.getWriter();
+//            out.print(json);
+//            out.flush();
         }
 
     }
