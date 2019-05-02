@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
     <html>
@@ -1320,6 +1320,7 @@
             <!-- Footer -->
             <jsp:include page="WEB-INF/jspf/footer.jsp"/>
             <script src="js.js"></script>
+            <script src="js/langues.js"></script>
             <script src="js/newsletter.js"></script>
             <script src="js/jquery-3.3.1.min.js"></script>
             <script src="styles/bootstrap4/popper.js"></script>

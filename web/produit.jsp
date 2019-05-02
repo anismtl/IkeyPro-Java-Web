@@ -6,7 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : lang}" />
+<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
     <html lang="en">
@@ -59,8 +59,8 @@
                                                     <input id="quantity_input" type="text" pattern="[1-9]*" name="qty" value="1">
                                                     <input type="hidden" name="id" value="${prod.codeProduit}">
                                                     <input type="hidden" name="name" value="${prod.produit}">
-                                                     <input type="hidden" name="prix" value="${prod.prix}">
-                                                     <input type="hidden" name="image" value="${prod.image}">
+                                                    <input type="hidden" name="prix" value="${prod.prix}">
+                                                    <input type="hidden" name="image" value="${prod.image}">
                                                     <input type="hidden" name="action" value="ADD">
                                                     <div class="quantity_buttons">
                                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
@@ -147,6 +147,7 @@
                 <!-- Footer -->
                 <jsp:include page="WEB-INF/jspf/footer.jsp"/>
                 <script src="js/newsletter.js"></script>
+                <script src="js/langues.js"></script>
                 <script src="js/jquery-3.3.1.min.js"></script>
                 <script src="styles/bootstrap4/popper.js"></script>
                 <script src="styles/bootstrap4/bootstrap.min.js"></script>

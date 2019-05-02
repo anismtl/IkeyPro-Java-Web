@@ -43,13 +43,13 @@ public class Init extends HttpServlet {
             session.setAttribute("bundle", bundle);
 
             if ((userLang != null) && (userLang.indexOf("fr") != -1)) {
-                request.setAttribute("lang", "fr");
+                session.setAttribute("langD", "fr");
             } else if ((userLang != null) && (userLang.indexOf("en") != -1)) {
-                request.setAttribute("lang", "en");
+                session.setAttribute("langD", "en");
             } else if ((userLang != null) && (userLang.indexOf("es") != -1)) {
-                request.setAttribute("lang", "es");
+                session.setAttribute("langD", "es");
             } else {
-                request.setAttribute("lang", "fr");
+                session.setAttribute("langD", "fr");
             }
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");

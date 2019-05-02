@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : lang}" />
+<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
 
     <header class="header">
@@ -26,7 +26,7 @@
                                     <c:if test="${sessionScope.lang == 'fr'}">
                                         
                                     </c:if>
-                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='fr' : lang =='fr'}">
+                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='fr' : sessionScope.langD =='fr'}">
                                         <li>
 
                                             <a href="#"><fmt:message key="PFrancaisLangue"/><i class="fas fa-chevron-down"></i></a>
@@ -37,7 +37,7 @@
                                             </ul>
                                         </li>
                                     </c:if>
-                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='es' : lang =='es'}">
+                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='es' : sessionScope.langD =='es'}">
                                         <li>
 
                                             <a href="#"><fmt:message key="PEspagnolLangue"/><i class="fas fa-chevron-down"></i></a>
@@ -47,7 +47,7 @@
                                             </ul>
                                         </li>
                                     </c:if> 
-                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='en' : lang =='en'}">
+                                    <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='en' : sessionScope.langD =='en'}">
                                         <li>
 
                                             <a href="#"><fmt:message key="PEnglishLangue"/><i class="fas fa-chevron-down"></i></a>

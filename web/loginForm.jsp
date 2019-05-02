@@ -9,7 +9,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : lang}" />
+<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
     <html>
@@ -55,6 +55,8 @@
             <jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
             <!-- Footer -->
             <jsp:include page="WEB-INF/jspf/footer.jsp"/>
+             <script src="js/langues.js"></script>
+              <script src="js/newsletter.js"></script>
             <script src="js.js"></script>
             <script src="js/jquery-3.3.1.min.js"></script>
             <script src="styles/bootstrap4/popper.js"></script>
