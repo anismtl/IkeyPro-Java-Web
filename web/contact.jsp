@@ -6,10 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
         <head>
             <title>Contact</title>
             <meta charset="utf-8">
@@ -43,7 +44,7 @@
                                     <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
                                         <div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
                                         <div class="contact_info_content">
-                                            <div class="contact_info_title">Phone</div>
+                                            <div class="contact_info_title"><fmt:message key="PTelephone"/></div>
                                             <div class="contact_info_text">+1514 000 0000</div>
                                         </div>
                                     </div>
@@ -61,7 +62,7 @@
                                     <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
                                         <div class="contact_info_image"><img src="images/contact_3.png" alt=""></div>
                                         <div class="contact_info_content">
-                                            <div class="contact_info_title">Address</div>
+                                            <div class="contact_info_title"><fmt:message key="PAdresse"/></div>
                                             <div class="contact_info_text">10 Suffolk at Soho, London, UK</div>
                                         </div>
                                     </div>
@@ -81,7 +82,7 @@
                         <div class="row">
                             <div class="col-lg-10 offset-lg-1">
                                 <div class="contact_form_container">
-                                    <div class="contact_form_title">Get in Touch</div>
+                                    <div class="contact_form_title"><fmt:message key="PGetintouch"/></div>
 
                                     <form action="Contact" id="contact_form" method="POST">
                                         <div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
@@ -93,7 +94,7 @@
                                             <textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
                                         </div>
                                         <div class="contact_form_button">
-                                            <button type="submit" class="button contact_submit_button">Send Message</button>  <a><b>${confirmation}</b></a>
+                                            <button type="submit" class="button contact_submit_button"><fmt:message key="PSend"/></button>  <a><b>${confirmation}</b></a>
                                         </div>
                                     </form>
 

@@ -64,7 +64,7 @@
                                                                                                action="Panier"
                                                                                                method="POST">
 
-                                                                    <button type="submit" value="Delete" type="button" class="btn btn-sm btn-secondary" role="button">Supprimer</button>
+                                                                    <button type="submit" value="Delete" type="button" class="btn btn-sm btn-secondary" role="button"><fmt:message key="PDelete"/></button>
 
                                                                     <input type="hidden" name= "delindex" value='${panier.indexOf(ligne)}'>
 
@@ -87,7 +87,7 @@
                                         <c:if test="${!empty panier}">
                                             <a type="button" class="btn btn-lg btn-light" href="Panier?action=VIDER" role="button">Vider Panier</a>
                                         </c:if>
-                                        <a type="button" class="btn btn-lg btn-light" href="ListeProduits?action=categorie&cat=2" role="button">Magasiner</a>
+                                        <a type="button" class="btn btn-lg btn-light" href="ListeProduits?action=categorie&cat=2" role="button"><fmt:message key="PMagasiner"/></a>
                                         <c:if test="${empty panier}">
                                             <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
                                         </c:if>
