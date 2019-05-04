@@ -34,15 +34,10 @@
                     <div class="footer_column">
                         <div class="footer_title"><fmt:message key="PFindItFast"/></div>
                         <ul class="footer_list">
-                            <li><a href="#">Computers & Laptops</a></li>
-                            <li><a href="#">Cameras & Photos</a></li>
-                            <li><a href="#">Hardware</a></li>
-                            <li><a href="#">Smartphones & Tablets</a></li>
-                            <li><a href="#">TV & Audio</a></li>
-                        </ul>
-                        <div class="footer_subtitle">Gadgets</div>
-                        <ul class="footer_list">
-                            <li><a href="#">Car Electronics</a></li>
+                                      <c:forEach var = "ligne" items="${ListCat}">
+                                                        <li><a class="clc" href="ListeProduits?action=categorie&cat=${ligne.idCategorie}">${ligne.categorie}</a></li>
+                                      </c:forEach> 
+               
                         </ul>
                     </div>
                 </div>
@@ -50,11 +45,7 @@
                 <div class="col-lg-2">
                     <div class="footer_column">
                         <ul class="footer_list footer_list_2">
-                            <li><a href="#">Video Games & Consoles</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Cameras & Photos</a></li>
-                            <li><a href="#">Hardware</a></li>
-                            <li><a href="#">Computers & Laptops</a></li>
+
                         </ul>
                     </div>
                 </div>
