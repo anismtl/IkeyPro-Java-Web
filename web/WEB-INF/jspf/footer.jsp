@@ -40,12 +40,17 @@
                
                         </ul>
                     </div>
+                        
+                        
                 </div>
 
                 <div class="col-lg-2">
                     <div class="footer_column">
-                        <ul class="footer_list footer_list_2">
-
+                        <div class="footer_title"><fmt:message key="PFeaturedBrands"/></div>
+                        <ul class="footer_list">
+                                    <c:forEach var = "ligne" items="${ListeEditeurs}">
+                                                        <li><a class="clc" href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">${ligne.editeur}</a></li>
+                                      </c:forEach> 
                         </ul>
                     </div>
                 </div>
