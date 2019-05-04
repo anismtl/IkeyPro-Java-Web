@@ -108,7 +108,7 @@
                         <div class="banner_product_image"><img src="images/banner_product.png" alt=""></div>
                         <div class="col-lg-5 offset-lg-4 fill_height">
                             <div class="banner_content">
-                                <h2 class="banner_text">new era of Operating Systems</h2>
+                                <h2 class="banner_text"><fmt:message key="PSlogan"/></h2>
                                 <div class="banner_price"><span>$530</span>$259</div>
                                 <div class="banner_product_name">Microsoft Windows 10 version 1903</div>
                                 <div class="button banner_button"><a href="GererProduit?id=48"><fmt:message key="PShopNow"/></a></div>
@@ -183,7 +183,7 @@
                                                 <div class="banner_2_title">Visio Professional</div>
                                                 <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                                 <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="GererProduit?id=45"><fmt:message key="PExplorre"/></a></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6 fill_height">
@@ -206,7 +206,7 @@
                                                 <div class="banner_2_title">Acrobat Pro 2017</div>
                                                 <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                                 <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="GererProduit?id=1"><fmt:message key="PExplorre"/></a></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6 fill_height">
@@ -229,7 +229,7 @@
                                                 <div class="banner_2_title">Painter essentials 5</div>
                                                 <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                                 <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="GererProduit?id=24"><fmt:message key="PExplorre"/></a></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6 fill_height">
@@ -252,7 +252,7 @@
                                                 <div class="banner_2_title">Project Standard</div>
                                                 <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                                 <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="GererProduit?id=44"><fmt:message key="PExplorre"/></a></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6 fill_height">
@@ -275,7 +275,7 @@
                                                 <div class="banner_2_title">Turbotax</div>
                                                 <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                                 <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="GererProduit?id=34"><fmt:message key="PExplorre"/></a></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8 col-md-6 fill_height">
