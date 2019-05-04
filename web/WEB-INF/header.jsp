@@ -90,13 +90,13 @@
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
                                     <form action="#" class="header_search_form clearfix">
-                                        <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                        <input type="search" required="required" class="header_search_input" placeholder="<fmt:message key="PSearchProducts"/>">
                                         <div class="custom_dropdown">
                                             <div class="custom_dropdown_list">
-                                                <span class="custom_dropdown_placeholder clc">All Categories</span>
+                                                <span class="custom_dropdown_placeholder clc"><fmt:message key="PAllCategories"/></span>
                                                 <i class="fas fa-chevron-down"></i>
                                                 <ul class="custom_list clc">
-                                                    <li><a class="clc" href="#">All Categories</a></li>
+                                                    <li><a class="clc" href="#"><fmt:message key="PAllCategories"/></a></li>
                                                         <c:forEach var = "ligne" items="${ListCat}">
                                                         <li><a class="clc" href="#"> ${ligne.categorie}</a></li>
                                                         </c:forEach>
@@ -236,19 +236,8 @@
                                     <a href="#"><fmt:message key="PLanguage"/><i class="fa fa-angle-down"></i></a>
                                     <ul class="page_menu_selection">
                                         <li><a href="#"><fmt:message key="PEnglishLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PItalianoLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PEspagnolLangue"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#"><fmt:message key="PMandarinLangue"/><i class="fa fa-angle-down"></i></a></li>
+                                       <li><a href="#"><fmt:message key="PEspagnolLangue"/><i class="fa fa-angle-down"></i></a></li>
                                         <li><a href="#"><fmt:message key="PFrancaisLangue"/><i class="fa fa-angle-down"></i></a></li>                                                                                
-                                    </ul>
-                                </li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#"><fmt:message key="PCurrency"/><i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">US <fmt:message key="PDollarCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">EUR <fmt:message key="PEuroCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">GBP <fmt:message key="PBritishPoundCurrency"/><i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">JPY <fmt:message key="PYuanCurrency"/><i class="fa fa-angle-down"></i></a></li>
                                     </ul>
                                 </li>
                                 <li class="page_menu_item">
@@ -295,8 +284,8 @@
                             </ul>
 
                             <div class="menu_contact">
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+1 514 000 0000</div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">contact@ikeypro.ca</a></div>
                             </div>
                         </div>
                     </div>
