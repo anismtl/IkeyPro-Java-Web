@@ -1203,109 +1203,109 @@
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item is_new">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_1.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_1.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">Microsoft</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">Jump White</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Office 365</a></div>
+                                                    <div class="trends_price">$77</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                         
                                         </div>
                                     </div>
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_2.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_2.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">AVG</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">Samsung Charm...</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Internet Security...</a></div>
+                                                    <div class="trends_price">$61</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                           
                                         </div>
                                     </div>
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item is_new">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_3.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_3.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">H & R Block</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">DJI Phantom 3...</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Block Tax Software...</a></div>
+                                                    <div class="trends_price">$89</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                          
                                         </div>
                                     </div>
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item is_new">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_1.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_4.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">Microsoft</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">Jump White</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Windows 10 Home</a></div>
+                                                    <div class="trends_price">$185</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                          
                                         </div>
                                     </div>
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_2.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_5.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">BullGuard</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">Jump White</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Internet Security</a></div>
+                                                    <div class="trends_price">$69</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                           
                                         </div>
                                     </div>
                                     <!-- Trends Slider Item -->
                                     <div class="owl-item">
                                         <div class="trends_item is_new">
-                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_3.jpg" alt=""></div>
+                                            <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_6.png" alt=""></div>
                                             <div class="trends_content">
-                                                <div class="trends_category"><a href="#">Smartphones</a></div>
+                                                <div class="trends_category"><a href="#">Adobe</a></div>
                                                 <div class="trends_info clearfix">
-                                                    <div class="trends_name"><a href="product.html">Jump White</a></div>
-                                                    <div class="trends_price">$379</div>
+                                                    <div class="trends_name"><a href="product.html">Photoshop </a></div>
+                                                    <div class="trends_price">$159</div>
                                                 </div>
                                             </div>
                                             <ul class="trends_marks">
                                                 <li class="trends_mark trends_discount">-25%</li>
                                                 <li class="trends_mark trends_new">new</li>
                                             </ul>
-                                            <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                          
                                         </div>
                                     </div>
                                 </div>
