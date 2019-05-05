@@ -40,6 +40,9 @@ public class MyServletContextListener implements ServletContextListener {
         List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
         sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
 
+        List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
+        sce.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+
     }
 
     @Override
