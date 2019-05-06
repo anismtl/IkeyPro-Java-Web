@@ -62,8 +62,14 @@
                             </div>
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                <div> <a href="/register.jsp"><fmt:message key="PRegister"/></a></div>
-                                <div><a href="loginForm.jsp"><fmt:message key="PSignIn"/></a></div>
+                                <c:if test="${empty sessionScope.client}">
+                                    <div> <a href="register.jsp"><fmt:message key="PRegister"/></a></div>
+                                    <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
+                                </c:if>
+                                <c:if test="${not empty sessionScope.client}">
+                                    <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
+                                    <div><a href="LogOut"><fmt:message key="PSignOut"/></a></div>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -80,7 +86,7 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">IKeyPro</a></div>
+                            <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                         </div>
                     </div>
 

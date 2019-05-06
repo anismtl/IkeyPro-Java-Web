@@ -43,6 +43,22 @@
         <servlet-name>Panier</servlet-name>
         <servlet-class>ca.ikeypro.control.Panier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>ca.ikeypro.control.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>ca.ikeypro.control.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>ca.ikeypro.control.LogOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MonCompte</servlet-name>
+        <servlet-class>ca.ikeypro.control.MonCompte</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
@@ -66,6 +82,22 @@
     <servlet-mapping>
         <servlet-name>Panier</servlet-name>
         <url-pattern>/Panier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/LogOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MonCompte</servlet-name>
+        <url-pattern>/MonCompte</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -34,7 +34,7 @@
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
                                 <div><a href="#"><fmt:message key="PRegister"/></a></div>
-                                <div><a href="loginForm.jsp"><fmt:message key="PSignIn"/></a></div>
+                                <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">IKeyPro</a></div>
+                            <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                         </div>
                     </div>
 

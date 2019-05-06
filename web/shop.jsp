@@ -93,7 +93,7 @@
                                         </ul>
                                     </div>
                                     <div class="sidebar_section">
-                                        <div class="sidebar_title"><fmt:message key="PCategories"/></div>
+                                        <div class="sidebar_title"><fmt:message key="Pcategories"/></div>
                                         <ul class="sidebar_categories">
                                             <c:forEach var = "ligne" items="${ListCat}">
                                                 <li><a href="#">${ligne.categorie}</a></li>

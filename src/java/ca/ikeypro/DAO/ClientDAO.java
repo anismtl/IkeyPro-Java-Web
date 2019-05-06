@@ -18,15 +18,16 @@ public class ClientDAO {
                 String req = "SELECT * FROM CLIENT WHERE COURRIEL ='" + user + "' AND MOT_PASSE ='" + password + "'";
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(req);
+
                 if (rs.next()) {
                     client = new Client();
-                    client.setIdClient("ID_CLIENT");
-                    client.setNomClient("NOM_CLIENT");
-                    client.setPrenomClient("PRENOM_CLIENT");
-                    client.setCourriel("COURRIEL");
-                    client.setTel("TEL");
-                    client.setAdresseClient("ADRESSE_CLIENT");
-                    client.setMotPasse("MOT_PASSE");
+                    client.setIdClient(rs.getString("ID_CLIENT"));
+                    client.setNomClient(rs.getString("NOM_CLIENT"));
+                    client.setPrenomClient(rs.getString("PRENOM_CLIENT"));
+                    client.setCourriel(rs.getString("COURRIEL"));
+                    client.setTel(rs.getString("TEL"));
+                    client.setAdresseClient(rs.getString("ADRESSE_CLIENT"));
+                    client.setMotPasse(rs.getString("MOT_PASSE"));
                     return client;
                 }
             } catch (SQLException ex) {

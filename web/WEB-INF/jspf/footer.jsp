@@ -10,7 +10,7 @@
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">IkeyPro</a></div>
+                            <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                         </div>
                         <div class="footer_title"><fmt:message key="PGotQuestion"/></div>
                         <div class="footer_phone">+1 514 000 0000</div>

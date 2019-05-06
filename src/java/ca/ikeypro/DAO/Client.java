@@ -79,5 +79,11 @@ public class Client {
     public void setMotPasse(String motPasse) {
         this.motPasse = motPasse;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" + "idClient=" + idClient + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient + ", courriel=" + courriel + ", tel=" + tel + ", adresseClient=" + adresseClient + ", motPasse=" + motPasse + '}';
+    }
+    
     
 }

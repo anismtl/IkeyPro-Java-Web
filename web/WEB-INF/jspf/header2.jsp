@@ -60,7 +60,7 @@
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
                                 <div><a href="#"><fmt:message key="PRegister"/></a></div>
-                                <div><a href="loginForm.jsp"><fmt:message key="PSignIn"/></a></div>
+                                <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">IkeyPro</a></div>
+                            <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                         </div>
                     </div>
                     <!-- Search -->
@@ -237,7 +237,7 @@
                                         </ul>
                                     </li>
                                     <li class="page_menu_item">
-                                        <a href="#"><fmt:message key="PHome"/><i class="fa fa-angle-down"></i></a>
+                                        <a href="index.jsp"><fmt:message key="PHome"/><i class="fa fa-angle-down"></i></a>
                                     </li>
                                     <li class="page_menu_item has-children">
                                         <a href="#"><fmt:message key="PSuperDeals"/><i class="fa fa-angle-down"></i></a>
