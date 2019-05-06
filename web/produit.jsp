@@ -9,7 +9,7 @@
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
         <head>
             <title>Ikeypro - ${prod.produit}</title>
             <meta charset="utf-8">

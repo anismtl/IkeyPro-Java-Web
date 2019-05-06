@@ -10,7 +10,7 @@
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
         <head>
             <title>IkeyPro - Shop -      <c:forEach var = "ligne" items="${ListeEditeurs}">
                     <c:choose>
