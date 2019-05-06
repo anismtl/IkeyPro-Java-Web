@@ -40,44 +40,43 @@
                                             <div class="form-row">
                                                 <div class="col-md-4">
                                                     <label for="validationServer01"><fmt:message key="PPrenom"/></label>
-                                                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" value="" required>"${sessionScope.client.prenomClient}"
+                                                    <input type="text" class="form-control" name="prenom" placeholder='<fmt:message key="PPrenom"/>' value="${sessionScope.client.prenomClient}" required readonly>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServer02"><fmt:message key="PNomDeFamille"/></label>
-                                                    <input type="text" class="form-control" name="nom"  placeholder="Nom de Famille" value="" required>"${sessionScope.client.nomClient}"
+                                                    <input type="text" class="form-control" name="nom"  placeholder='<fmt:message key="PNomDeFamille"/>' value="${sessionScope.client.nomClient}" required readonly>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServer01"><fmt:message key="PNomDutilisateur"/></label>
-                                                    <input type="text" class="form-control" name="user" placeholder="Nom d'utilisateur" value="" required>"${sessionScope.client.courriel}"
+                                                    <input type="text" class="form-control" name="user" placeholder='<fmt:message key="PNomDutilisateur"/>' value="${sessionScope.client.courriel}" required readonly>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServer02"><fmt:message key="PMotDePasse"/></label>
-                                                    <input type="password" class="form-control" name="pass" placeholder="Mot-de-passee" value="" required>"${sessionScope.client.tel}"
-
+                                                    <input type="password" class="form-control" name="pass" placeholder='<fmt:message key="PMotDePasse"/>' value="" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServerUsername"><fmt:message key="PConfirmationDeMotDePasse"/></label>
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control" name="cpass" placeholder="Confirmation" required>
+                                                        <input type="password" class="form-control" name="cpass" placeholder='<fmt:message key="PConfirmationDeMotDePasse"/>' required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="validationServer03"><fmt:message key="PAdresse"/></label>
-                                                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" required>"${sessionScope.client.adresseClient}"
+                                                    <input type="text" class="form-control" name="adresse" placeholder='<fmt:message key="PAdresse"/>' value="${sessionScope.client.adresseClient}" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-3 mb-3">
                                                     <label for="validationServer04"><fmt:message key="PTelephone"/></label>
-                                                    <input type="text" class="form-control" name="tel" placeholder="Telephone" required>"${sessionScope.client.tel}"
+                                                    <input type="text" class="form-control" name="tel" placeholder='<fmt:message key="PTelephone"/>' value="${sessionScope.client.tel}" required>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary" type="submit"><fmt:message key="PMettreAJour"/></button>

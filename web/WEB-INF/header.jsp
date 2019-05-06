@@ -6,13 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-<%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
-
     <header class="header">
-
         <!-- Top Bar -->
         <div class="top_bar">
             <div class="container">
@@ -24,22 +21,18 @@
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
                                     <c:if test="${sessionScope.lang == 'fr'}">
-                                        
                                     </c:if>
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='fr' : sessionScope.langD =='fr'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PFrancaisLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" onclick="changeLangue('es');"><fmt:message key="PEspagnolLangue"/></a></li>
                                                 <li><a href="#" onclick="changeLangue('en');"><fmt:message key="PEnglishLangue"/></a></li>   
-
                                             </ul>
                                         </li>
                                     </c:if>
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='es' : sessionScope.langD =='es'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PEspagnolLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" id="llang" onclick="changeLangue('fr');"><fmt:message key="PFrancaisLangue"/></a></li>
@@ -49,7 +42,6 @@
                                     </c:if> 
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='en' : sessionScope.langD =='en'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PEnglishLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" id="llang" onclick="changeLangue('fr');"><fmt:message key="PFrancaisLangue"/></a></li>

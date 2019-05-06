@@ -20,23 +20,19 @@
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
-             <c:if test="${sessionScope.lang == 'fr'}">
-                                        
+                                    <c:if test="${sessionScope.lang == 'fr'}">
                                     </c:if>
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='fr' : sessionScope.langD =='fr'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PFrancaisLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" onclick="changeLangue('es');"><fmt:message key="PEspagnolLangue"/></a></li>
                                                 <li><a href="#" onclick="changeLangue('en');"><fmt:message key="PEnglishLangue"/></a></li>   
-
                                             </ul>
                                         </li>
                                     </c:if>
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='es' : sessionScope.langD =='es'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PEspagnolLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" id="llang" onclick="changeLangue('fr');"><fmt:message key="PFrancaisLangue"/></a></li>
@@ -46,7 +42,6 @@
                                     </c:if> 
                                     <c:if test="${not empty sessionScope.lang ? sessionScope.lang=='en' : sessionScope.langD =='en'}">
                                         <li>
-
                                             <a href="#"><fmt:message key="PEnglishLangue"/><i class="fas fa-chevron-down"></i></a>
                                             <ul>
                                                 <li><a href="#" id="llang" onclick="changeLangue('fr');"><fmt:message key="PFrancaisLangue"/></a></li>
@@ -54,14 +49,19 @@
                                             </ul>
                                         </li>
                                     </c:if>     
-
                                 </ul>
                             </div>
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                <div><a href="#"><fmt:message key="PRegister"/></a></div>
-                                <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
-                            </div>
+                                <c:if test="${empty sessionScope.client}">
+                                    <div> <a href="register.jsp"><fmt:message key="PRegister"/></a></div>
+                                    <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
+                                </c:if>
+                                <c:if test="${not empty sessionScope.client}">
+                                    <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
+                                    <div><a href="LogOut"><fmt:message key="PSignOut"/></a></div>
+                                </c:if>
+                            </div>                            
                         </div>
                     </div>
                 </div>
