@@ -24,6 +24,15 @@ public class Client {
         this.motPasse = motPasse;
     }
 
+    public Client(String nomClient, String prenomClient, String courriel, String tel, String adresseClient, String motPasse) {
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
+        this.courriel = courriel;
+        this.tel = tel;
+        this.adresseClient = adresseClient;
+        this.motPasse = motPasse;
+    }
+
     public int getIdClient() {
         return idClient;
     }

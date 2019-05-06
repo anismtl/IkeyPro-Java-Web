@@ -10,6 +10,29 @@ import java.sql.Statement;
  * @author Judith
  */
 public class ClientDAO {
+    public static void insert(Client client) {
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "INSERT INTO CLIENT (NOM_CLIENT, NOM_CLIENT, PRENOM_CLIENT, "+
+                                                 "COURRIEL, TEL, ADRESSE_CLIENT, MOT_PASSE) "+
+                                       "VALUES (\'"+client.getNomClient()+"\', \'"
+                                                   +client.getPrenomClient()+"\', \'"
+                                                   +client.getCourriel()+"\', \'"
+                                                   +client.getTel()+"\', \'"
+                                                   +client.getAdresseClient()+"\', \'"
+                                                   +client.getMotPasse()+"\')";
+                System.out.println(req);
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(req);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+    }
+    
     public static void update(String pw, String adresse, String telephone, int id) {
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {

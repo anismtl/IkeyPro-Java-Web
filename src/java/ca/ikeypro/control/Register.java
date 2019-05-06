@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ikeypro.control;
 
+import ca.ikeypro.DAO.Client;
+import ca.ikeypro.DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,16 +30,25 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            String nomClient = request.getParameter("nom");
+            String prenomClient = request.getParameter("prenom");
+            String courriel = request.getParameter("user");
+            String motPasse = request.getParameter("pass");
+            String adresseClient = request.getParameter("adresse");
+            String tel = request.getParameter("tel");
+            Client client = new Client (nomClient, prenomClient, courriel, tel, adresseClient, motPasse);
+            ClientDAO.insert(client);
+            session.removeAttribute("client");
+            session.setAttribute("client", client);
+            if (client != null){
+                System.out.println("L'insert du client :" + client.toString());
+            } else
+                System.out.println("LE CLIENT N'ÉTAIT PAS INSERER!!!");
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+
+            dispatcher.forward(request, response);
         }
     }
 
