@@ -37,6 +37,7 @@
                                     <li class="cart_item clearfix">
                                         <form name="formMonCompte" action="MonCompte">
                                             <input type="hidden" name="action" value="gestionCompte" />
+                                            <input type="hidden" class="form-control" name="id" value="${sessionScope.client.idClient}">                                            
                                             <div class="form-row">
                                                 <div class="col-md-4">
                                                     <label for="validationServer01"><fmt:message key="PPrenom"/></label>

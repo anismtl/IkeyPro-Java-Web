@@ -1,11 +1,15 @@
 package ca.ikeypro.control;
 
+import ca.ikeypro.DAO.Client;
+import ca.ikeypro.DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,7 +30,24 @@ public class MonCompte extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            HttpSession session = request.getSession();
+            String pw = request.getParameter("pass");
+            String couriel = request.getParameter("user");
+            String adresse = request.getParameter("adresse");
+            String telephone = request.getParameter("tel");
+            String id = request.getParameter("id");
+            ClientDAO.update(pw, adresse, telephone, id);
+            Client client = ClientDAO.find(couriel, pw);
+            session.removeAttribute("client");
+            session.setAttribute("client", client);
+            if ( client != null){
+                System.out.println("Le login du client a été un succès:" + client.toString());
+            } else
+                System.out.println("LE CLIENT N'EXISTE PAS!!!");
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+
+            dispatcher.forward(request, response);
         }
     }
 

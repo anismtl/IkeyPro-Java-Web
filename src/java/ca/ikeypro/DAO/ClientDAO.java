@@ -10,6 +10,22 @@ import java.sql.Statement;
  * @author Judith
  */
 public class ClientDAO {
+    public static void update(String pw, String adresse, String telephone, String id) {
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "UPDATE CLIENT SET TEL=\'" + telephone + "\', ADRESSE_CLIENT=\'" + adresse + "\', MOT_PASSE= \'" +pw+"\' WHERE ID_CLIENT=\'" + id + "\'";
+                System.out.println(req);
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(req);
+                System.out.println("Update du client");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+    }
     public static Client find (String user, String password) {
         Client client = null;
         Connection conn = DataManager.getInstance().getConnection();
