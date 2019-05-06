@@ -10,11 +10,11 @@ import java.sql.Statement;
  * @author Judith
  */
 public class ClientDAO {
-    public static void update(String pw, String adresse, String telephone, String id) {
+    public static void update(String pw, String adresse, String telephone, int id) {
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
-                String req = "UPDATE CLIENT SET TEL=\'" + telephone + "\', ADRESSE_CLIENT=\'" + adresse + "\', MOT_PASSE= \'" +pw+"\' WHERE ID_CLIENT=\'" + id + "\'";
+                String req = "UPDATE CLIENT SET TEL=\'" + telephone + "\', ADRESSE_CLIENT=\'" + adresse + "\', MOT_PASSE= \'" +pw+"\' WHERE ID_CLIENT=" + id;
                 System.out.println(req);
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(req);
@@ -37,7 +37,7 @@ public class ClientDAO {
 
                 if (rs.next()) {
                     client = new Client();
-                    client.setIdClient(rs.getString("ID_CLIENT"));
+                    client.setIdClient(rs.getInt("ID_CLIENT"));
                     client.setNomClient(rs.getString("NOM_CLIENT"));
                     client.setPrenomClient(rs.getString("PRENOM_CLIENT"));
                     client.setCourriel(rs.getString("COURRIEL"));

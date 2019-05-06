@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
 <!DOCTYPE html>
@@ -56,7 +56,6 @@
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServer02"><fmt:message key="PMotDePasse"/></label>
                                                     <input type="password" class="form-control" name="pass" placeholder='<fmt:message key="PMotDePasse"/>' value="" required>
-
                                                 </div>
                                             </div>
                                             <div class="form-row">

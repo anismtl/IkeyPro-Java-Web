@@ -4,7 +4,7 @@ package ca.ikeypro.DAO;
  * @author Judith
  */
 public class Client {
-    private String idClient;
+    private int idClient;
     private String nomClient;
     private String prenomClient;
     private String courriel;
@@ -14,7 +14,7 @@ public class Client {
 
     public Client(){}
     
-    public Client(String idClient, String nomClient, String prenomClient, String courriel, String tel, String adresseClient, String motPasse) {
+    public Client(int idClient, String nomClient, String prenomClient, String courriel, String tel, String adresseClient, String motPasse) {
         this.idClient = idClient;
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
@@ -24,11 +24,11 @@ public class Client {
         this.motPasse = motPasse;
     }
 
-    public String getIdClient() {
+    public int getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(String idClient) {
+    public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
 

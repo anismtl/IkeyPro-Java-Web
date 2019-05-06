@@ -35,7 +35,7 @@ public class MonCompte extends HttpServlet {
             String couriel = request.getParameter("user");
             String adresse = request.getParameter("adresse");
             String telephone = request.getParameter("tel");
-            String id = request.getParameter("id");
+            int id = Integer.parseInt(request.getParameter("id"));
             ClientDAO.update(pw, adresse, telephone, id);
             Client client = ClientDAO.find(couriel, pw);
             session.removeAttribute("client");
