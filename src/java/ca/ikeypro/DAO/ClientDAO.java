@@ -14,9 +14,9 @@ public class ClientDAO {
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
-                String req = "INSERT INTO CLIENT (NOM_CLIENT, NOM_CLIENT, PRENOM_CLIENT, "+
+                String req = "INSERT INTO CLIENT (ID_CLIENT,NOM_CLIENT, PRENOM_CLIENT, "+
                                                  "COURRIEL, TEL, ADRESSE_CLIENT, MOT_PASSE) "+
-                                       "VALUES (\'"+client.getNomClient()+"\', \'"
+                                       "VALUES (CLIENT_ID_SQ.NEXTVAL,\'"+client.getNomClient()+"\', \'"
                                                    +client.getPrenomClient()+"\', \'"
                                                    +client.getCourriel()+"\', \'"
                                                    +client.getTel()+"\', \'"
@@ -77,4 +77,34 @@ public class ClientDAO {
         }
         return client;
     }   
+    
+    public static Client getClient(String Courriel) {
+        Client client = null;
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT * FROM CLIENT WHERE COURRIEL ='" + Courriel + "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
+
+                if (rs.next()) {
+                    client = new Client();
+                    client.setIdClient(rs.getInt("ID_CLIENT"));
+                    client.setNomClient(rs.getString("NOM_CLIENT"));
+                    client.setPrenomClient(rs.getString("PRENOM_CLIENT"));
+                    client.setCourriel(rs.getString("COURRIEL"));
+                    client.setTel(rs.getString("TEL"));
+                    client.setAdresseClient(rs.getString("ADRESSE_CLIENT"));
+                    client.setMotPasse(rs.getString("MOT_PASSE"));
+                    return client;
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return client;
+    }   
+    
 }

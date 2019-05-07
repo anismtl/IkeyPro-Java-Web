@@ -34,7 +34,7 @@
                             <div class="cart_items">
                                 <ul class="cart_list">
                                     <li class="cart_item clearfix">
-                                        <form name="formInscription" action="Register">
+                                        <form name="formInscription" action="Register" method="POST">
                                             <input type="hidden" name="action" value="completeInscription" />
                                             <div class="form-row">
                                                 <div class="col-md-4">
