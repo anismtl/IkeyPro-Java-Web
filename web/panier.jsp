@@ -89,10 +89,10 @@
                                         </c:if>
                                         <a type="button" class="btn btn-lg btn-light" href="ListeProduits?action=categorie&cat=2" role="button"><fmt:message key="PMagasiner"/></a>
                                         <c:if test="${empty panier}">
-                                            <a type="button" class="btn btn-lg btn-primary disabled" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
+                                            <a type="button" class="btn btn-lg btn-primary disabled" href="Panier?action=CHECKOUT" role="button">Checkout</a>
                                         </c:if>
                                         <c:if test="${!empty panier}">
-                                            <a type="button" class="btn btn-lg btn-primary" href="ListeProduits?action=categorie&cat=2" role="button">Checkout</a>
+                                            <a type="button" class="btn btn-lg btn-primary" href="Panier?action=CHECKOUT" role="button">Checkout</a>
                                         </c:if>
                                     </div>
                                 </div>

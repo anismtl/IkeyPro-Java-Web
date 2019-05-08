@@ -34,127 +34,155 @@ public class Panier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-            if (session == null) {
-      response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
-      
-    }
+        if (session == null) {
+            response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
+
+        }
         response.setContentType("text/html;charset=UTF-8");
         float total = 0;
         session.setAttribute("total", total);
         Vector buylist = (Vector) session.getAttribute("panier");
         String action = request.getParameter("action");
-        if (action.equals("DELETE")) {
 
-            //on récupère l'indice de l'item à supprimer  
-            String del = request.getParameter("delindex");
+        if (!action.equals("CHECKOUT")) {
+            if (action.equals("DELETE")) {
 
-            //on supprime l'item du panier
-            int d = (new Integer(del)).intValue();
-            buylist.removeElementAt(d);
-            int nb=buylist.size();
-            if (nb==0){
-                 total = 0;
-   
-        session.setAttribute("total", total);
-       // session.setAttribute("panier", buylist);
-        String url = "/ListeProduits?action=categorie&cat=2";
-        ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(request, response);
+                //on récupère l'indice de l'item à supprimer  
+                String del = request.getParameter("delindex");
+
+                //on supprime l'item du panier
+                int d = (new Integer(del)).intValue();
+                buylist.removeElementAt(d);
+                int nb = buylist.size();
+                if (nb == 0) {
+                    total = 0;
+
+                    session.setAttribute("total", total);
+                    // session.setAttribute("panier", buylist);
+                    String url = "/ListeProduits?action=categorie&cat=2";
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher(url);
+                    rd.forward(request, response);
                 } else {
-                  total = 0;
-        for (int i = 0; i < buylist.size(); i++) {
-            LignePanier cd = (LignePanier) buylist.elementAt(i);
-            int qte = cd.getQte();
-            float prix = cd.getPrix();
-            total += qte * prix;
-        }
-        session.setAttribute("total", total);
-       // session.setAttribute("panier", buylist);
-        String url = "/panier.jsp";
-        ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(request, response);
-                
-            }
+                    total = 0;
+                    for (int i = 0; i < buylist.size(); i++) {
+                        LignePanier cd = (LignePanier) buylist.elementAt(i);
+                        int qte = cd.getQte();
+                        float prix = cd.getPrix();
+                        total += qte * prix;
+                    }
+                    session.setAttribute("total", total);
+                    // session.setAttribute("panier", buylist);
+                    String url = "/panier.jsp";
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher(url);
+                    rd.forward(request, response);
 
-            // si clic sur ajouter au panier
-        } else if (action.equals("VIDER")) {
-            buylist.removeAllElements();
-              total = 0;
-   
-        session.setAttribute("total", total);
-       // session.setAttribute("panier", buylist);
-        String url = "/ListeProduits?action=categorie&cat=2";
-        ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(request, response);  
-            
-            
-        } else if (action.equals("ADD")) {
+                }
 
-            //booleen qui va être utilisé pour vérifier si l'item est déjà 
-            //dans le panier
-            boolean match = false;
-            LignePanier aCD = getProduit(request);
+                // si clic sur ajouter au panier
+            } else if (action.equals("VIDER")) {
+                buylist.removeAllElements();
+                total = 0;
 
-            //si panier inexistant on va le créer(cas du 1er item à ajouter)
-            if (buylist == null) {
+                session.setAttribute("total", total);
+                // session.setAttribute("panier", buylist);
+                String url = "/ListeProduits?action=categorie&cat=2";
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher(url);
+                rd.forward(request, response);
 
-                //on crée le panier
-                buylist = new Vector();
+            } else if (action.equals("ADD")) {
 
-                //on ajoute le premier CD
-                buylist.addElement(aCD);
+                //booleen qui va être utilisé pour vérifier si l'item est déjà 
+                //dans le panier
+                boolean match = false;
+                LignePanier aCD = getProduit(request);
 
-                //si le panier existe déjà (buylist non null) 
-            } else {
+                //si panier inexistant on va le créer(cas du 1er item à ajouter)
+                if (buylist == null) {
 
-                //on vérifie si le CD est déjà dans le panier?
-                //pour ne pas l'ajouter une autre fois 
-                for (int i = 0; i < buylist.size(); i++) {
+                    //on crée le panier
+                    buylist = new Vector();
 
-                    // on récupère l'item à la position i
-                    LignePanier cd = (LignePanier) buylist.elementAt(i);
+                    //on ajoute le premier CD
+                    buylist.addElement(aCD);
 
-                    // si on trouve l'item dans le panier
-                    if (cd.getCodeProduit().equals(aCD.getCodeProduit())) {
+                    //si le panier existe déjà (buylist non null) 
+                } else {
 
-                        //on va modifier la quantité en lui ajoutantant la
-                        // nouvelle quantité
-                        cd.setQte(cd.getQte() + aCD.getQte());
-                        //  cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
+                    //on vérifie si le CD est déjà dans le panier?
+                    //pour ne pas l'ajouter une autre fois 
+                    for (int i = 0; i < buylist.size(); i++) {
+
+                        // on récupère l'item à la position i
+                        LignePanier cd = (LignePanier) buylist.elementAt(i);
+
+                        // si on trouve l'item dans le panier
+                        if (cd.getCodeProduit().equals(aCD.getCodeProduit())) {
+
+                            //on va modifier la quantité en lui ajoutantant la
+                            // nouvelle quantité
+                            cd.setQte(cd.getQte() + aCD.getQte());
+                            //  cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
 ////
 ////              //on replace l'item dans le panier
-                        buylist.setElementAt(cd, i);
+                            buylist.setElementAt(cd, i);
 ////
 ////              //on active la variable qui montre qu'on a trouvé l'item
 ////              //dans le panier
-                        match = true;
-                    } //end of if name matches
-                } // end of for
+                            match = true;
+                        } //end of if name matches
+                    } // end of for
 //        
-                if (!match) //on ajoute l'item au panier
-                {
-                    buylist.addElement(aCD);
+                    if (!match) //on ajoute l'item au panier
+                    {
+                        buylist.addElement(aCD);
+                    }
                 }
-            }
-          total = 0;
-        for (int i = 0; i < buylist.size(); i++) {
-            LignePanier cd = (LignePanier) buylist.elementAt(i);
-            int qte = cd.getQte();
-            float prix = cd.getPrix();
-            total += qte * prix;
+                total = 0;
+                for (int i = 0; i < buylist.size(); i++) {
+                    LignePanier cd = (LignePanier) buylist.elementAt(i);
+                    int qte = cd.getQte();
+                    float prix = cd.getPrix();
+                    total += qte * prix;
+                }
+                session.setAttribute("total", total);
+                session.setAttribute("panier", buylist);
+                String url = "/panier.jsp";
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher(url);
+                rd.forward(request, response);
+            
+            
         }
-        session.setAttribute("total", total);
-        session.setAttribute("panier", buylist);
-        String url = "/panier.jsp";
-        ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(request, response);
-        }
-        
+            
 
+        } else if (action.equals("CHECKOUT")) {
+
+            //on va calculer le prix total
+            total = 0;
+            for (int i = 0; i < buylist.size(); i++) {
+                LignePanier anOrder = (LignePanier) buylist.elementAt(i);
+                float price = anOrder.getPrix();
+                int qty = anOrder.getQte();
+                total += (price * qty);
+            }
+
+            //deviner à quoi cela sert ??????
+            total += 0.005;
+            String amount = new Float(total).toString();
+            int n = amount.indexOf('.');
+            amount = amount.substring(0, n + 3);
+            session.setAttribute("total", amount);
+
+            //on redirige la requête vers la page de Checkout
+            String url = "/checkout.jsp";
+            ServletContext sc = getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(request, response);
+
+        } 
     }
 
     //méthode utilitaire qui sert à récupérer les différentes
