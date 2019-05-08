@@ -35,6 +35,7 @@ public class LogOut extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             session.removeAttribute("client");
+            System.out.println("Client deconnecté");
             
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
 

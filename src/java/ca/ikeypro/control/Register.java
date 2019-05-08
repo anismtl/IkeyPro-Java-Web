@@ -5,6 +5,7 @@ import ca.ikeypro.DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,7 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String Url = "";
             HttpSession session = request.getSession();
             String nomClient = request.getParameter("nom");
             String prenomClient = request.getParameter("prenom");
@@ -37,18 +39,33 @@ public class Register extends HttpServlet {
             String motPasse = request.getParameter("pass");
             String adresseClient = request.getParameter("adresse");
             String tel = request.getParameter("tel");
-            Client client = new Client (nomClient, prenomClient, courriel, tel, adresseClient, motPasse);
-            ClientDAO.insert(client);
-            session.removeAttribute("client");
-            session.setAttribute("client", client);
-            if (client != null){
-                System.out.println("L'insert du client :" + client.toString());
-            } else
-                System.out.println("LE CLIENT N'ÉTAIT PAS INSERER!!!");
+            Client client = new Client(nomClient, prenomClient, courriel, tel, adresseClient, motPasse);
+            String Resultat = ClientDAO.insert(client);
+            System.out.println(Resultat);
+            switch (Resultat) {
+                case "EXISTE":
+                    session.setAttribute("resultat", "Ce couriel existe deja");
+                    Url = "/register.jsp";
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Url);
+                    dispatcher.forward(request, response);
+                    break;
+                case "REUSSI":
+                    session.removeAttribute("client");
+                    Client c = ClientDAO.getClient(courriel);
+                    session.setAttribute("client", c);
+                    Url = "/iKeyPro.jsp";
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher(Url);
+                    rd.forward(request, response);
+                    break;
+                default:
+                    Url = "/Error.jsp";
+                    ServletContext sci = getServletContext();
+                    RequestDispatcher rdi = sci.getRequestDispatcher(Url);
+                    rdi.forward(request, response);
+                    break;
+            }
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
-
-            dispatcher.forward(request, response);
         }
     }
 

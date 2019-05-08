@@ -4,14 +4,16 @@ import ca.ikeypro.Utilitaire.DataManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 /**
  * @author Judith
  */
 public class ClientDAO {
-    public static void insert(Client client) {
+    public static String insert(Client client) {
         Connection conn = DataManager.getInstance().getConnection();
+        String message = null;
         if (conn != null) {
             try {
                 String req = "INSERT INTO CLIENT (ID_CLIENT,NOM_CLIENT, PRENOM_CLIENT, "+
@@ -25,12 +27,19 @@ public class ClientDAO {
                 System.out.println(req);
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(req);
+                message="REUSSI";
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                                if (ex instanceof SQLIntegrityConstraintViolationException) {
+                   message="EXISTE";
+                   // System.out.println("Existe deja");
+                } else {
+                   message="erreur inconnu"; // Other SQL Exception
+                }
             } finally {
                 DataManager.getInstance().closeConnection();
             }
         }
+         return message;
     }
     
     public static void update(String pw, String adresse, String telephone, int id) {
