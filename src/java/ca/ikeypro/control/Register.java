@@ -44,7 +44,7 @@ public class Register extends HttpServlet {
             System.out.println(Resultat);
             switch (Resultat) {
                 case "EXISTE":
-                    session.setAttribute("resultat", "Ce couriel existe deja");
+                    request.setAttribute("resultat", "Ce couriel existe deja");
                     Url = "/register.jsp";
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Url);
                     dispatcher.forward(request, response);

@@ -53,7 +53,7 @@ public class CommandeDAO {
                     
                    
                     commande.setId_Commande(rs.getInt("ID_COMMANDE"));
-                    commande.setIdClient(rs.getString("ID_CLIENT"));
+                    commande.setIdClient(rs.getInt("ID_CLIENT"));
                     commande.setDate_commande(rs.getDate("DATE_COMMANDE"));
  
                 }

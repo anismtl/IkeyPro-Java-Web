@@ -8,13 +8,13 @@ import java.util.Date;
  */
 public class Commande {
   private int id_Commande;
-  private String idClient;
+  private int idClient;
   private Date date_commande;
 
     public Commande() {
     }
 
-    public Commande(int id_Commande, String idClient, Date date_commande) {
+    public Commande(int id_Commande, int idClient, Date date_commande) {
         this.id_Commande = id_Commande;
         this.idClient = idClient;
         this.date_commande = date_commande;
@@ -28,11 +28,11 @@ public class Commande {
         this.id_Commande = id_Commande;
     }
 
-    public String getIdClient() {
+    public int getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(String idClient) {
+    public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
 
@@ -43,8 +43,8 @@ public class Commande {
     public void setDate_commande(Date date_commande) {
         this.date_commande = date_commande;
     }
+
     
-  
   
   
 }

@@ -36,18 +36,18 @@
                                 <div class="cart_items">
                                     <ul class="cart_list">
                                         <li class="cart_item clearfix">
-                                            <form name="login" action="Login" method="post">
+                                            <form name="login" action="Login" method="POST">
                                                 <input type="hidden" name="action" value="validerSession" />
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationServer01"><fmt:message key="PNomDutilisateur"/></label>
-                                                        <input type="text" class="form-control" name="user" placeholder="Nom d'utilisateur" value="" required>
+                                                        <input type="text" class="form-control" name="user" placeholder="Nom d'utilisateur" value="" required>${usererror}
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationServer02"><fmt:message key="PMotDePasse"/></label>
-                                                        <input type="password" class="form-control" name="pass" placeholder="Mot-de-passee" value="" required>
+                                                        <input type="password" class="form-control" name="pass" placeholder="Mot-de-passee" value="" required>${passerror}
                                                     </div>
                                                 </div>
                                                 <div class="form-row">

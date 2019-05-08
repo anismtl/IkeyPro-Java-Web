@@ -5,6 +5,8 @@
  */
 package ca.ikeypro.control;
 
+import ca.ikeypro.DAO.Client;
+import ca.ikeypro.DAO.Commande;
 import ca.ikeypro.DAO.LignePanier;
 import java.io.IOException;
 import java.util.Vector;
@@ -39,12 +41,13 @@ public class Panier extends HttpServlet {
 
         }
         response.setContentType("text/html;charset=UTF-8");
-        float total = 0;
-        session.setAttribute("total", total);
+        
         Vector buylist = (Vector) session.getAttribute("panier");
         String action = request.getParameter("action");
 
         if (!action.equals("CHECKOUT")) {
+            float total = 0;
+        session.setAttribute("total", total);
             if (action.equals("DELETE")) {
 
                 //on récupère l'indice de l'item à supprimer  
@@ -161,7 +164,15 @@ public class Panier extends HttpServlet {
         } else if (action.equals("CHECKOUT")) {
 
             //on va calculer le prix total
-            total = 0;
+            Client c=(Client) session.getAttribute("client");
+            if (c !=null){
+                
+                int idClient=c.getIdClient();
+                Commande com=new Commande();
+                com.setIdClient(idClient);
+                com.setDate_commande(date_commande);
+                
+                
             for (int i = 0; i < buylist.size(); i++) {
                 LignePanier anOrder = (LignePanier) buylist.elementAt(i);
                 float price = anOrder.getPrix();
@@ -181,6 +192,14 @@ public class Panier extends HttpServlet {
             ServletContext sc = getServletContext();
             RequestDispatcher rd = sc.getRequestDispatcher(url);
             rd.forward(request, response);
+            } else{
+                String url = "/login.jsp";
+                session.setAttribute("origine", "ch");
+            ServletContext sc = getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(request, response); 
+            }
+            
 
         } 
     }

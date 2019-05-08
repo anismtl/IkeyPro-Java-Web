@@ -58,7 +58,7 @@
                                     <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
                                 </c:if>
                                 <c:if test="${not empty sessionScope.client}">
-                                    <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
+                                <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> <b>${sessionScope.client.prenomClient}</b> <fmt:message key="PYourCompte"/></a></div>
                                     <div><a href="LogOut"><fmt:message key="PSignOut"/></a></div>
                                 </c:if>
                             </div>                            
@@ -120,8 +120,8 @@
                                         <div class="cart_content">
                                             <div class="cart_text"><a href="<c:if test="${empty panier}">#</c:if>
                                                                   <c:if test="${!empty panier}">panier.jsp</c:if>"><fmt:message key="PCart"/></a></div>
-                                        <div class="cart_price"> <c:if test="${empty total}">$0</c:if>
-                                            <c:if test="${!empty total}">$${total}</c:if>   
+                                                                  <div class="cart_price"> <c:if test="${empty sessionScope.total}">$0</c:if>
+                                            <c:if test="${!empty total}">$${sessionScope.total}</c:if>   
                                             </div>
                                         </div>
                                     </div>

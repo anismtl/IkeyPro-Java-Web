@@ -10,7 +10,7 @@
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
         <head>
             <title>Cart</title>
             <meta charset="utf-8">
@@ -31,8 +31,6 @@
                 <!-- Header -->
                 <jsp:include page="WEB-INF/jspf/header2.jsp"/>
 
-
-
                 <!-- Cart -->
 
                 <div class="cart_section">
@@ -41,49 +39,99 @@
                             <div class="col-lg-10 offset-lg-1">
                                 <div class="cart_container">
                                     <div class="cart_title">Shopping Cart</div>
-                                    <c:forEach var = "ligne" items="${panier}">
-                                        <div class="cart_items">
-                                            <ul class="cart_list">
-                                                <li class="cart_item clearfix">
-                                                    <div class="cart_item_image"><img src="images/${ligne.image}" alt=""></div>
-                                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                                        <div class="cart_item_name cart_info_col">
-                                                            <div class="cart_item_title">Name</div>
-                                                            <div class="cart_item_text"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
-                                                        </div>
-                                                        <div class="cart_item_color cart_info_col">
-                                                            <div class="cart_item_title">Color</div>
-                                                            <div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
-                                                        </div>
-                                                        <div class="cart_item_quantity cart_info_col">
-                                                            <div class="cart_item_title">Quantity</div>
-                                                            <div class="cart_item_text">${ligne.qte}</div>
-                                                        </div>
-                                                        <div class="cart_item_price cart_info_col">
-                                                            <div class="cart_item_title">Price</div>
-                                                            <div class="cart_item_text">$${ligne.prix}</div>
-                                                        </div>
-                                                        <div class="cart_item_total cart_info_col">
-                                                            <div class="cart_item_title">Total</div>
-                                                            <div class="cart_item_text">$${ligne.qte * ligne.prix}</div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </c:forEach>
+                                           <div class="cart_container">
 
+                                              
+                                               <div class="cart_items">
+                                                <ul class="cart_list">
+                                                    <div class="cart_title"><h3>Client:</h3></div>
+                                                    <li class="cart_item clearfix">
+                                                       
+                                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                                            <div class="cart_item_name cart_info_col">
+                                                                <div class="cart_item_title">Name</div>
+                                                                <div class="cart_item_text"><a>${sessionScope.client.nomClient}</a></div>
+                                                              </div>
+
+                                                            <div class="cart_item_quantity cart_info_col">
+                                                                <div class="cart_item_title">Prenom</div>
+                                                                <div class="cart_item_text">${sessionScope.client.prenomClient}</div>
+                                                                </div>
+                                                            <div class="cart_item_price cart_info_col">
+                                                                <div class="cart_item_title">Courriel</div>
+                                                                <div class="cart_item_text">${sessionScope.client.courriel}</div>
+                                                                
+                                                            </div>
+                                                            <div class="cart_item_total cart_info_col">
+                                                                <div class="cart_item_title">Telephone</div>
+                                                                <div class="cart_item_text">${sessionScope.client.tel}</div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                              
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+                            </div>
+                                    <form action="${initParam['posturl']}" method="POST">
+                                        <input type="hidden" name="upload" value="1"/>
+                                        <input type="hidden" name="currency_code" value="CAD"/>
+                                        <input type="hidden" name="return" value="${initParam['return']}"/>
+                                        <input type="hidden" name="cmd" value="_cart"/>
+                                        <input type="hidden" name="business" value="${initParam['business']}"/>
+                                        <c:forEach var = "ligne" items="${panier}">
+                                            <div class="cart_items">
+                                                <ul class="cart_list">
+                                                    <li class="cart_item clearfix">
+                                                        <div class="cart_item_image"><img src="images/${ligne.image}" alt=""></div>
+                                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                                            <div class="cart_item_name cart_info_col">
+                                                                <div class="cart_item_title">Name</div>
+                                                                <div class="cart_item_text"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
+                                                                <input type="hidden" name="item_name_${panier.indexOf(ligne)+1}" value="${ligne.produit}"/>
+                                                            </div>
+
+                                                            <div class="cart_item_quantity cart_info_col">
+                                                                <div class="cart_item_title">Quantity</div>
+                                                                <div class="cart_item_text">${ligne.qte}</div>
+                                                                 <input type="hidden" name="quantity_${panier.indexOf(ligne)+1}" value="${ligne.qte}"/>
+                                                            </div>
+                                                            <div class="cart_item_price cart_info_col">
+                                                                <div class="cart_item_title">Price</div>
+                                                                <div class="cart_item_text">$${ligne.prix}</div>
+                                                                <input type="hidden" name="amount_${panier.indexOf(ligne)+1}" value="${ligne.prix}"/>
+                                                            </div>
+                                                            <div class="cart_item_total cart_info_col">
+                                                                <div class="cart_item_title">Total</div>
+                                                                <div class="cart_item_text">$${ligne.qte * ligne.prix}</div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </c:forEach>
+                                   
                                     <div class="order_total">
                                         <div class="order_total_content text-md-right">
                                             <div class="order_total_title">Order Total:</div>
-                                            <div class="order_total_amount">$2000</div>
+                                            <div class="order_total_amount">$${total}</div>
                                         </div>
                                     </div>
 
                                     <div class="cart_buttons">
-                                        <button type="button" class="button cart_button_clear">Add to Cart</button>
-                                        <button type="button" class="button cart_button_checkout">Add to Cart</button>
+                                        <a type="button" class="btn btn-lg btn-primary" href="Panier?action=PAYER" role="button">ADD TO</a>
+                                                  <a type="submit" class="btn btn-lg btn-primary" role="button">Paypal</a>
+                                        <button type="submit" class="button cart_button_checkout">Payer</button>
                                     </div>
+                                         </form>
                                 </div>
                             </div>
                         </div>
