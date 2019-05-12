@@ -14,12 +14,15 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Judith
  */
-//@WebFilter ("WEB-INF/panier/*")
+@WebFilter(urlPatterns = {"/checkout.jsp"})
 public class FilterAuthentication implements Filter{
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
 
@@ -28,18 +31,25 @@ public class FilterAuthentication implements Filter{
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le filter vient detre initialiser =*=*=*=*=*=*=");
     }
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le filter vient detre executer =*=*=*=*=*=*=");
-        PrintWriter out = response.getWriter();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        Client client = ClientDAO.find(username, password);
-        if (client != null)  {
-            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le client {0} vient d'etre authentifié =*=*=*=*=*=*=", username);
+        PrintWriter out = res.getWriter();
+
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpSession session = request.getSession(false);
+        String loginURI = "login.jsp";
+        
+        boolean loggedIn = session != null && session.getAttribute("client") != null;
+        boolean loginRequest = request.getRequestURI().equals(loginURI);
+        
+        if (loggedIn || loginRequest)  {
+            LOG.log(Level.INFO, "\n=*=*=*=*=*=*= Le client vient d'etre authentifié =*=*=*=*=*=*=");
             // sends request to next resource
             chain.doFilter(request, response);
         } else {
             out.print("username or password is not correct!");
+            response.sendRedirect(loginURI);
         }
     }
     @Override

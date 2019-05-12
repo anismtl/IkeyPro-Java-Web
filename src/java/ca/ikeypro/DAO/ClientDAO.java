@@ -60,7 +60,7 @@ public class ClientDAO {
         }
     }
 
-    public static String find(String user, String password) {
+    public static String find2(String user, String password) {
         Client client = null;
         String message = null;
         Connection conn = DataManager.getInstance().getConnection();
@@ -124,5 +124,53 @@ public class ClientDAO {
         }
         return client;
     }
+    
+     public static Client find (String user, String password) {
+        Client client = null;
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT * FROM CLIENT WHERE COURRIEL ='" + user + "' AND MOT_PASSE ='" + password + "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);              
+                if (rs.next()) {
+                    client = new Client();
+                    client.setIdClient(rs.getInt("ID_CLIENT"));
+                    client.setNomClient(rs.getString("NOM_CLIENT"));
+                    client.setPrenomClient(rs.getString("PRENOM_CLIENT"));
+                    client.setCourriel(rs.getString("COURRIEL"));
+                    client.setTel(rs.getString("TEL"));
+                    client.setAdresseClient(rs.getString("ADRESSE_CLIENT"));
+                    client.setMotPasse(rs.getString("MOT_PASSE"));
+                    return client;
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return client;
+    }   
+     
+     
+         public static boolean isClient (String user) {
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT * FROM CLIENT WHERE COURRIEL ='" + user.toLowerCase()+ "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
+                if (rs.next()) {
+                    return true;
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return false;
+    } 
 
 }

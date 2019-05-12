@@ -5,6 +5,7 @@ import ca.ikeypro.DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
  * @author Judith
  */
-public class MonCompte extends HttpServlet {
+public class Login2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,23 +31,47 @@ public class MonCompte extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
+            String courriel = request.getParameter("user");
             String pw = request.getParameter("pass");
-            String couriel = request.getParameter("user");
-            String adresse = request.getParameter("adresse");
-            String telephone = request.getParameter("tel");
-            int id = Integer.parseInt(request.getParameter("id"));
-            ClientDAO.update(pw, adresse, telephone, id);
-            Client client = ClientDAO.find(couriel, pw);
-            session.removeAttribute("client");
-            session.setAttribute("client", client);
-            session.setAttribute("couriel", couriel);
-            session.setAttribute("pw", pw);
-            if ( client != null){
-                System.out.println("Le login du client a été un succès:" + client.toString());
-            } else
-                System.out.println("LE CLIENT N'EXISTE PAS!!!");
+            String location = "/";
+            String Resultat = ClientDAO.find(courriel, pw);
+            System.out.println("servlet login:" + Resultat);
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+            switch (Resultat) {
+                case "CORRECT":
+                    String origine = (String) session.getAttribute("origine");
+                    Client client = ClientDAO.getClient(courriel);
+                    session.setAttribute("client", client);
+                    location = "/iKeyPro.jsp";
+                    if (origine.equals("ch")) {
+                        location = "/panier.jsp";
+                        session.removeAttribute("origine");
+                    }
+
+                    break;
+                case "USER":
+                    request.setAttribute("usererror", "Ce user nexiste pas");
+                    location = "/login.jsp";
+                    break;
+                case "PASS":
+                    request.setAttribute("passerror", "Mot de passe incorrect");
+                    location = "/login.jsp";
+                    break;
+                default:
+                    break;
+            }
+
+//            if ( client != null){
+//                 session.setAttribute("client", client);
+//                String origine=(String) session.getAttribute("origine");
+//                if  (origine.equals("ch")){
+//                    location = "/checkout.jsp"; 
+//                    session.removeAttribute("origine");
+//                }else
+//                location = "/iKeyPro.jsp";
+//                System.out.println("Le login du client a été un succès:" + client.toString());
+//            } 
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(location);
 
             dispatcher.forward(request, response);
         }
