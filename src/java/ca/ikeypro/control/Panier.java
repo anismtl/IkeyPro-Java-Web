@@ -228,6 +228,8 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
             ServletContext sc = getServletContext();
             RequestDispatcher rd = sc.getRequestDispatcher(url);
             rd.forward(request, response); 
+               // System.out.println("forward origine ch a faire");
+
             }
             
 
