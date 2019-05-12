@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col d-flex flex-row">
                         <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+514 000 0000</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:contact@ikeypro.ca">contact@ikeypro.ca</a></div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
@@ -49,6 +49,7 @@
                                             </ul>
                                         </li>
                                     </c:if>     
+
                                 </ul>
                             </div>
                             <div class="top_bar_user">
@@ -58,7 +59,7 @@
                                     <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
                                 </c:if>
                                 <c:if test="${not empty sessionScope.client}">
-                                    <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
+                                <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> <b>${sessionScope.client.prenomClient}</b> <fmt:message key="PYourCompte"/></a></div>
                                     <div><a href="LogOut"><fmt:message key="PSignOut"/></a></div>
                                 </c:if>
                             </div>
@@ -67,14 +68,21 @@
                 </div>
             </div>		
         </div>
+
+        <!-- Header Main -->
+
         <div class="header_main">
             <div class="container">
                 <div class="row">
+
+                    <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
                             <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                         </div>
                     </div>
+
+                    <!-- Search -->
                     <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
                         <div class="header_search">
                             <div class="header_search_content">
@@ -88,7 +96,7 @@
                                                 <ul class="custom_list clc">
                                                     <li><a class="clc" href="#"><fmt:message key="PAllCategories"/></a></li>
                                                         <c:forEach var = "ligne" items="${ListCat}">
-                                                           <li><a class="clc" href="#"> ${ligne.categorie}</a></li>
+                                                        <li><a class="clc" href="#"> ${ligne.categorie}</a></li>
                                                         </c:forEach>
                                                 </ul>
                                             </div>
@@ -104,23 +112,28 @@
                     <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+
+
                             </div>
+
+                            <!-- Cart -->
                             <div class="cart">
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="images/cart.png" alt="">
                                         <div class="cart_count"><span>       
                                                 <c:if test="${empty panier}">0</c:if>
-                                                <c:if test="${!empty panier}">{panier.size()}</c:if>
+                                                <c:if test="${!empty panier}">${panier.size()}</c:if>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="cart_content">
                                             <div class="cart_text"><a href="<c:if test="${empty panier}">#</c:if>
-                                                                  <c:if test="${!empty panier}">panier.jsp</c:if>">
-                                                                  <fmt:message key="PCart"/></a></div>
-                                        <div class="cart_price"> <c:if test="${empty total}">0$</c:if>
-                                            <c:if test="${!empty total}">${total}$</c:if>   
+                                                                  <c:if test="${!empty panier}">panier.jsp</c:if>                 
+
+                                                                      "><fmt:message key="PCart"/></a></div>
+                                                                  <div class="cart_price"> <c:if test="${empty sessionScope.total}">$0</c:if>
+                                            <c:if test="${!empty total}">$${sessionScope.total}</c:if>   
                                             </div>
                                         </div>
                                     </div>
@@ -130,36 +143,44 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Main Navigation -->
+
             <nav class="main_nav">
                 <div class="container">
                     <div class="row">
                         <div class="col">
+
                             <div class="main_nav_content d-flex flex-row">
+
+                                <!-- Categories Menu -->
+
                                 <div class="cat_menu_container">
                                     <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                                         <div class="cat_burger"><span></span><span></span><span></span></div>
                                         <div class="cat_menu_text"><fmt:message key="Pcategories"/></div>
                                 </div>
+
                                 <ul class="cat_menu" id="cat">
+
                                 </ul>
                             </div>
+
+                            <!-- Main Nav Menu -->
+
                             <div class="main_nav_menu ml-auto">
                                 <ul class="standard_dropdown main_nav_dropdown">
                                     <li><a href="index.jsp"><fmt:message key="PHome"/><i class="fas fa-chevron-down"></i></a></li>
                                     <li class="hassubs">
-                                        <a href="#"><fmt:message key="PLastChanse"/><i class="fas fa-chevron-down"></i></a>
+                                        <a href="#"><fmt:message key="PSuperDeals"/><i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <c:forEach var = "ligne" items="${ListeLastDispo}">
-                                                <li><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}<i class="fas fa-chevron-down"></i></a></li>
-                                            </c:forEach>
-                                        </ul>
-                                    </li>
-                                    <li class="hassubs">
-                                        <a href="#"><fmt:message key="PEdition"/><i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <c:forEach var = "ligne" items="${ListeEdition}">
-                                                <li><a href="ListeProduits?action=edition&edition=${ligne.id_Edition}">${ligne.edition}<i class="fas fa-chevron-down"></i></a> </li>
-                                            </c:forEach>
+                                            <li>
+                                                <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+
+                                            </li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
                                     </li>
                                     <li class="hassubs">
@@ -167,10 +188,12 @@
                                         <ul>
                                             <c:forEach var = "ligne" items="${ListeEditeurs}">
                                                 <li><a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
-                                            </c:forEach>
+                                                    </c:forEach>
+
                                         </ul>
                                     </li>
-                                    <li><a href="blog.jsp"><fmt:message key="PBlog"/><i class="fas fa-chevron-down"></i></a></li>
+
+
                                     <li><a href="contact.jsp"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
@@ -254,13 +277,13 @@
                                         <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                     </ul>
                                 </li>
-                                <li class="page_menu_item"><a href="blog.jsp"><fmt:message key="PBlog"/><i class="fa fa-angle-down"></i></a></li>
+                                <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
                                 <li class="page_menu_item"><a href="contact.jsp"><fmt:message key="PContact"/><i class="fa fa-angle-down"></i></a></li>
                             </ul>
 
                             <div class="menu_contact">
                                 <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+1 514 000 0000</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">contact@ikeypro.ca</a></div>
                             </div>
                         </div>
                     </div>
