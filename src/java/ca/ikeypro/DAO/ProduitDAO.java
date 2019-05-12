@@ -207,9 +207,85 @@ public class ProduitDAO {
         return listeProduits;
     }
     
+        public static ArrayList<Produit> getListeDesProduitsByEdition(String idEdition) {
+        ArrayList<Produit> listeProduits = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                        + " P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
+                        + " WHERE P.ID_EDITION ='" + idEdition + "'";
+                //System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                Produit produit;
+                while (rs.next()) {
+                    produit = new Produit();
+                    produit.setCodeProduit(rs.getString("CODE_PRODUIT"));
+                    produit.setProduit(rs.getString("PRODUIT"));
+                    produit.setDateRelease(rs.getString("DATE_RELEASE"));
+                    produit.setPrix(rs.getDouble("PRIX"));
+                    produit.setPlateforme(rs.getString("PLATEFORME"));
+                    produit.setEditeur(rs.getString("ID_EDITEUR"));
+                    produit.setEdition(rs.getString("ID_EDITION"));
+                    produit.setLangue(rs.getString("LANGUE"));
+                    produit.setImage(rs.getString("IMAGE"));
+                    produit.setDisponibilite(rs.getShort("DISPONIBILITE"));
+                    produit.setNbconsulte(rs.getInt("NBCONSULT"));
+                    listeProduits.add(produit);
+                }
+                return listeProduits;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeProduits;
+    }
     
-    
-    
+           public static ArrayList<Produit> getListeDesProduitsByDispo() {
+        ArrayList<Produit> listeProduits = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = "SELECT P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, "
+                        + "P.PLATEFORME , EUR.EDITEUR ID_EDITEUR, EON.EDITION ID_EDITION, P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
+                        + " FROM PRODUIT P"
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION"
+                        + " WHERE P.DISPONIBILITE = 1";
+               // System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                Produit prod;
+                while (rs.next()) {
+                    prod = new Produit();
+                    prod.setCodeProduit(rs.getString("CODE_PRODUIT"));
+                    prod.setProduit(rs.getString("PRODUIT"));
+                    prod.setDateRelease(rs.getString("DATE_RELEASE"));
+                    prod.setPrix(rs.getDouble("PRIX"));
+                    prod.setPlateforme(rs.getString("PLATEFORME"));
+                    prod.setEditeur(rs.getString("ID_EDITEUR"));
+                    prod.setEdition(rs.getString("ID_EDITION"));
+                    prod.setLangue(rs.getString("LANGUE"));
+                    prod.setImage(rs.getString("IMAGE"));
+                    prod.setDisponibilite(rs.getShort("DISPONIBILITE"));
+                    prod.setNbconsulte(rs.getInt("NBCONSULT"));
+                    listeProduits.add(prod);
+                }
+                return listeProduits;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeProduits;
+    } 
     
     
     
