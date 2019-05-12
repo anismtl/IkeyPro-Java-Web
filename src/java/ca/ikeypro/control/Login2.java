@@ -34,7 +34,7 @@ public class Login2 extends HttpServlet {
             String courriel = request.getParameter("user");
             String pw = request.getParameter("pass");
             String location = "/";
-            String Resultat = ClientDAO.find(courriel, pw);
+            String Resultat = ClientDAO.find2(courriel, pw);
             System.out.println("servlet login:" + Resultat);
 
             switch (Resultat) {
