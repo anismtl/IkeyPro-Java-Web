@@ -7,9 +7,20 @@ package ca.ikeypro.control;
 
 import ca.ikeypro.DAO.Client;
 import ca.ikeypro.DAO.Commande;
+import ca.ikeypro.DAO.CommandeDAO;
 import ca.ikeypro.DAO.LignePanier;
 import java.io.IOException;
+import java.sql.Timestamp;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -23,7 +34,9 @@ import javax.servlet.http.HttpSession;
  * @author Anis
  */
 public class Panier extends HttpServlet {
-
+DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+ Date dateCommande = null;
+//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,6 +49,7 @@ public class Panier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+       
         if (session == null) {
             response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
 
@@ -168,24 +182,40 @@ public class Panier extends HttpServlet {
             if (c !=null){
                 
                 int idClient=c.getIdClient();
-                Commande com=new Commande();
-                com.setIdClient(idClient);
-                com.setDate_commande(date_commande);
+                    Calendar calendar = Calendar.getInstance();
+    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+//-----------------------------
+//  java.util.Date date = new java.util.Date();
+//      long t = date.getTime();
+//      java.sql.Date sqlDate = new java.sql.Date(t);
+//      java.sql.Time sqlTime = new java.sql.Time(t);
+//      java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
+//      System.out.println("sqlDate=" + sqlDate);
+//      System.out.println("sqlTime=" + sqlTime);
+//      System.out.println("sqlTimestamp=" + sqlTimestamp);
+      
+//-------------------------------
                 
-                
+
+               // com.setIdClient(idClient);
+              //  com.setDate_commande(dateCommande);
+                CommandeDAO.insert(idClient, ourJavaDateObject);
+                Commande com=CommandeDAO.getCommande(idClient, ourJavaDateObject);
+                int idcom=com.getId_Commande();
+                System.out.println("ID commande :"+idcom);
             for (int i = 0; i < buylist.size(); i++) {
                 LignePanier anOrder = (LignePanier) buylist.elementAt(i);
                 float price = anOrder.getPrix();
                 int qty = anOrder.getQte();
-                total += (price * qty);
+              //  total += (price * qty);
             }
 
-            //deviner à quoi cela sert ??????
-            total += 0.005;
-            String amount = new Float(total).toString();
-            int n = amount.indexOf('.');
-            amount = amount.substring(0, n + 3);
-            session.setAttribute("total", amount);
+//            //deviner à quoi cela sert ??????
+//          //  total += 0.005;
+//         //   String amount = new Float(total).toString();
+//            int n = amount.indexOf('.');
+//            amount = amount.substring(0, n + 3);
+//            session.setAttribute("total", amount);
 
             //on redirige la requête vers la page de Checkout
             String url = "/checkout.jsp";
