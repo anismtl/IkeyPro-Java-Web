@@ -79,17 +79,13 @@
                         <div class="header_search">
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
-                                    <form action="#" class="header_search_form clearfix">
-                                        <input type="search" required="required" class="header_search_input" placeholder="<fmt:message key="PSearchProducts"/>">
+                                    <form action="Recherche" class="header_search_form clearfix">
+                                        <input type="search" name="rechecheStr" required="required" class="header_search_input" placeholder="<fmt:message key="PSearchProducts"/>">
                                         <div class="custom_dropdown">
                                             <div class="custom_dropdown_list">
-                                                <span class="custom_dropdown_placeholder clc"><fmt:message key="PAllCategories"/></span>
+                                                <span class="custom_dropdown_placeholder clc"><fmt:message key="PRechecheParTout"/></span>
                                                 <i class="fas fa-chevron-down"></i>
                                                 <ul class="custom_list clc">
-                                                    <li><a class="clc" href="#"><fmt:message key="PAllCategories"/></a></li>
-                                                        <c:forEach var = "ligne" items="${ListCat}">
-                                                           <li><a class="clc" href="#"> ${ligne.categorie}</a></li>
-                                                        </c:forEach>
                                                 </ul>
                                             </div>
                                         </div>

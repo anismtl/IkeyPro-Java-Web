@@ -59,6 +59,10 @@
         <servlet-name>MonCompte</servlet-name>
         <servlet-class>ca.ikeypro.control.MonCompte</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Recherche</servlet-name>
+        <servlet-class>ca.ikeypro.control.Recherche</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
@@ -98,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>MonCompte</servlet-name>
         <url-pattern>/MonCompte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Recherche</servlet-name>
+        <url-pattern>/Recherche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
