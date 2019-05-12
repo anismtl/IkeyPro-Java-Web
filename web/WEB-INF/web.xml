@@ -63,6 +63,22 @@
         <servlet-name>Recherche</servlet-name>
         <servlet-class>ca.ikeypro.control.Recherche</servlet-class>
     </servlet>
+     <context-param>
+        <param-name>authtoken</param-name>
+        <param-value>FBGca0EFcEtSytTXJ3h6y2FQnNzUI8fIWxlN9ASCcxqX1Ph9kckd07E8j-q</param-value>
+    </context-param>
+    <context-param>
+        <param-name>posturl</param-name>
+        <param-value>https://www.sandbox.paypal.com/cgi-bin/webscr </param-value>
+    </context-param>
+    <context-param>
+        <param-name>business</param-name>
+        <param-value>paypal@ikeypro.ca</param-value>
+    </context-param>
+    <context-param>
+        <param-name>returnurl</param-name>
+        <param-value>http://localhost:8084/Paypal/index.jsp</param-value>
+    </context-param>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>

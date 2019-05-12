@@ -27,7 +27,8 @@
         <body>
             <div class="super_container">
                 <!-- Header -->
-                <jsp:include page="WEB-INF/header.jsp"/>
+               
+                <jsp:include page="WEB-INF/jspf/header.jsp"/>
 
                 <!-- Banner -->
                 <div class="banner">

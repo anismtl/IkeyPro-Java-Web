@@ -34,9 +34,11 @@ import javax.servlet.http.HttpSession;
  * @author Anis
  */
 public class Panier extends HttpServlet {
-DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
- Date dateCommande = null;
+
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    Date dateCommande = null;
 //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,19 +51,19 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-       
+
         if (session == null) {
             response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
 
         }
         response.setContentType("text/html;charset=UTF-8");
-        
+
         Vector buylist = (Vector) session.getAttribute("panier");
         String action = request.getParameter("action");
 
         if (!action.equals("CHECKOUT")) {
             float total = 0;
-        session.setAttribute("total", total);
+            session.setAttribute("total", total);
             if (action.equals("DELETE")) {
 
                 //on récupère l'indice de l'item à supprimer  
@@ -109,12 +111,39 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
 
+            } else if (action.equals("CONFIRM")) {
+                String st = request.getParameter("st");
+                String tx = request.getParameter("tx");
+                String cc = request.getParameter("cc");
+                String amt = request.getParameter("amt");
+                System.out.println("TX: " + tx);
+                System.out.println("ST: " + st);
+                System.out.println("ST: " + amt + "" + cc);
+                if (st.equals("Completed")) {
+                    buylist.removeAllElements();
+                    total = 0;
+                    String url = "/WEB-INF/confirmation.jsp";
+                    request.setAttribute("tx", tx);
+                    request.setAttribute("st", st);
+                    request.setAttribute("cc", cc);
+                    request.setAttribute("amt", amt);
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher(url);
+                    rd.forward(request, response);
+
+                } else {
+                    String url = "/WEB-INF/erreur.jsp";
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher(url);
+                    rd.forward(request, response);
+                }
+
             } else if (action.equals("ADD")) {
 
                 //booleen qui va être utilisé pour vérifier si l'item est déjà 
                 //dans le panier
                 boolean match = false;
-                LignePanier aCD = getProduit(request);
+                LignePanier aProduit = getProduit(request);
 
                 //si panier inexistant on va le créer(cas du 1er item à ajouter)
                 if (buylist == null) {
@@ -123,7 +152,7 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                     buylist = new Vector();
 
                     //on ajoute le premier CD
-                    buylist.addElement(aCD);
+                    buylist.addElement(aProduit);
 
                     //si le panier existe déjà (buylist non null) 
                 } else {
@@ -136,11 +165,11 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                         LignePanier cd = (LignePanier) buylist.elementAt(i);
 
                         // si on trouve l'item dans le panier
-                        if (cd.getCodeProduit().equals(aCD.getCodeProduit())) {
+                        if (cd.getCodeProduit().equals(aProduit.getCodeProduit())) {
 
                             //on va modifier la quantité en lui ajoutantant la
                             // nouvelle quantité
-                            cd.setQte(cd.getQte() + aCD.getQte());
+                            cd.setQte(cd.getQte() + aProduit.getQte());
                             //  cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
 ////
 ////              //on replace l'item dans le panier
@@ -154,7 +183,7 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 //        
                     if (!match) //on ajoute l'item au panier
                     {
-                        buylist.addElement(aCD);
+                        buylist.addElement(aProduit);
                     }
                 }
                 total = 0;
@@ -170,45 +199,29 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
-            
-            
-        }
-            
+
+            }
 
         } else if (action.equals("CHECKOUT")) {
 
             //on va calculer le prix total
-            Client c=(Client) session.getAttribute("client");
-            if (c !=null){
-                
-                int idClient=c.getIdClient();
-                    Calendar calendar = Calendar.getInstance();
-    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-//-----------------------------
-//  java.util.Date date = new java.util.Date();
-//      long t = date.getTime();
-//      java.sql.Date sqlDate = new java.sql.Date(t);
-//      java.sql.Time sqlTime = new java.sql.Time(t);
-//      java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
-//      System.out.println("sqlDate=" + sqlDate);
-//      System.out.println("sqlTime=" + sqlTime);
-//      System.out.println("sqlTimestamp=" + sqlTimestamp);
-      
-//-------------------------------
-                
+            Client c = (Client) session.getAttribute("client");
+            if (c != null) {
 
-               // com.setIdClient(idClient);
-              //  com.setDate_commande(dateCommande);
+                int idClient = c.getIdClient();
+                Calendar calendar = Calendar.getInstance();
+                java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+
                 CommandeDAO.insert(idClient, ourJavaDateObject);
-                Commande com=CommandeDAO.getCommande(idClient, ourJavaDateObject);
-                int idcom=com.getId_Commande();
-                System.out.println("ID commande :"+idcom);
-            for (int i = 0; i < buylist.size(); i++) {
-                LignePanier anOrder = (LignePanier) buylist.elementAt(i);
-                float price = anOrder.getPrix();
-                int qty = anOrder.getQte();
-              //  total += (price * qty);
-            }
+                Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
+                int idcom = com.getId_Commande();
+                System.out.println("ID commande :" + idcom);
+                for (int i = 0; i < buylist.size(); i++) {
+                    LignePanier anOrder = (LignePanier) buylist.elementAt(i);
+                    float price = anOrder.getPrix();
+                    int qty = anOrder.getQte();
+                    //  total += (price * qty);
+                }
 
 //            //deviner à quoi cela sert ??????
 //          //  total += 0.005;
@@ -216,32 +229,26 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 //            int n = amount.indexOf('.');
 //            amount = amount.substring(0, n + 3);
 //            session.setAttribute("total", amount);
-
-            //on redirige la requête vers la page de Checkout
-            String url = "/checkout.jsp";
-            ServletContext sc = getServletContext();
-            RequestDispatcher rd = sc.getRequestDispatcher(url);
-            rd.forward(request, response);
-            } else{
+                //on redirige la requête vers la page de Checkout
+                String url = "/checkout.jsp";
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher(url);
+                rd.forward(request, response);
+            } else {
                 String url = "/login.jsp";
                 session.setAttribute("origine", "ch");
-            ServletContext sc = getServletContext();
-            RequestDispatcher rd = sc.getRequestDispatcher(url);
-            rd.forward(request, response); 
-               // System.out.println("forward origine ch a faire");
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher(url);
+                rd.forward(request, response);
+                // System.out.println("forward origine ch a faire");
 
             }
-            
 
-        } 
+        }
     }
 
-    //méthode utilitaire qui sert à récupérer les différentes
-    //parties d'un item (CD)choisi de la liste (séparéespar le |)
-    // et retourne un objet de type CD qui va être utlisé par la servlet
     private LignePanier getProduit(HttpServletRequest req) {
-        //imagine if all this was in a scriptlet...ugly, eh?
-        //on récupère l'item choisi par l'utilisateur dans la liste
+
         String id = req.getParameter("id");
         String name = req.getParameter("name");
 
@@ -250,7 +257,7 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         String prix = req.getParameter("prix");
         String image = req.getParameter("image");
 
-        //on crée un objet CD avec les informations et on le retourne
+        //on crée un objet Lignepanier avec les informations et on les retourne
         // à la servlet
         LignePanier p = new LignePanier();
         p.setCodeProduit(id);
@@ -258,10 +265,7 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         p.setQte(new Integer(qty).intValue());
         p.setPrix(new Float(prix).floatValue());
         p.setImage(image);
-//    cd.setArtist(artist);
-//    cd.setCountry(country);
-//    cd.setPrice((new Float(price)).floatValue());
-//    cd.setQuantity((new Integer(qty)).intValue());
+
         return p;
     }
 
