@@ -38,10 +38,10 @@ public class MyServletContextListener implements ServletContextListener {
 
         List<Editeur> ListeEditeurs = EditeurDAO.getListeEditeur();
         sce.getServletContext().setAttribute("ListeEditeurs", ListeEditeurs);
-        
+
         List<Produit> ListeLastDispo = ProduitDAO.getListeDesProduitsByDispo();
         sce.getServletContext().setAttribute("ListeLastDispo", ListeLastDispo);
-        
+
         List<Edition> ListeEdition = EditionDAO.getListeEdition();
         sce.getServletContext().setAttribute("ListeEdition", ListeEdition);
 
@@ -50,8 +50,6 @@ public class MyServletContextListener implements ServletContextListener {
 
         List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
         sce.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
-        
-
 
     }
 

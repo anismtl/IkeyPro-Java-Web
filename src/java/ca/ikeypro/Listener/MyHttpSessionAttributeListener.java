@@ -10,23 +10,24 @@ import javax.servlet.http.HttpSessionBindingEvent;
  */
 @WebListener
 public class MyHttpSessionAttributeListener implements HttpSessionAttributeListener {
+
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
 
     @Override
     public void attributeAdded(HttpSessionBindingEvent event) {
-        	String attributeName = event.getName();
-		Object attributeValue = event.getValue();
-		System.out.println("[Session Attribute] Added : " + attributeName + " : " + attributeValue);
+        String attributeName = event.getName();
+        Object attributeValue = event.getValue();
+        System.out.println("[Session Attribute] Added : " + attributeName + " : " + attributeValue);
     }
 
     @Override
     public void attributeRemoved(HttpSessionBindingEvent event) {
-        	String attributeName = event.getName();
-		Object attributeValue = event.getValue();
-		System.out.println("Session Attribute Removed : " + attributeName + " : " + attributeValue);
+        String attributeName = event.getName();
+        Object attributeValue = event.getValue();
+        System.out.println("Session Attribute Removed : " + attributeName + " : " + attributeValue);
     }
 
     @Override
     public void attributeReplaced(HttpSessionBindingEvent event) {
-    }    
+    }
 }

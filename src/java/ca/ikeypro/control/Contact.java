@@ -7,16 +7,11 @@ package ca.ikeypro.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ca.ikeypro.Utilitaire.MailManager;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -45,7 +40,7 @@ public class Contact extends HttpServlet {
             MailManager.SendContactMail(email, from, telephone, mess);
             String confirmation = "Mail envoyé !";
             request.setAttribute("confirmation", confirmation);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/contact.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/contact.jsp");
             dispatcher.forward(request, response);
         }
     }

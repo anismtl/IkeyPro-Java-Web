@@ -31,7 +31,7 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String Url = "";
+            String Url;
             HttpSession session = request.getSession();
             String nomClient = request.getParameter("nom");
             String prenomClient = request.getParameter("prenom");

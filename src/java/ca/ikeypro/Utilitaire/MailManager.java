@@ -32,10 +32,10 @@ public class MailManager {
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
         generateMailMessage.setSubject(sujet);
         generateMailMessage.setContent(mess, "text/html");
-        Transport transport = getMailSession.getTransport("smtp");
-        transport.connect("smtp.gmail.com", "ikeyprofessionnel@gmail.com", "iKeyProfessionnel123");
-        transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
-        transport.close();
+        try (Transport transport = getMailSession.getTransport("smtp")) {
+            transport.connect("smtp.gmail.com", "ikeyprofessionnel@gmail.com", "iKeyProfessionnel123");
+            transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+        }
     }
 
     public static void SendConfirmation(String to, String tx, int idCommande, String Montant) {

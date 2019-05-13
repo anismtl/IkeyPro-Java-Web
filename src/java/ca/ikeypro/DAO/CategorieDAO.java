@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Judith
  */
 public class CategorieDAO {
+
     public static ArrayList getListeCategorie() {
         ArrayList listeCategorie = new ArrayList();
         Connection conn;

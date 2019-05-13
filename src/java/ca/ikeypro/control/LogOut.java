@@ -36,10 +36,10 @@ public class LogOut extends HttpServlet {
             HttpSession session = request.getSession();
             session.removeAttribute("client");
             System.out.println("Client deconnecté");
-            
+
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/iKeyPro.jsp");
 
-            dispatcher.forward(request, response);            
+            dispatcher.forward(request, response);
         }
     }
 

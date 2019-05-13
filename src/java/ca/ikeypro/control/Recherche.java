@@ -41,7 +41,7 @@ public class Recherche extends HttpServlet {
             List<Produit> ListProduitsRecheche = ProduitDAO.getListeDesProduitsByName(rechecheStr);
             session.setAttribute("ListProdui", ListProduitsRecheche);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
-            dispatcher.forward(request, response); 
+            dispatcher.forward(request, response);
         }
     }
 

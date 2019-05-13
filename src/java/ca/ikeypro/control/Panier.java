@@ -130,7 +130,7 @@ public class Panier extends HttpServlet {
                         LigneCommandeDAO.insert(i + 1, code, idCommande, qty);
                     }
                     buylist.removeAllElements();
-                   float total = 0;
+                    float total = 0;
                     session.setAttribute("total", total);
                     String url = "/WEB-INF/confirmation.jsp";
                     request.setAttribute("tx", tx);
@@ -180,7 +180,7 @@ public class Panier extends HttpServlet {
                         buylist.addElement(aProduit);
                     }
                 }
-               float total = 0;
+                float total = 0;
                 for (int i = 0; i < buylist.size(); i++) {
                     LignePanier cd = (LignePanier) buylist.elementAt(i);
                     int qte = cd.getQte();
@@ -228,7 +228,7 @@ public class Panier extends HttpServlet {
         String image = req.getParameter("image");
 
         //on crée un objet Lignepanier avec les informations et on les retourne
-        // à la servlet
+       
         LignePanier p = new LignePanier();
         p.setCodeProduit(id);
         p.setProduit(name);

@@ -42,10 +42,11 @@ public class MonCompte extends HttpServlet {
             session.setAttribute("client", client);
             session.setAttribute("couriel", couriel);
             session.setAttribute("pw", pw);
-            if ( client != null){
+            if (client != null) {
                 System.out.println("Le login du client a été un succès:" + client.toString());
-            } else
+            } else {
                 System.out.println("LE CLIENT N'EXISTE PAS!!!");
+            }
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/iKeyPro.jsp");
 

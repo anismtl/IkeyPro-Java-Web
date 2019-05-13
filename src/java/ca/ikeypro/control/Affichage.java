@@ -34,22 +34,34 @@ public class Affichage extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String action = request.getParameter("action");
-            if (action.equals("register")) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/register.jsp");
-                dispatcher.forward(request, response);
-
-            } else if (action.equals("login")) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
-                dispatcher.forward(request, response);
-            }else if (action.equals("contact")) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/contact.jsp");
-                dispatcher.forward(request, response);
-            }  else if (action.equals("blog")) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/blog.jsp");
-                dispatcher.forward(request, response);
-            }else if (action.equals("monCompte")) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/monCompte.jsp");
-                dispatcher.forward(request, response);
+            switch (action) {
+                case "register": {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/register.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+                case "login": {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+                case "contact": {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/contact.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+                case "blog": {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/blog.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+                case "monCompte": {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/monCompte.jsp");
+                    dispatcher.forward(request, response);
+                    break;
+                }
+                default:
+                    break;
             }
 
         }

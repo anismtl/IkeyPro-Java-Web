@@ -30,44 +30,47 @@ public class ListeProduits extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+
             HttpSession session = request.getSession();
             String action = request.getParameter("action");
-            if (action.equals("categorie")) {
-
-                String categorie = request.getParameter("cat");
-
-                List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
-                session.setAttribute("ListProdui", ListeProd);
-                //request.getServletContext().setAttribute("ListProd", ListeProduits);
-
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
-                dispatcher.forward(request, response);
-            } else if (action.equals("editeur")) {
-
-                String editeur = request.getParameter("edit");
-
-                List<Produit> ListeProdEditeur = ProduitDAO.getListeDesProduitsByEditeur(editeur);
-                session.setAttribute("ListeProdEditeur", ListeProdEditeur);
-                //request.getServletContext().setAttribute("ListProd", ListeProduits);
-
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
-                dispatcher.forward(request, response);
-            } else if (action.equals("edition")) {
-
-                String edition = request.getParameter("edition");
-
-                List<Produit> ListeProdEdition = ProduitDAO.getListeDesProduitsByEdition(edition);
-                session.setAttribute("ListeProdEdition", ListeProdEdition);
-
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/edition.jsp");
-                dispatcher.forward(request, response);
-            } else if (action.equals("lastDispo")) {
-                List<Produit> ListeProdLastDispo = ProduitDAO.getListeDesProduitsByDispo();
-                session.setAttribute("ListeProdLastDispo", ListeProdLastDispo);
-
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/lastDispo.jsp");
-                dispatcher.forward(request, response);
+            switch (action) {
+                case "categorie":
+                    {
+                        String categorie = request.getParameter("cat");
+                        List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
+                        session.setAttribute("ListProdui", ListeProd);
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
+                        dispatcher.forward(request, response);
+                        break;
+                    }
+                case "editeur":
+                    {
+                        String editeur = request.getParameter("edit");
+                        List<Produit> ListeProdEditeur = ProduitDAO.getListeDesProduitsByEditeur(editeur);
+                        session.setAttribute("ListeProdEditeur", ListeProdEditeur);
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
+                        dispatcher.forward(request, response);
+                        break;
+                    }
+                case "edition":
+                    {
+                        String edition = request.getParameter("edition");
+                        List<Produit> ListeProdEdition = ProduitDAO.getListeDesProduitsByEdition(edition);
+                        session.setAttribute("ListeProdEdition", ListeProdEdition);
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/edition.jsp");
+                        dispatcher.forward(request, response);
+                        break;
+                    }
+                case "lastDispo":
+                    {
+                        List<Produit> ListeProdLastDispo = ProduitDAO.getListeDesProduitsByDispo();
+                        session.setAttribute("ListeProdLastDispo", ListeProdLastDispo);
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/lastDispo.jsp");
+                        dispatcher.forward(request, response);
+                        break;
+                    }
+                default:
+                    break;
             }
         }
     }
