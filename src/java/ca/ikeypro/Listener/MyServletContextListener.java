@@ -4,6 +4,8 @@ import ca.ikeypro.DAO.Categorie;
 import ca.ikeypro.DAO.CategorieDAO;
 import ca.ikeypro.DAO.Editeur;
 import ca.ikeypro.DAO.EditeurDAO;
+import ca.ikeypro.DAO.Edition;
+import ca.ikeypro.DAO.EditionDAO;
 import ca.ikeypro.DAO.Produit;
 import ca.ikeypro.DAO.ProduitDAO;
 import ca.ikeypro.Utilitaire.DataManager;
@@ -36,6 +38,12 @@ public class MyServletContextListener implements ServletContextListener {
 
         List<Editeur> ListeEditeurs = EditeurDAO.getListeEditeur();
         sce.getServletContext().setAttribute("ListeEditeurs", ListeEditeurs);
+        
+        List<Produit> ListeLastDispo = ProduitDAO.getListeDesProduitsByDispo();
+        sce.getServletContext().setAttribute("ListeLastDispo", ListeLastDispo);
+        
+        List<Edition> ListeEdition = EditionDAO.getListeEdition();
+        sce.getServletContext().setAttribute("ListeEdition", ListeEdition);
 
         List<Produit> ListeMostViewProduits = ProduitDAO.getListeMostViewProduits();
         sce.getServletContext().setAttribute("ListeMostViewProduits", ListeMostViewProduits);
