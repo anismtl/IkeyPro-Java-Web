@@ -34,9 +34,8 @@ public class Panier extends HttpServlet {
 
     DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     Date dateCommande = null;
-   
-//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
 
+//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -75,7 +74,6 @@ public class Panier extends HttpServlet {
                     total = 0;
 
                     session.setAttribute("total", total);
-                    // session.setAttribute("panier", buylist);
                     String url = "/ListeProduits?action=categorie&cat=2";
                     ServletContext sc = getServletContext();
                     RequestDispatcher rd = sc.getRequestDispatcher(url);
@@ -89,7 +87,6 @@ public class Panier extends HttpServlet {
                         total += qte * prix;
                     }
                     session.setAttribute("total", total);
-                    // session.setAttribute("panier", buylist);
                     String url = "/panier.jsp";
                     ServletContext sc = getServletContext();
                     RequestDispatcher rd = sc.getRequestDispatcher(url);
@@ -103,7 +100,6 @@ public class Panier extends HttpServlet {
                 total = 0;
 
                 session.setAttribute("total", total);
-                // session.setAttribute("panier", buylist);
                 String url = "/ListeProduits?action=categorie&cat=2";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
@@ -119,28 +115,27 @@ public class Panier extends HttpServlet {
                 System.out.println("ST: " + amt + "" + cc);
                 if (st.equals("Completed")) {
 
-                    Client   c = (Client) session.getAttribute("client");
+                    Client c = (Client) session.getAttribute("client");
                     int idClient = c.getIdClient();
-                    
-                    Calendar calendar = Calendar.getInstance();
-                    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 
-                    CommandeDAO.insert(idClient, ourJavaDateObject);
-                  //  Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
-                 //   int idcom = com.getId_Commande();
-                   int idcom = CommandeDAO.getCommandeId(idClient, ourJavaDateObject);
-                    MailManager.SendConfirmation(c.getCourriel(), tx, idcom,amt);
-                    System.out.println("ID commande :" + idcom);
+                    Calendar calendar = Calendar.getInstance();
+                    java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
+
+                    CommandeDAO.insert(idClient, date);
+
+                    int idCommande = CommandeDAO.getCommandeId(idClient, date);
+                    MailManager.SendConfirmation(c.getCourriel(), tx, idCommande, amt);
+                    System.out.println("ID commande :" + idCommande);
                     for (int i = 0; i < buylist.size(); i++) {
                         LignePanier anOrder = (LignePanier) buylist.elementAt(i);
-                        String code =anOrder.getCodeProduit();
+                        String code = anOrder.getCodeProduit();
                         float price = anOrder.getPrix();
                         int qty = anOrder.getQte();
-                        //  total += (price * qty);
-                        LigneCommandeDAO.insert(i+1, code, idcom, qty);
+                        LigneCommandeDAO.insert(i + 1, code, idCommande, qty);
                     }
                     buylist.removeAllElements();
                     total = 0;
+                    session.setAttribute("total", total);
                     String url = "/WEB-INF/confirmation.jsp";
                     request.setAttribute("tx", tx);
                     request.setAttribute("st", st);
@@ -159,43 +154,27 @@ public class Panier extends HttpServlet {
 
             } else if (action.equals("ADD")) {
 
-                //booleen qui va être utilisé pour vérifier si l'item est déjà 
-                //dans le panier
                 boolean match = false;
                 LignePanier aProduit = getProduit(request);
 
-                //si panier inexistant on va le créer(cas du 1er item à ajouter)
                 if (buylist == null) {
 
-                    //on crée le panier
                     buylist = new Vector();
 
-                    //on ajoute le premier CD
                     buylist.addElement(aProduit);
 
-                    //si le panier existe déjà (buylist non null) 
                 } else {
 
-                    //on vérifie si le CD est déjà dans le panier?
-                    //pour ne pas l'ajouter une autre fois 
                     for (int i = 0; i < buylist.size(); i++) {
 
-                        // on récupère l'item à la position i
                         LignePanier cd = (LignePanier) buylist.elementAt(i);
 
-                        // si on trouve l'item dans le panier
                         if (cd.getCodeProduit().equals(aProduit.getCodeProduit())) {
 
-                            //on va modifier la quantité en lui ajoutantant la
-                            // nouvelle quantité
                             cd.setQte(cd.getQte() + aProduit.getQte());
-                            //  cd.setQuantity(cd.getQuantity()+aCD.getQuantity());
-////
-////              //on replace l'item dans le panier
+
                             buylist.setElementAt(cd, i);
-////
-////              //on active la variable qui montre qu'on a trouvé l'item
-////              //dans le panier
+
                             match = true;
                         } //end of if name matches
                     } // end of for
@@ -223,31 +202,9 @@ public class Panier extends HttpServlet {
 
         } else if (action.equals("CHECKOUT")) {
 
-            //on va calculer le prix total
-         Client   c = (Client) session.getAttribute("client");
+            Client c = (Client) session.getAttribute("client");
             if (c != null) {
 
-//                int idClient = c.getIdClient();
-//                Calendar calendar = Calendar.getInstance();
-//                java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-//
-//                CommandeDAO.insert(idClient, ourJavaDateObject);
-//                Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
-//                int idcom = com.getId_Commande();
-//                System.out.println("ID commande :" + idcom);
-//                for (int i = 0; i < buylist.size(); i++) {
-//                    LignePanier anOrder = (LignePanier) buylist.elementAt(i);
-//                    float price = anOrder.getPrix();
-//                    int qty = anOrder.getQte();
-//                    //  total += (price * qty);
-//                }
-//            //deviner à quoi cela sert ??????
-//          //  total += 0.005;
-//         //   String amount = new Float(total).toString();
-//            int n = amount.indexOf('.');
-//            amount = amount.substring(0, n + 3);
-//            session.setAttribute("total", amount);
-                //on redirige la requête vers la page de Checkout
                 String url = "/checkout.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
@@ -258,7 +215,6 @@ public class Panier extends HttpServlet {
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
-                // System.out.println("forward origine ch a faire");
 
             }
 
