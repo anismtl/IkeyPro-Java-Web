@@ -29,6 +29,7 @@ public class Ajax extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws javax.mail.MessagingException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, MessagingException {
@@ -37,65 +38,80 @@ public class Ajax extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
         response.setContentType("application/json");
-        if (action.equals("inscription")) {
-            String email = request.getParameter("courriel");
-            String resultat = NewsletterDAO.Inscription(email);
-            Gson gson = new Gson();
-            String json = gson.toJson(resultat);
-            out.print(json);
-            out.flush();
-        } else if (action.equals("desabonner")) {
-            String email = request.getParameter("courriel");
-            String resultat = NewsletterDAO.Desabonner(email);
-            Gson gson = new Gson();
-            String json = gson.toJson(resultat);
-            out.print(json);
-            out.flush();
-        } else if (action.equals("P")) {
-            List<Produit> ListeMostViewProduits = (List<Produit>) request.getServletContext().getAttribute("ListeMostViewProduits");
-            Gson gson = new Gson();
-            String json = gson.toJson(ListeMostViewProduits);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            out.print(json);
-            out.flush();
-        } else if (action.equals("C")) {
-            List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
-            Gson gson = new Gson();
-            String json = gson.toJson(ListeCat);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            out.print(json);
-            out.flush();
-        } else if (action.equals("L")) {
-            String langue = request.getParameter("langue");
-            if (langue.equals("es")) {
-                System.out.println("langue recu:" + langue);
-                session.removeAttribute("lang");
-                session.setAttribute("lang", "es");
-                Gson gson = new Gson();
-                String json = gson.toJson("ok");
-                out.print(json);
-                out.flush();
-
-            } else if (langue.equals("fr")) {
-                System.out.println("langue recu:" + langue);
-                session.setAttribute("lang", "fr");
-                Gson gson = new Gson();
-                String json = gson.toJson("ok");
-                out.print(json);
-                out.flush();
-
-            } else if (langue.equals("en")) {
-                System.out.println("langue recu:" + langue);
-                session.setAttribute("lang", "en");
-                Gson gson = new Gson();
-                String json = gson.toJson("ok");
-                out.print(json);
-                out.flush();
-
-            }
-
+        switch (action) {
+            case "Inscription":
+                {
+                    String email = request.getParameter("courriel");
+                    String resultat = NewsletterDAO.Inscription(email);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resultat);
+                    out.print(json);
+                    out.flush();
+                    break;
+                }
+            case "Surpression":
+                {
+                    String email = request.getParameter("courriel");
+                    String resultat = NewsletterDAO.Desabonner(email);
+                    System.out.println(resultat);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resultat);
+                    out.print(json);
+                    out.flush();
+                    break;
+                }
+            case "Produits":
+                {
+                    List<Produit> ListeMostViewProduits = (List<Produit>) request.getServletContext().getAttribute("ListeMostViewProduits");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(ListeMostViewProduits);
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    out.print(json);
+                    out.flush();
+                    break;
+                }
+            case "Categories":
+                {
+                    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(ListeCat);
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    out.print(json);
+                    out.flush();
+                    break;
+                }
+            case "ChangeLangue":
+                String langue = request.getParameter("langue");
+                if (langue.equals("es")) {
+                    System.out.println("langue recu:" + langue);
+                    session.removeAttribute("lang");
+                    session.setAttribute("lang", "es");
+                    Gson gson = new Gson();
+                    String json = gson.toJson("ok");
+                    out.print(json);
+                    out.flush();
+                    
+                } else if (langue.equals("fr")) {
+                    System.out.println("langue recu:" + langue);
+                    session.setAttribute("lang", "fr");
+                    Gson gson = new Gson();
+                    String json = gson.toJson("ok");
+                    out.print(json);
+                    out.flush();
+                    
+                } else if (langue.equals("en")) {
+                    System.out.println("langue recu:" + langue);
+                    session.setAttribute("lang", "en");
+                    Gson gson = new Gson();
+                    String json = gson.toJson("ok");
+                    out.print(json);
+                    out.flush();
+                    
+                }   break;
+            default:
+                break;
         }
 
     }

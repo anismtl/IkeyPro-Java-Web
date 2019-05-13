@@ -9,12 +9,7 @@ function changeLangue(param) {
 
     var val;
     val = param;
-    //alert(val)
-    // val1 = document.getElementById("llang").innerHTML;
-    //val=document.getElementsByTagName("A")[2].innerHTML;
-    //  alert(val);
 
-    // document.getElementById("resultat").innerHTML = " ";
     var xhr = new XMLHttpRequest();
     var reponseJSON, resultat;
     xhr.onreadystatechange = function () {
@@ -29,7 +24,7 @@ function changeLangue(param) {
             }
         }
     }
-    xhr.open("GET", "Ajax?action=L&langue=" + val, true);
+    xhr.open("GET", "Ajax?action=ChangeLangue&langue=" + val, true);
     xhr.send();
 
 

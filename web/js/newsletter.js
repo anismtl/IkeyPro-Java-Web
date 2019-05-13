@@ -18,11 +18,11 @@ function inscription() {
             if (this.readyState == 4 && this.status == 200) {
                 reponseJSON = this.responseText;
                 liste = JSON.parse(reponseJSON);
-                 s = '<br/><a color="red"><b>' + liste + '</b></a> ';
+                s = '<br/><a color="red"><b>' + liste + '</b></a> ';
                 document.getElementById("resultat").innerHTML = s;
             }
         }
-        xhr.open("POST", "Ajax?action=inscription&courriel=" + mail, true);
+        xhr.open("GET", "Ajax?action=Inscription&courriel=" + mail, true);
         xhr.send();
     } else if (mail == "") {
         document.getElementById("resultat").innerHTML = "<br/><a><b>Veuilliz saisir votre courriel</b></a>";
@@ -48,11 +48,11 @@ function desabonner() {
             if (this.readyState == 4 && this.status == 200) {
                 reponseJSON = this.responseText;
                 liste = JSON.parse(reponseJSON);
-                 s = '<br/><a color="red"><b>' + liste + '</b></a> ';
+                s = '<br/><a color="red"><b>' + liste + '</b></a> ';
                 document.getElementById("resultat").innerHTML = s;
             }
         }
-        xhr.open("POST", "Ajax?action=desabonner&courriel=" + mail, true);
+        xhr.open("GET", "Ajax?action=Surpression&courriel=" + mail, true);
         xhr.send();
     } else if (mail == "") {
         document.getElementById("resultat").innerHTML = "<br/><a><b>Veuilliz saisir votre courriel</b></a>";

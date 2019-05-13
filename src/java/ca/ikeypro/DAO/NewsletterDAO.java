@@ -32,7 +32,7 @@ public class NewsletterDAO {
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(req);
                 message = "Courriel inscrit a la newsletter.";
-                MailManager.SendNewsletterInscrisption(Courriel);
+               
             } catch (SQLException ex) {
 
                 if (ex instanceof SQLIntegrityConstraintViolationException) {
@@ -46,6 +46,7 @@ public class NewsletterDAO {
 
             }
         }
+        MailManager.SendNewsletterInscrisption(Courriel);
         return message;
     }
 
@@ -63,7 +64,7 @@ public class NewsletterDAO {
 
                 if (r == 1) {
                     message = "Courriel supprimé de la newsletter.";
-                    MailManager.SendNewsletterSupression(Courriel);
+                    
                 } else {
                     message = "Ce Courriel n'existe pas dans nos listes";
                 }
@@ -75,6 +76,7 @@ public class NewsletterDAO {
 
             }
         }
+        MailManager.SendNewsletterSupression(Courriel);
         return message;
     }
 

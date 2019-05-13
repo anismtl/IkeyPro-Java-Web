@@ -1,9 +1,4 @@
 window.onload = Loading;
-//document.getElementById("bChercher").addEventListener("click",chercher);
-//document.getElementById("Des").addEventListener("pointerenter",dest_List);
-//document.getElementById("Port").addEventListener("pointerenter",port_List);
-//document.getElementById("Des").addEventListener("change",port_List);
-
 
 function Loading() {
     getMostViewProduitList();
@@ -26,23 +21,15 @@ function getMostViewProduitList() {
             // v = "";
             for (i = 0; i < liste.length; i++) {
 
-                // s += '<div class="owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/'+liste[i].image+'"></div><div class="viewed_content text-center"><div class="viewed_price">$"'+ liste[i].prix + '"</div><div class="viewed_name"><a href="GererProduit?id =' + liste[i].codeProduit + '">' + liste[i].produit + '</a></div></div><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div></div></div>';
-
-
                 var v = $('<div class="col-md-2 owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/' + liste[i].image + '" alt=""></div><div class="viewed_content text-center"><div class="viewed_price">$' + liste[i].prix + '</div><div class="viewed_name"><a href="GererProduit?id=' + liste[i].codeProduit + '">' + liste[i].produit + '</a></div></div><ul class="item_marks"><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div>');
                 v.appendTo('#des');
             }
-            // document.getElementsByClassName("owl-carousel owl-theme viewed_slider").innerHTML=v;
-            //  document.getElementById("des").innerHTML=s;
-
-            // port_List();
-
 
         } else if (this.readyState == 4) {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("POST", "Ajax?action=P", true);
+    xhr.open("GET", "Ajax?action=Produits", true);
     xhr.send();
 }
 
@@ -69,7 +56,7 @@ function getCategoriesList() {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("POST", "Ajax?action=C", true);
+    xhr.open("GET", "Ajax?action=Categories", true);
     xhr.send();
 }
 
