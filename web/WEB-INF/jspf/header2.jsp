@@ -87,7 +87,7 @@
                                         <div class="custom_dropdown">
                                             <div class="custom_dropdown_list">
                                                 <span class="custom_dropdown_placeholder clc"><fmt:message key="PRechecheParTout"/></span>
-                                                <i class="fas fa-chevron-down"></i>
+                                               
                                                 <ul class="custom_list clc">
                                                 </ul>
                                             </div>
