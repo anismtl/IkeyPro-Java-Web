@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page errorPage="/WEB-INF/erreur/erreur.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
@@ -35,7 +36,7 @@
         <body>
             <div class="super_container">
                 <!-- Header -->
-                <jsp:include page="WEB-INF/jspf/header2.jsp"/>
+                <jsp:include page="jspf/header2.jsp"/>
                 <!-- Home -->
                 <div class="home">
                     <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
@@ -211,9 +212,9 @@
                         </div>
                     </div>
                     <!-- Newsletter -->
-                    <jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
+                    <jsp:include page="jspf/newsletter.jsp"/>
                     <!-- Footer -->
-                    <jsp:include page="WEB-INF/jspf/footer.jsp"/>
+                    <jsp:include page="jspf/footer.jsp"/>
                     <script src="js/langues.js"></script>
                     <script src="js/newsletter.js"></script>
                     <script src="js/jquery-3.3.1.min.js"></script>

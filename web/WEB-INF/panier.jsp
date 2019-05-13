@@ -4,6 +4,7 @@
     Author     : Anis
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page errorPage="/WEB-INF/erreur/erreur.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />

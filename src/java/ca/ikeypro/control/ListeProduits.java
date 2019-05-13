@@ -53,16 +53,16 @@ public class ListeProduits extends HttpServlet {
 
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
                 dispatcher.forward(request, response);
-            }else if (action.equals("edition")) {
+            } else if (action.equals("edition")) {
 
                 String edition = request.getParameter("edition");
 
                 List<Produit> ListeProdEdition = ProduitDAO.getListeDesProduitsByEdition(edition);
                 session.setAttribute("ListeProdEdition", ListeProdEdition);
 
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/edition.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/edition.jsp");
                 dispatcher.forward(request, response);
-            }else if (action.equals("lastDispo")) {
+            } else if (action.equals("lastDispo")) {
                 List<Produit> ListeProdLastDispo = ProduitDAO.getListeDesProduitsByDispo();
                 session.setAttribute("ListeProdLastDispo", ListeProdLastDispo);
 

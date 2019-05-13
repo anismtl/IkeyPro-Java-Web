@@ -25,12 +25,12 @@
         </head>
 
         <body>
-
+            <%@ page isErrorPage="true" %>
             <div class="super_container">
 
                 <!-- Header -->
 
-                <jsp:include page="jspf/header2.jsp"/>
+                <jsp:include page="../jspf/header2.jsp"/>
 
                 <!-- Single Blog Post -->
 
@@ -40,18 +40,18 @@
                             <div class="col-lg-8 offset-lg-2">
                                 <div class="single_post_title"></div>
                                 <div class="single_post_text">
-                                   
+
 
                                     <div class="single_post_quote text-center">
                                         <div class="quote_image"><img src="images/quote.png" alt=""></div>
                                         <div class="quote_name">OUUPS !</div>
-                                        <div class="quote_text"> <b>Ereur Inconnu!</b> ${st}</div>
-                                                                        
-                                        
-                                        
+                                        <div class="quote_text"> <b>Erreur Inconnu!</b> ${st}</div>
+
+
+
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -63,10 +63,10 @@
 
                 <!-- Newsletter -->
 
-                <jsp:include page="jspf/newsletter.jsp"/>
+                <jsp:include page="../jspf/newsletter.jsp"/>
 
                 <!-- Footer -->
-                <jsp:include page="jspf/footer.jsp"/>
+                <jsp:include page="../jspf/footer.jsp"/>
                 <script src="js/langues.js"></script>
                 <script src="js/newsletter.js"></script>
                 <script src="js/jquery-3.3.1.min.js"></script>

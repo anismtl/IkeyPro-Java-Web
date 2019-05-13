@@ -1,3 +1,4 @@
+<%@ page errorPage="/WEB-INF/erreur/erreur.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
