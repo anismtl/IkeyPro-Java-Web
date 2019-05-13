@@ -47,7 +47,7 @@ public class MonCompte extends HttpServlet {
             } else
                 System.out.println("LE CLIENT N'EXISTE PAS!!!");
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/iKeyPro.jsp");
 
             dispatcher.forward(request, response);
         }

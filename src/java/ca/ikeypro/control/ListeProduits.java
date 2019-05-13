@@ -41,7 +41,7 @@ public class ListeProduits extends HttpServlet {
                 session.setAttribute("ListProdui", ListeProd);
                 //request.getServletContext().setAttribute("ListProd", ListeProduits);
 
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                 dispatcher.forward(request, response);
             } else if (action.equals("editeur")) {
 
@@ -51,7 +51,7 @@ public class ListeProduits extends HttpServlet {
                 session.setAttribute("ListeProdEditeur", ListeProdEditeur);
                 //request.getServletContext().setAttribute("ListProd", ListeProduits);
 
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/editeurs.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
                 dispatcher.forward(request, response);
             }else if (action.equals("edition")) {
 

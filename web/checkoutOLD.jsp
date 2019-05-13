@@ -118,7 +118,7 @@
                                         </div>
 
                                         <div class="cart_buttons">
-                                            <a type="button" class="btn btn-lg btn-light" href="panier.jsp" role="button">Panier</a>
+                                            <a type="button" class="btn btn-lg btn-light" href="Panier?action=AFFICHER" role="button">Panier</a>
                                             <button type="submit" class="button cart_button_checkout">PayPal Payer</button>
                                         </div>
                                     </form>

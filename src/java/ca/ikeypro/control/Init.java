@@ -52,7 +52,7 @@ public class Init extends HttpServlet {
                 session.setAttribute("langD", "fr");
             }
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iKeyPro.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/iKeyPro.jsp");
 
             dispatcher.forward(request, response);
         }

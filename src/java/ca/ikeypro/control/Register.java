@@ -53,7 +53,7 @@ public class Register extends HttpServlet {
                     session.removeAttribute("client");
                     Client c = ClientDAO.getClient(courriel);
                     session.setAttribute("client", c);
-                    Url = "/iKeyPro.jsp";
+                    Url = "/WEB-INF/iKeyPro.jsp";
                     ServletContext sc = getServletContext();
                     RequestDispatcher rd = sc.getRequestDispatcher(Url);
                     rd.forward(request, response);

@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="cart_content">
                                             <div class="cart_text"><a href="<c:if test="${empty panier}">#</c:if>
-                                                                  <c:if test="${!empty panier}">panier.jsp</c:if>"><fmt:message key="PCart"/></a></div>
+                                                                  <c:if test="${!empty panier}">Panier?action=AFFICHER</c:if>"><fmt:message key="PCart"/></a></div>
                                         <div class="cart_price"> <c:if test="${empty total}">0$</c:if>
                                             <c:if test="${!empty total}">${total}$</c:if>   
                                             </div>

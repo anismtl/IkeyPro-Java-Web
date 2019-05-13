@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Judith
  */
-@WebFilter(urlPatterns = {"/checkout.jsp"})
+@WebFilter(urlPatterns = {"/WEB-INF/checkout.jsp"})
 public class FilterAuthentication implements Filter{
     private static final Logger LOG = Logger.getLogger(MyServletContextListener.class.getName());
 

@@ -27,8 +27,6 @@ import javax.servlet.http.HttpSession;
  */
 public class Panier extends HttpServlet {
 
-
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,7 +41,7 @@ public class Panier extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (session == null) {
-            response.sendRedirect("WEB-INF/erreurExceptions/erreurOUPS.jsp");
+            response.sendRedirect("WEB-INF/erreur/erreur.jsp");
 
         }
         response.setContentType("text/html;charset=UTF-8");
@@ -52,8 +50,8 @@ public class Panier extends HttpServlet {
         String action = request.getParameter("action");
 
         if (!action.equals("CHECKOUT")) {
-            float total = 0;
-            session.setAttribute("total", total);
+            //  float total = 0;
+            //  session.setAttribute("total", total);
             if (action.equals("DELETE")) {
 
                 //on récupère l'indice de l'item à supprimer  
@@ -64,7 +62,7 @@ public class Panier extends HttpServlet {
                 buylist.removeElementAt(d);
                 int nb = buylist.size();
                 if (nb == 0) {
-                    total = 0;
+                    float total = 0;
 
                     session.setAttribute("total", total);
                     String url = "/ListeProduits?action=categorie&cat=2";
@@ -72,7 +70,7 @@ public class Panier extends HttpServlet {
                     RequestDispatcher rd = sc.getRequestDispatcher(url);
                     rd.forward(request, response);
                 } else {
-                    total = 0;
+                    float total = 0;
                     for (int i = 0; i < buylist.size(); i++) {
                         LignePanier cd = (LignePanier) buylist.elementAt(i);
                         int qte = cd.getQte();
@@ -80,7 +78,7 @@ public class Panier extends HttpServlet {
                         total += qte * prix;
                     }
                     session.setAttribute("total", total);
-                    String url = "/panier.jsp";
+                    String url = "/WEB-INF/panier.jsp";
                     ServletContext sc = getServletContext();
                     RequestDispatcher rd = sc.getRequestDispatcher(url);
                     rd.forward(request, response);
@@ -90,14 +88,19 @@ public class Panier extends HttpServlet {
                 // si clic sur ajouter au panier
             } else if (action.equals("VIDER")) {
                 buylist.removeAllElements();
-                total = 0;
+                float total = 0;
 
                 session.setAttribute("total", total);
-                String url = "/ListeProduits?action=categorie&cat=2";
+                String url = "/WEB-INF/iKeyPro.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
 
+            } else if (action.equals("AFFICHER")) {
+                String url = "/WEB-INF/panier.jsp";
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher(url);
+                rd.forward(request, response);
             } else if (action.equals("CONFIRM")) {
                 String st = request.getParameter("st");
                 String tx = request.getParameter("tx");
@@ -127,7 +130,7 @@ public class Panier extends HttpServlet {
                         LigneCommandeDAO.insert(i + 1, code, idCommande, qty);
                     }
                     buylist.removeAllElements();
-                    total = 0;
+                   float total = 0;
                     session.setAttribute("total", total);
                     String url = "/WEB-INF/confirmation.jsp";
                     request.setAttribute("tx", tx);
@@ -139,7 +142,7 @@ public class Panier extends HttpServlet {
                     rd.forward(request, response);
 
                 } else {
-                    String url = "/WEB-INF/erreur.jsp";
+                    String url = "/WEB-INF/erreur/erreur.jsp";
                     ServletContext sc = getServletContext();
                     RequestDispatcher rd = sc.getRequestDispatcher(url);
                     rd.forward(request, response);
@@ -177,7 +180,7 @@ public class Panier extends HttpServlet {
                         buylist.addElement(aProduit);
                     }
                 }
-                total = 0;
+               float total = 0;
                 for (int i = 0; i < buylist.size(); i++) {
                     LignePanier cd = (LignePanier) buylist.elementAt(i);
                     int qte = cd.getQte();
@@ -186,7 +189,7 @@ public class Panier extends HttpServlet {
                 }
                 session.setAttribute("total", total);
                 session.setAttribute("panier", buylist);
-                String url = "/panier.jsp";
+                String url = "/WEB-INF/panier.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);
@@ -198,7 +201,7 @@ public class Panier extends HttpServlet {
             Client c = (Client) session.getAttribute("client");
             if (c != null) {
 
-                String url = "/checkout.jsp";
+                String url = "/WEB-INF/checkout.jsp";
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);

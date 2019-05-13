@@ -35,7 +35,7 @@ public class GererProduit extends HttpServlet {
             Produit Prod = ProduitDAO.getProduit(id);
             request.setAttribute("prod", Prod);
             //request.getServletContext().setAttribute("ListProd", ListeProduits);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/produit.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/produit.jsp");
             dispatcher.forward(request, response);
 
         }

@@ -37,9 +37,9 @@ public class Login extends HttpServlet {
             session.setAttribute("client", client);
             if (client != null) {
                 String origine = (String) session.getAttribute("origine");
-                location = "/iKeyPro.jsp";
+                location = "/WEB-INF/iKeyPro.jsp";
                 if (origine.equals("ch")) {
-                    location = "/panier.jsp";
+                    location = "/WEB-INF/panier.jsp";
                     session.removeAttribute("origine");
                 }
                 System.out.println("Le login du client a été un succès:" + client.toString());

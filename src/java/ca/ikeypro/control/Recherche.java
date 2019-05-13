@@ -40,7 +40,7 @@ public class Recherche extends HttpServlet {
             String rechecheStr = request.getParameter("rechecheStr").toLowerCase();
             List<Produit> ListProduitsRecheche = ProduitDAO.getListeDesProduitsByName(rechecheStr);
             session.setAttribute("ListProdui", ListProduitsRecheche);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
             dispatcher.forward(request, response); 
         }
     }
