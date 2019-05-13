@@ -27,6 +27,7 @@
         <body>
             <div class="super_container">
                 <!-- Header -->
+               
                 <jsp:include page="WEB-INF/jspf/header.jsp"/>
 
                 <!-- Banner -->
@@ -38,7 +39,7 @@
                             <div class="col-lg-5 offset-lg-4 fill_height">
                                 <div class="banner_content">
                                     <h2 class="banner_text"><fmt:message key="PSlogan"/></h2>
-                                    <div class="banner_price"><span>530$</span>259$</div>
+                                    <div class="banner_price"><span>$530</span>$259</div>
                                     <div class="banner_product_name">Microsoft Windows 10 version 1903</div>
                                     <div class="button banner_button"><a href="GererProduit?id=48"><fmt:message key="PShopNow"/></a></div>
                                 </div>
@@ -55,8 +56,8 @@
                                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                     <div class="char_icon"><img src="images/char_1.png" alt=""></div>
                                     <div class="char_content">
-                                        <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_title">Free Delivery</div>
+                                        <div class="char_subtitle">from $50</div>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +66,8 @@
                                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                     <div class="char_icon"><img src="images/char_2.png" alt=""></div>
                                     <div class="char_content">
-                                        <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_title">Free Delivery</div>
+                                        <div class="char_subtitle">from $50</div>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +76,8 @@
                                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                     <div class="char_icon"><img src="images/char_3.png" alt=""></div>
                                     <div class="char_content">
-                                        <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_title">Free Delivery</div>
+                                        <div class="char_subtitle">from $50</div>
                                     </div>
                                 </div>
                             </div>
@@ -85,8 +86,8 @@
                                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                     <div class="char_icon"><img src="images/char_4.png" alt=""></div>
                                     <div class="char_content">
-                                        <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_title">Free Delivery</div>
+                                        <div class="char_subtitle">from $50</div>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +247,7 @@
                                                                     <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
                                                                         <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/${ligne.image}" alt=""></div>
                                                                         <div class="product_content">
-                                                                            <div class="product_price">${ligne.prix}$</div>
+                                                                            <div class="product_price">$${ligne.prix}</div>
                                                                             <div class="product_name"><div><a>${ligne.editeur}</a></div></div>
                                                                             <div class="product_name"><div><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div></div>
                                                                             <div class="product_extras">
@@ -279,14 +280,14 @@
                                                         <div class="arrivals_single_category"><a href="#">Smartphones</a></div>
                                                         <div class="arrivals_single_name_container clearfix">
                                                             <div class="arrivals_single_name"><a href="#">LUNA Smartphone</a></div>
-                                                            <div class="arrivals_single_price text-right">379$</div>
+                                                            <div class="arrivals_single_price text-right">$379</div>
                                                         </div>
                                                         <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                        <form action="#"><button class="arrivals_single_button"><fmt:message key="PAddToCart"/></button></form>
+                                                        <form action="#"><button class="arrivals_single_button">Add to Cart</button></form>
                                                     </div>
                                                     <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
                                                     <ul class="arrivals_single_marks product_marks">
-                                                        <li class="arrivals_single_mark product_mark product_new"><fmt:message key="PNew"/></li>
+                                                        <li class="arrivals_single_mark product_mark product_new">new</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -330,12 +331,12 @@
                                                     <div class="trends_category"><a href="#">Microsoft</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Office 365</a></div>
-                                                        <div class="trends_price">77$</div>
+                                                        <div class="trends_price">$77</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
@@ -348,12 +349,12 @@
                                                     <div class="trends_category"><a href="#">AVG</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Internet Security...</a></div>
-                                                        <div class="trends_price">61$</div>
+                                                        <div class="trends_price">$61</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
@@ -366,12 +367,12 @@
                                                     <div class="trends_category"><a href="#">H & R Block</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Block Tax Software...</a></div>
-                                                        <div class="trends_price">89$</div>
+                                                        <div class="trends_price">$89</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
@@ -384,12 +385,12 @@
                                                     <div class="trends_category"><a href="#">Microsoft</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Windows 10 Home</a></div>
-                                                        <div class="trends_price">185$</div>
+                                                        <div class="trends_price">$185</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
@@ -402,16 +403,17 @@
                                                     <div class="trends_category"><a href="#">BullGuard</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Internet Security</a></div>
-                                                        <div class="trends_price">69$</div>
+                                                        <div class="trends_price">$69</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
                                         </div>
+                                       
                                         <!-- Trends Slider Item -->
                                         <div class="owl-item">
                                             <div class="trends_item is_new">
@@ -420,12 +422,12 @@
                                                     <div class="trends_category"><a href="#">Adobe</a></div>
                                                     <div class="trends_info clearfix">
                                                         <div class="trends_name"><a href="product.html">Photoshop </a></div>
-                                                        <div class="trends_price">159$</div>
+                                                        <div class="trends_price">$159</div>
                                                     </div>
                                                 </div>
                                                 <ul class="trends_marks">
                                                     <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
+                                                    <li class="trends_mark trends_new">new</li>
                                                 </ul>
 
                                             </div>
@@ -502,6 +504,7 @@
                 <script src="plugins/slick-1.8.0/slick.js"></script>
                 <script src="plugins/easing/easing.js"></script>
                 <script src="js/custom.js"></script>
+               
         </body>
     </html>
 </fmt:bundle>

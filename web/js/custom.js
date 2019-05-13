@@ -43,7 +43,7 @@ $(document).ready(function()
 
 	setHeader();
 
-	initCustomDropdown();
+	//initCustomDropdown();
 	initPageMenu();
 	initDealsSlider();
 	initTabLines();
