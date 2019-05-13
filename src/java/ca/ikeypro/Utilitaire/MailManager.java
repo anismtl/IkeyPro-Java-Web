@@ -83,8 +83,8 @@ public class MailManager {
 
         String sujet = (" Confirmation Inscription Newsletter Ikeypro.ca. ");
         String Message = ("<b>Bonjour,</b>");
-        Message += ("\n <br/>Vous avez envoyé une demande dinscrption a la news lettre .<br/>");
-        Message += ("\n <br/>Inscription effectuée<br/>");
+        Message += ("\n <br/>Vous avez envoyé une demande d''inscrption a la Newsletter.<br/>");
+        Message += ("\n <br/>Inscription effectuée.<br/>");
         Message += ("<br/>Cordialement, ");
         Message += ("<br/>IkeyPro.ca ");
 
@@ -100,8 +100,8 @@ public class MailManager {
 
         String sujet = (" Confirmation Supression Newsletter Ikeypro.ca. ");
         String Message = ("<b>Bonjour,</b>");
-        Message += ("\n <br/>Vous avez envoyé une demande de supréssion de la news lettre .<br/>");
-        Message += ("\n <br/>Supression effectuée<br/>");
+        Message += ("\n <br/>Vous avez envoyé une demande de supréssion de la Newsletter .<br/>");
+        Message += ("\n <br/>Supression effectuée.<br/>");
         Message += ("<br/>Cordialement, ");
         Message += ("<br/>IkeyPro.ca ");
 
