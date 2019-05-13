@@ -57,11 +57,11 @@
                             <div class="top_bar_user">
                                 <div class="user_icon"><img src="images/user.svg" alt=""></div>
                                 <c:if test="${empty sessionScope.client}">
-                                    <div> <a href="register.jsp"><fmt:message key="PRegister"/></a></div>
-                                    <div><a href="login.jsp"><fmt:message key="PSignIn"/></a></div>
+                                    <div> <a href="Affichage?action=register"><fmt:message key="PRegister"/></a></div>
+                                    <div><a href="Affichage?action=login"><fmt:message key="PSignIn"/></a></div>
                                 </c:if>
                                 <c:if test="${not empty sessionScope.client}">
-                                    <div> <a href="monCompte.jsp"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
+                                    <div> <a href="Affichage?action=monCompte"><fmt:message key="PWelcome"/> "${sessionScope.client.prenomClient}" <fmt:message key="PYourCompte"/></a></div>
                                     <div><a href="LogOut"><fmt:message key="PSignOut"/></a></div>
                                 </c:if>
                             </div>
@@ -168,8 +168,8 @@
                                             </c:forEach>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.jsp"><fmt:message key="PBlog"/><i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.jsp"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="Affichage?action=blog"><fmt:message key="PBlog"/><i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="Affichage?action=contact"><fmt:message key="PContact"/><i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
 

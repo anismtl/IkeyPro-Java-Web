@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             String courriel = request.getParameter("user").toLowerCase();
             String pw = request.getParameter("pass");
-            String location = "/register.jsp";
+            String location = "/WEB-INF/register.jsp";
             Client client = ClientDAO.find(courriel, pw);
             session.setAttribute("client", client);
             if (client != null) {

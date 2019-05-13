@@ -63,7 +63,7 @@
         <servlet-name>Recherche</servlet-name>
         <servlet-class>ca.ikeypro.control.Recherche</servlet-class>
     </servlet>
-     <context-param>
+    <context-param>
         <param-name>authtoken</param-name>
         <param-value>FBGca0EFcEtSytTXJ3h6y2FQnNzUI8fIWxlN9ASCcxqX1Ph9kckd07E8j-q</param-value>
     </context-param>
@@ -79,6 +79,10 @@
         <param-name>returnurl</param-name>
         <param-value>http://localhost:8084/Paypal/index.jsp</param-value>
     </context-param>
+    <servlet>
+        <servlet-name>Affichage</servlet-name>
+        <servlet-class>ca.ikeypro.control.Affichage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
@@ -123,6 +127,10 @@
         <servlet-name>Recherche</servlet-name>
         <url-pattern>/Recherche</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Affichage</servlet-name>
+        <url-pattern>/Affichage</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -131,7 +139,7 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-        <error-page>
+    <error-page>
         <error-code>500</error-code>
         <location>/WEB-INF/erreur/erreur.jsp</location>
     </error-page>
