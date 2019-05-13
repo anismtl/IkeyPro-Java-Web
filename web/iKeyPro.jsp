@@ -488,7 +488,7 @@
                 <jsp:include page="WEB-INF/jspf/newsletter.jsp"/>
                 <!-- Footer -->
                 <jsp:include page="WEB-INF/jspf/footer.jsp"/>
-                <script src="js.js"></script>
+                <script src="js/js.js"></script>
                 <script src="js/langues.js"></script>
                 <script src="js/newsletter.js"></script>
                 <script src="js/jquery-3.3.1.min.js"></script>
