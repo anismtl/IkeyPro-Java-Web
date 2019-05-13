@@ -18,7 +18,7 @@ public class LigneCommandeDAO {
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
-                String req = "INSERT INTO COMMANDE (ID_LIGNE_COM,CODE_PRODUIT,ID_COMMANDE_QUANTITE) VALUES ('" + idLigne + "','" + codeProduit + "','" + idCommande + "','" + qte + "')";
+                String req = "INSERT INTO LIGNE_COMMANDE (ID_LIGNE_COM,CODE_PRODUIT,ID_COMMANDE,QUANTITE) VALUES ('" + idLigne + "','" + codeProduit + "','" + idCommande + "','" + qte + "')";
                 System.out.println(req);
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(req);

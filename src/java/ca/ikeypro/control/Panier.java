@@ -8,19 +8,16 @@ package ca.ikeypro.control;
 import ca.ikeypro.DAO.Client;
 import ca.ikeypro.DAO.Commande;
 import ca.ikeypro.DAO.CommandeDAO;
+import ca.ikeypro.DAO.LigneCommandeDAO;
 import ca.ikeypro.DAO.LignePanier;
+import ca.ikeypro.Utilitaire.MailManager;
 import java.io.IOException;
-import java.sql.Timestamp;
-
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,6 +34,7 @@ public class Panier extends HttpServlet {
 
     DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
     Date dateCommande = null;
+   
 //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
 
     /**
@@ -120,6 +118,27 @@ public class Panier extends HttpServlet {
                 System.out.println("ST: " + st);
                 System.out.println("ST: " + amt + "" + cc);
                 if (st.equals("Completed")) {
+
+                    Client   c = (Client) session.getAttribute("client");
+                    int idClient = c.getIdClient();
+                    
+                    Calendar calendar = Calendar.getInstance();
+                    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+
+                    CommandeDAO.insert(idClient, ourJavaDateObject);
+                  //  Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
+                 //   int idcom = com.getId_Commande();
+                   int idcom = CommandeDAO.getCommandeId(idClient, ourJavaDateObject);
+                    MailManager.SendConfirmation(c.getCourriel(), tx, idcom,amt);
+                    System.out.println("ID commande :" + idcom);
+                    for (int i = 0; i < buylist.size(); i++) {
+                        LignePanier anOrder = (LignePanier) buylist.elementAt(i);
+                        String code =anOrder.getCodeProduit();
+                        float price = anOrder.getPrix();
+                        int qty = anOrder.getQte();
+                        //  total += (price * qty);
+                        LigneCommandeDAO.insert(i+1, code, idcom, qty);
+                    }
                     buylist.removeAllElements();
                     total = 0;
                     String url = "/WEB-INF/confirmation.jsp";
@@ -205,24 +224,23 @@ public class Panier extends HttpServlet {
         } else if (action.equals("CHECKOUT")) {
 
             //on va calculer le prix total
-            Client c = (Client) session.getAttribute("client");
+         Client   c = (Client) session.getAttribute("client");
             if (c != null) {
 
-                int idClient = c.getIdClient();
-                Calendar calendar = Calendar.getInstance();
-                java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
-
-                CommandeDAO.insert(idClient, ourJavaDateObject);
-                Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
-                int idcom = com.getId_Commande();
-                System.out.println("ID commande :" + idcom);
-                for (int i = 0; i < buylist.size(); i++) {
-                    LignePanier anOrder = (LignePanier) buylist.elementAt(i);
-                    float price = anOrder.getPrix();
-                    int qty = anOrder.getQte();
-                    //  total += (price * qty);
-                }
-
+//                int idClient = c.getIdClient();
+//                Calendar calendar = Calendar.getInstance();
+//                java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+//
+//                CommandeDAO.insert(idClient, ourJavaDateObject);
+//                Commande com = CommandeDAO.getCommande(idClient, ourJavaDateObject);
+//                int idcom = com.getId_Commande();
+//                System.out.println("ID commande :" + idcom);
+//                for (int i = 0; i < buylist.size(); i++) {
+//                    LignePanier anOrder = (LignePanier) buylist.elementAt(i);
+//                    float price = anOrder.getPrix();
+//                    int qty = anOrder.getQte();
+//                    //  total += (price * qty);
+//                }
 //            //deviner à quoi cela sert ??????
 //          //  total += 0.005;
 //         //   String amount = new Float(total).toString();

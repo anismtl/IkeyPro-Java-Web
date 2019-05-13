@@ -34,25 +34,26 @@ public class CommandeDAO {
         
         
         
-        public static Commande getCommande(int idClient, Date dateCommande) {
+        public static int getCommandeId(int idClient, Date dateCommande) {
        
-        Commande commande = new Commande();
+
+        int IDcom = 0;
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
-                String req = "SELECT MAX(ID_COMMANDE),ID_CLIENT,DATE_COMMANDE"
+
+                String req = "SELECT MAX(ID_COMMANDE)"
                         + " FROM COMMANDE "
-                        + "WHERE ID_CLIENT ='" + idClient + "'"
-                        + " group by id_client,date_commande";
+                        + "WHERE ID_CLIENT ='" + idClient + "'";
+                       
                 System.out.println(req);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(req);
                 if (rs.next()) {
                     
-                   
-                    commande.setId_Commande(rs.getInt("MAX(ID_COMMANDE)"));
-                    commande.setIdClient(rs.getInt("ID_CLIENT"));
-                    commande.setDate_commande(rs.getDate("DATE_COMMANDE"));
+                   IDcom= rs.getInt(1);
+                    System.out.println("DAO ID:"+IDcom);
+
  
                 }
                
@@ -63,7 +64,7 @@ public class CommandeDAO {
             }
         }
         
-        return commande;
+        return IDcom;
     }
         
         

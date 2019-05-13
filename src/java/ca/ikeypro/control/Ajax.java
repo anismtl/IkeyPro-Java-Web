@@ -1,16 +1,11 @@
 package ca.ikeypro.control;
 
-import ca.ikeypro.Utilitaire.DataManager;
 import ca.ikeypro.DAO.Categorie;
-import ca.ikeypro.DAO.CategorieDAO;
 import ca.ikeypro.DAO.NewsletterDAO;
 import ca.ikeypro.DAO.Produit;
-import ca.ikeypro.DAO.ProduitDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,7 +57,6 @@ public class Ajax extends HttpServlet {
             String json = gson.toJson(ListeMostViewProduits);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            // PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
         } else if (action.equals("C")) {
@@ -71,16 +65,13 @@ public class Ajax extends HttpServlet {
             String json = gson.toJson(ListeCat);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            // PrintWriter out = response.getWriter();
             out.print(json);
             out.flush();
         } else if (action.equals("L")) {
-            //System.out.println("Je suis dans L");
             String langue = request.getParameter("langue");
-            // System.out.println("langue recu:" + langue);
             if (langue.equals("es")) {
                 System.out.println("langue recu:" + langue);
-               session.removeAttribute("lang");
+                session.removeAttribute("lang");
                 session.setAttribute("lang", "es");
                 Gson gson = new Gson();
                 String json = gson.toJson("ok");
@@ -89,7 +80,6 @@ public class Ajax extends HttpServlet {
 
             } else if (langue.equals("fr")) {
                 System.out.println("langue recu:" + langue);
-              // request.removeAttribute("lang");
                 session.setAttribute("lang", "fr");
                 Gson gson = new Gson();
                 String json = gson.toJson("ok");
@@ -98,22 +88,14 @@ public class Ajax extends HttpServlet {
 
             } else if (langue.equals("en")) {
                 System.out.println("langue recu:" + langue);
-             //  request.removeAttribute("lang");
                 session.setAttribute("lang", "en");
-              Gson gson = new Gson();
+                Gson gson = new Gson();
                 String json = gson.toJson("ok");
                 out.print(json);
                 out.flush();
 
             }
 
-//            Gson gson = new Gson();
-//            String json = gson.toJson(ListeCat);
-//            response.setContentType("application/json");
-//            response.setCharacterEncoding("UTF-8");
-//           // PrintWriter out = response.getWriter();
-//            out.print(json);
-//            out.flush();
         }
 
     }

@@ -38,35 +38,15 @@ public class Contact extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String timeStamp = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
             String from = request.getParameter("from");
             String email = request.getParameter("email");
             String telephone = request.getParameter("telephone");
             String mess = request.getParameter("message");
-
-            String sujet = (" Message envoyé par : " + from);
-            String Message = ("<b>Message Envoyé par : </b>" + from);
-            Message += ("\n <br/><b>Le : </b>" + timeStamp);
-            Message += ("\n <br/><b>Email : </b>" + email);
-            Message += ("\n <br/><b>Téléphone : </b>" + telephone);
-            Message += ("\n <br/>------------------------------------------------");
-            Message += ("\n <br/><b>Message:</b><br/>" + mess);
-
-            String Message2 = ("Bonjour " + from + ",");
-            Message2 += ("<br/>Nous avons bien reçu votre requête et allons vous répondre dans les plus brefs délais.");
-            Message2 += ("<br/>Cordialement, ");
-            Message2 += ("<br/>IkeyPro.ca ");
+            MailManager.SendContactMail(email, from, telephone, mess);
             String confirmation = "Mail envoyé !";
-            try {
-                /* TODO output your page here. You may use following sample code. */
-                MailManager.SendEmail("aboutekadjiret@yahoo.fr", sujet, Message);
-                MailManager.SendEmail(email, " Confirmation", Message2);
-                request.setAttribute("confirmation", confirmation);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/contact.jsp");
-                dispatcher.forward(request, response);
-            } catch (MessagingException ex) {
-                Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            request.setAttribute("confirmation", confirmation);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/contact.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
