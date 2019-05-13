@@ -6,17 +6,12 @@
 package ca.ikeypro.control;
 
 import ca.ikeypro.DAO.Client;
-import ca.ikeypro.DAO.Commande;
 import ca.ikeypro.DAO.CommandeDAO;
 import ca.ikeypro.DAO.LigneCommandeDAO;
 import ca.ikeypro.DAO.LignePanier;
 import ca.ikeypro.Utilitaire.MailManager;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
 import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -32,10 +27,8 @@ import javax.servlet.http.HttpSession;
  */
 public class Panier extends HttpServlet {
 
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-    Date dateCommande = null;
 
-//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd à HH:mm:ss").format(new Date());
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

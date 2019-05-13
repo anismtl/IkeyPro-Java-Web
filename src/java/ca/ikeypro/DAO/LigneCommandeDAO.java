@@ -11,10 +11,9 @@ import java.util.Date;
  * @author Judith
  */
 public class LigneCommandeDAO {
-    
-            public static void insert(int idLigne, String codeProduit,int idCommande, int qte) {
-      
-       
+
+    public static void insert(int idLigne, String codeProduit, int idCommande, int qte) {
+
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
@@ -29,5 +28,5 @@ public class LigneCommandeDAO {
             }
         }
     }
-    
+
 }
