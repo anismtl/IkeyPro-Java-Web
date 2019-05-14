@@ -51,6 +51,9 @@ public class MyServletContextListener implements ServletContextListener {
 
         List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
         sce.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
+        
+        List<Produit> ListeAllProduitsPublicite = ProduitDAO.getListeDesProduitsByPublicite();
+        sce.getServletContext().setAttribute("ListeAllProduitsPublicite", ListeAllProduitsPublicite);
     }
 
     @Override

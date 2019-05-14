@@ -57,7 +57,7 @@
                                     <div class="char_icon"><img src="images/char_1.png" alt=""></div>
                                     <div class="char_content">
                                         <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_subtitle"><fmt:message key="PFrom"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                     <div class="char_icon"><img src="images/char_2.png" alt=""></div>
                                     <div class="char_content">
                                         <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_subtitle"><fmt:message key="PFrom"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                     <div class="char_icon"><img src="images/char_3.png" alt=""></div>
                                     <div class="char_content">
                                         <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_subtitle"><fmt:message key="PFrom"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                     <div class="char_icon"><img src="images/char_4.png" alt=""></div>
                                     <div class="char_content">
                                         <div class="char_title"><fmt:message key="PFreeDelivery"/></div>
-                                        <div class="char_subtitle"><fmt:message key="PFrom"/> 50$</div>
+                                        <div class="char_subtitle"><fmt:message key="PFrom"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -103,120 +103,31 @@
                         <!-- Banner 2 Slider -->
                         <div class="owl-carousel owl-theme banner_2_slider">
                             <!-- Banner 2 Slider Item -->
+                           <c:forEach var = "ligne" items="${ListeAllProduitsPublicite}">
                             <div class="owl-item">
                                 <div class="banner_2_item">
                                     <div class="container fill_height">
                                         <div class="row fill_height">
                                             <div class="col-lg-4 col-md-6 fill_height">
                                                 <div class="banner_2_content">
-                                                    <div class="banner_2_category">Microsoft</div>
-                                                    <div class="banner_2_title">Visio Professional</div>
+                                                    <div class="banner_2_category"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.editeur}</div>
+                                                    <div class="banner_2_title"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
                                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
+                                                    <div class="trends_price">${ligne.prix}$</div>
                                                     <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=45"><fmt:message key="PExplorre"/></a></div>
+                                                    <div class="button banner_2_button"><a href="GererProduit?id=${ligne.codeProduit}"><fmt:message key="PExplorre"/></a></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-6 fill_height">
                                                 <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/newdesign_1_original.png" alt=""></div>
-                                                </div>
+                                                    <div class="banner_2_image"><img src="images/P${ligne.image}" alt=""></div>
+                                                </div>                                                
                                             </div>
                                         </div>
                                     </div>			
                                 </div>
                             </div>
-                            <!-- Banner 2 Slider Item -->
-                            <div class="owl-item">
-                                <div class="banner_2_item">
-                                    <div class="container fill_height">
-                                        <div class="row fill_height">
-                                            <div class="col-lg-4 col-md-6 fill_height">
-                                                <div class="banner_2_content">
-                                                    <div class="banner_2_category">Adobe</div>
-                                                    <div class="banner_2_title">Acrobat Pro 2017</div>
-                                                    <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-                                                    <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=1"><fmt:message key="PExplorre"/></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 fill_height">
-                                                <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/newdesign_2_original.png" alt=""></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>			
-                                </div>
-                            </div>
-                            <!-- Banner 2 Slider Item -->
-                            <div class="owl-item">
-                                <div class="banner_2_item">
-                                    <div class="container fill_height">
-                                        <div class="row fill_height">
-                                            <div class="col-lg-4 col-md-6 fill_height">
-                                                <div class="banner_2_content">
-                                                    <div class="banner_2_category">Corel</div>
-                                                    <div class="banner_2_title">Painter essentials 5</div>
-                                                    <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-                                                    <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=24"><fmt:message key="PExplorre"/></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 fill_height">
-                                                <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/newdesign_3_original.png" alt=""></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>			
-                                </div>
-                            </div>
-                            <!-- Banner 2 Slider Item -->
-                            <div class="owl-item">
-                                <div class="banner_2_item">
-                                    <div class="container fill_height">
-                                        <div class="row fill_height">
-                                            <div class="col-lg-4 col-md-6 fill_height">
-                                                <div class="banner_2_content">
-                                                    <div class="banner_2_category">Microsoft</div>
-                                                    <div class="banner_2_title">Project Standard</div>
-                                                    <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-                                                    <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=44"><fmt:message key="PExplorre"/></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 fill_height">
-                                                <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/newdesign_4_original.png" alt=""></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>			
-                                </div>
-                            </div>
-                            <!-- Banner 2 Slider Item -->
-                            <div class="owl-item">
-                                <div class="banner_2_item">
-                                    <div class="container fill_height">
-                                        <div class="row fill_height">
-                                            <div class="col-lg-4 col-md-6 fill_height">
-                                                <div class="banner_2_content">
-                                                    <div class="banner_2_category">Intuit</div>
-                                                    <div class="banner_2_title">Turbotax</div>
-                                                    <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-                                                    <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=34"><fmt:message key="PExplorre"/></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 fill_height">
-                                                <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/newdesign_5_original.png" alt=""></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>			
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -257,7 +168,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <ul class="product_marks">
-                                                                            <li class="product_mark product_new">new</li>
+                                                                            <li class="product_mark product_new"><fmt:message key="PNew"/></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
