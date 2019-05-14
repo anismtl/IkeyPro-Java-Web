@@ -194,6 +194,40 @@ public class ProduitDAO {
         return listeEditions;
     }
 
+        public static ArrayList<String> getListeDistinctLangue(String categorie, String editeur, String edition) {
+        ArrayList<String> listeLangues = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = " SELECT  DISTINCT(P.LANGUE) "
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
+                        + " INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE "
+                        + " WHERE "
+                        + "       LOWER(EUR.EDITEUR)  = '" + editeur + "' AND "
+                        + "       LOWER(EON.EDITION)  = '" + edition + "' AND "
+                        + "       LOWER(C.CATEGORIE)  = '" + categorie + "'";
+
+                System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                String langue;
+                while (rs.next()) {
+                    langue = rs.getString(0);
+                    listeLangues.add(langue);
+                    System.out.println("*=*=*=*=*=*=*=*=*= Liste de langues "+langue+" *=*=*=*=*=*=*=*=*=");
+                }
+                // return listeEditeurs;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeLangues;
+    }
+        
     public static ArrayList<Produit> getListeMostViewProduits() {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
