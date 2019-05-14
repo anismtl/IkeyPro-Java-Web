@@ -2,6 +2,7 @@ package ca.ikeypro.control;
 
 import ca.ikeypro.DAO.CategorieDAO;
 import ca.ikeypro.DAO.EditeurDAO;
+import ca.ikeypro.DAO.EditionDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -60,7 +61,8 @@ public class ListeProduits extends HttpServlet {
                 case "edition": {
                     String edition = request.getParameter("edition");
                     List<Produit> ListeProdEdition = ProduitDAO.getListeDesProduitsByEdition(edition);
-                    request.setAttribute("titre", edition);
+                    String titre=EditionDAO.getEdition(edition);
+                    request.setAttribute("titre", titre);
                     session.setAttribute("ListePro", ListeProdEdition);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                     dispatcher.forward(request, response);

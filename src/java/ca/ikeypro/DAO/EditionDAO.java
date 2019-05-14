@@ -39,4 +39,25 @@ public class EditionDAO {
         }
         return listeEdition;
     }
+    
+        public static String getEdition(String id) {
+        String edition="";
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT EDITION FROM EDITION WHERE ID_EDITION ='" + id + "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
+                if (rs.next()) {
+                    edition = rs.getString("EDITION");
+                }
+                return edition;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return edition;
+    }
 }

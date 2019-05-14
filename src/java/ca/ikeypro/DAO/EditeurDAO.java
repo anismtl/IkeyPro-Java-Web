@@ -20,8 +20,8 @@ public class EditeurDAO {
             conn = DataManager.getInstance().getConnection();
             //System.out.println("Editeur Connected");
             String strQuery = "SELECT * FROM EDITEUR"
-                        + " ORDER BY NBPRODUIT DESC"
-                        + " FETCH FIRST 6 ROWS ONLY";
+                    + " ORDER BY NBPRODUIT DESC"
+                    + " FETCH FIRST 6 ROWS ONLY";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(strQuery);
             Editeur editeur;
@@ -39,9 +39,9 @@ public class EditeurDAO {
         }
         return listeEditeurs;
     }
-    
-        public static String getEditeur(String id) {
-        String editeur="";
+
+    public static String getEditeur(String id) {
+        String editeur = "";
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
