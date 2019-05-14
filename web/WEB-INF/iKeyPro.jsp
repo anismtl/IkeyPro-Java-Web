@@ -35,13 +35,13 @@
                     <div class="banner_background" style="background-image:url(images/banner_background.jpg)"></div>
                     <div class="container fill_height">
                         <div class="row fill_height">
-                            <div class="banner_product_image"><img src="images/banner_product.png" alt=""></div>
+                            <div class="banner_product_image"><img src="images/P${ProduitVedette.image}" alt=""></div>
                             <div class="col-lg-5 offset-lg-4 fill_height">
                                 <div class="banner_content">
                                     <h2 class="banner_text"><fmt:message key="PSlogan"/></h2>
-                                    <div class="banner_price"><span>530$</span>259$</div>
-                                    <div class="banner_product_name">Microsoft Windows 10 version 1903</div>
-                                    <div class="button banner_button"><a href="GererProduit?id=48"><fmt:message key="PShopNow"/></a></div>
+                                    <div class="banner_price"><span>${ProduitVedette.prix}</span>${ProduitVedette.prix*0.5}</div>
+                                    <div class="banner_product_name">${ProduitVedette.produit}</div>
+                                    <div class="button banner_button"><a href="GererProduit?id=${ProduitVedette.codeProduit}"><fmt:message key="PShopNow"/></a></div>
                                 </div>
                             </div>
                         </div>
