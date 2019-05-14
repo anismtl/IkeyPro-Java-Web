@@ -1,5 +1,9 @@
 package ca.ikeypro.Listener;
 
+import ca.ikeyPro.Cookies.CookiesUtilitaire;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;

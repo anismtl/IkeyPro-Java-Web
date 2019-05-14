@@ -1,5 +1,6 @@
 package ca.ikeypro.Listener;
 
+import ca.ikeyPro.Cookies.CookiesUtilitaire;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebListener;
@@ -23,8 +24,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
             sessionCount++;
             System.out.println("Now  sessionsCreated active sessions");
             session = se.getSession();
-            System.out.println("Session Attribute ctx : " + session);
-
+            System.out.println("Session Attribute ctx : " + session); 
         }
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient de demarré - {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
     }
@@ -36,6 +36,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
 
             sessionCount--;
         }
+        
         LOG.log(Level.INFO, "\n=*=*=*=*=*=*= La session vient d'être detruite- {0} sessions en memoire =*=*=*=*=*=*=", sessionCount);
     }
 }

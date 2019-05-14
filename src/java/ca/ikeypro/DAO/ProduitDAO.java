@@ -120,6 +120,7 @@ public class ProduitDAO {
                     prod.setDisponibilite(rs.getShort("DISPONIBILITE"));
                     prod.setNbconsulte(rs.getInt("NBCONSULT"));
                     listeProduits.add(prod);
+                    System.out.println("PRODUITS: "+prod.toString());
                 }
                 return listeProduits;
             } catch (SQLException ex) {

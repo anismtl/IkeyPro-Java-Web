@@ -141,5 +141,12 @@ public class Produit implements Serializable{
 
     public void setNbconsulte(int nbconsulte) {
         this.nbconsulte = nbconsulte;
-    }    
+    }   
+
+    @Override
+    public String toString() {
+        return "Produit{" + "codeProduit=" + codeProduit + ", categorie=" + categorie + ", editeur=" + editeur + ", edition=" + edition + ", produit=" + produit + ", plateforme=" + plateforme + ", dateRelease=" + dateRelease + ", prix=" + prix + ", langue=" + langue + ", image=" + image + ", disponibilite=" + disponibilite + ", nbconsulte=" + nbconsulte + '}';
+    }
+    
+    
 }

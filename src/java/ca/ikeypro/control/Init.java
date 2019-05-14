@@ -1,7 +1,11 @@
 package ca.ikeypro.control;
 
+import ca.ikeyPro.Cookies.CookiesUtilitaire;
+import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.servlet.http.Cookie;
 
 /**
  * @author Anis
@@ -46,7 +51,17 @@ public class Init extends HttpServlet {
             } else {
                 session.setAttribute("langD", "fr");
             }
-
+            Cookie[] cookies = request.getCookies();
+            Cookie cookieRecheche = null;
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                        System.out.println("cookie trouvée " + cookie.getName() + "value "+cookie.getValue());
+                        cookieRecheche = cookie;
+                }
+            }
+            //Cookie cookieRecheche = CookiesUtilitaire.getCookie(request, "rechecheGeneral-cookie");
+            List<Produit> ListeProduitsRechecheCookie = ProduitDAO.getListeDesProduitsByName(cookieRecheche.getValue());
+            session.setAttribute("ListeProduitsRechecheCookie", ListeProduitsRechecheCookie);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/iKeyPro.jsp");
 
             dispatcher.forward(request, response);

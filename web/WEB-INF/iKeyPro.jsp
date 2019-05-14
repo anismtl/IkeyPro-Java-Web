@@ -310,130 +310,41 @@
                             <!-- Trends Content -->
                             <div class="col-lg-3">
                                 <div class="trends_container">
-                                    <h2 class="trends_title"><fmt:message key="PTrends"/></h2>
-                                    <div class="trends_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing Donec et.</p></div>
+                                    <h2 class="trends_title"><fmt:message key="PRechecheCookies"/></h2>
+                                    <div class="trends_text"><p>Lorem  dolor sit amet, consectetur adipiscing Donec et.</p></div>
                                     <div class="trends_slider_nav">
                                         <div class="trends_prev trends_nav"><i class="fas fa-angle-left ml-auto"></i></div>
                                         <div class="trends_next trends_nav"><i class="fas fa-angle-right ml-auto"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Trends Slider -->
+                            <!-- Trends Slider -->                            
                             <div class="col-lg-9">
-                                <div class="trends_slider_container">
-                                    <!-- Trends Slider -->
-                                    <div class="owl-carousel owl-theme trends_slider">
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item is_new">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_1.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">Microsoft</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Office 365</a></div>
-                                                        <div class="trends_price">77$</div>
+                            <div class="trends_slider_container">
+                            <!-- Trends Slider -->
+                             <div class="owl-carousel owl-theme trends_slider">
+                                <c:forEach var = "ligne" items="${ListeProduitsRechecheCookie}">
+                                            <!-- Trends Slider Item -->
+                                            <div class="owl-item">
+                                                <div class="trends_item is_new">
+                                                    <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/${ligne.image}" alt=""></div>
+                                                    <div class="trends_content">
+                                                        <div class="trends_category"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.editeur}</a></div>
+                                                        <div class="trends_info clearfix">
+                                                            <div class="trends_name"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
+                                                            <div class="trends_price">${ligne.prix}$</div>
+                                                        </div>
                                                     </div>
+                                                    <ul class="trends_marks">
+                                                        <li class="trends_mark trends_discount">${ligne.disponibilite}</li>
+                                                        <li class="trends_mark trends_new"><fmt:message key="PLastVisit"/></li>
+                                                    </ul>
                                                 </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
                                             </div>
-                                        </div>
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_2.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">AVG</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Internet Security...</a></div>
-                                                        <div class="trends_price">61$</div>
-                                                    </div>
-                                                </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item is_new">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_3.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">H & R Block</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Block Tax Software...</a></div>
-                                                        <div class="trends_price">89$</div>
-                                                    </div>
-                                                </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item is_new">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_4.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">Microsoft</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Windows 10 Home</a></div>
-                                                        <div class="trends_price">185$</div>
-                                                    </div>
-                                                </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_5.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">BullGuard</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Internet Security</a></div>
-                                                        <div class="trends_price">69$</div>
-                                                    </div>
-                                                </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                        <!-- Trends Slider Item -->
-                                        <div class="owl-item">
-                                            <div class="trends_item is_new">
-                                                <div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="images/trends_6.png" alt=""></div>
-                                                <div class="trends_content">
-                                                    <div class="trends_category"><a href="#">Adobe</a></div>
-                                                    <div class="trends_info clearfix">
-                                                        <div class="trends_name"><a href="product.html">Photoshop </a></div>
-                                                        <div class="trends_price">159$</div>
-                                                    </div>
-                                                </div>
-                                                <ul class="trends_marks">
-                                                    <li class="trends_mark trends_discount">-25%</li>
-                                                    <li class="trends_mark trends_new"><fmt:message key="PNew"/></li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </c:forEach>  
                                 </div>
                             </div>
+                            </div>                                                     
                         </div>
                     </div>
                 </div>

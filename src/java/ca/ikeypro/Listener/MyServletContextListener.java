@@ -1,5 +1,6 @@
 package ca.ikeypro.Listener;
 
+import ca.ikeyPro.Cookies.CookiesUtilitaire;
 import ca.ikeypro.DAO.Categorie;
 import ca.ikeypro.DAO.CategorieDAO;
 import ca.ikeypro.DAO.Editeur;
@@ -50,7 +51,6 @@ public class MyServletContextListener implements ServletContextListener {
 
         List<Produit> ListeAllProduits = ProduitDAO.getListeDesProduits();
         sce.getServletContext().setAttribute("ListeAllProduits", ListeAllProduits);
-
     }
 
     @Override

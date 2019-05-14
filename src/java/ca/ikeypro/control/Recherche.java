@@ -5,6 +5,8 @@
  */
 package ca.ikeypro.control;
 
+import static ca.ikeyPro.Cookies.CookiesUtilitaire.getCookieValue;
+import ca.ikeypro.Cookies.CookiesBuilt;
 import ca.ikeypro.DAO.Produit;
 import ca.ikeypro.DAO.ProduitDAO;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,6 +41,10 @@ public class Recherche extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             String rechecheStr = request.getParameter("rechecheStr").toLowerCase();
+            Cookie cRechecheGeneral = new Cookie("rechecheGeneral-cookie", rechecheStr);
+            cRechecheGeneral.setMaxAge(60 * 60 * 24 * 30);
+            response.addCookie(cRechecheGeneral);
+            System.out.println("=*=*=*=*=*=*=*=*= cookie "+ cRechecheGeneral.getName() + " valeur " +cRechecheGeneral.getValue()+"=*=*=*=*=*=*=*=*=");
             List<Produit> ListProduitsRecheche = ProduitDAO.getListeDesProduitsByName(rechecheStr);
             session.setAttribute("ListProdui", ListProduitsRecheche);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
