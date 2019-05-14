@@ -5,9 +5,26 @@ function Loading() {
     getCategoriesList();
     alerty();
 }
-function alerty(){
-  // alert("Salut");
-    swal("Here's a message!");
+function alerty() {
+
+    var isFired = localStorage.getItem('checkFired');
+
+    if (isFired != '1') {
+        swal({
+            title: 'DISCLAIMER!',
+            text: 'Please note that this site is not an actual store - it is for demo purposes only.',
+            timer: 7000
+
+        });
+        localStorage.setItem('checkFired', '1');
+    }
+
+
+
+
+
+
+
 }
 
 function getMostViewProduitList() {

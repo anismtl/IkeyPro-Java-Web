@@ -24,6 +24,8 @@
             <link rel="stylesheet" type="text/css" href="plugins/slick-1.8.0/slick.css">
             <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
             <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+            
         </head>
         <body>
             <div class="super_container">
@@ -325,6 +327,7 @@
                 <script src="plugins/slick-1.8.0/slick.js"></script>
                 <script src="plugins/easing/easing.js"></script>
                 <script src="js/custom.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
         </body>
     </html>
 </fmt:bundle>
