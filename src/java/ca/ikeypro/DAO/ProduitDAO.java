@@ -40,7 +40,7 @@ public class ProduitDAO {
             return liste;
         } catch (SQLException ex) {
             ex.printStackTrace();
-                  } finally {
+        } finally {
             DataManager.getInstance().closeConnection();
         }
         return liste;
@@ -56,7 +56,7 @@ public class ProduitDAO {
                         + " FROM PRODUIT P"
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION";
-               // System.out.println(requette);
+                // System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -84,24 +84,25 @@ public class ProduitDAO {
         }
         return listeProduits;
     }
-   public static ArrayList<Produit> getListeDesProduitsByName(String name) {
+
+    public static ArrayList<Produit> getListeDesProduitsByName(String name) {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
             try {
                 String requette = " SELECT  P.CODE_PRODUIT, P.PRODUIT, P.DATE_RELEASE, P.PRIX, P.PLATEFORME, "
-                                + " EUR.EDITEUR, P.ID_EDITEUR, EON.EDITION, P.ID_EDITION, "
-                                + " P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
-                                + " FROM PRODUIT P "
-                                + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
-                                + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
-                                + " INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE " 
-                                + " WHERE LOWER(P.PRODUIT)    LIKE '%"+name+"%' OR "
-                                + "       LOWER(EUR.EDITEUR)  LIKE '%"+name+"%' OR "
-                                + "       LOWER(EON.EDITION)  LIKE '%"+name+"%' OR "
-                                + "       LOWER(P.PLATEFORME) LIKE '%"+name+"%' OR"
-                                + "       LOWER(C.CATEGORIE)  LIKE '%"+name+"%' ";
-               // System.out.println(requette);
+                        + " EUR.EDITEUR, P.ID_EDITEUR, EON.EDITION, P.ID_EDITION, "
+                        + " P.LANGUE, P.IMAGE, P.DISPONIBILITE, P.NBCONSULT "
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
+                        + " INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE "
+                        + " WHERE LOWER(P.PRODUIT)    LIKE '%" + name + "%' OR "
+                        + "       LOWER(EUR.EDITEUR)  LIKE '%" + name + "%' OR "
+                        + "       LOWER(EON.EDITION)  LIKE '%" + name + "%' OR "
+                        + "       LOWER(P.PLATEFORME) LIKE '%" + name + "%' OR"
+                        + "       LOWER(C.CATEGORIE)  LIKE '%" + name + "%' ";
+                // System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -129,7 +130,69 @@ public class ProduitDAO {
         }
         return listeProduits;
     }
-   
+
+    public static ArrayList<Editeur> getListeDistinctEditeurByCat(String name) {
+        ArrayList<Editeur> listeEditeurs = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = " SELECT  DISTINCT(P.ID_EDITEUR), EUR.EDITEUR"
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR "
+                        + " WHERE P.ID_CATEGORIE= '" + name + "' ";
+
+                System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                Editeur edit;
+                while (rs.next()) {
+                    edit = new Editeur();
+                    edit.setId_Editeur(rs.getString("ID_EDITEUR"));
+                    edit.setEditeur(rs.getString("EDITEUR"));
+
+                    listeEditeurs.add(edit);
+                }
+                // return listeEditeurs;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeEditeurs;
+    }
+
+    public static ArrayList<Edition> getListeDistinctEditionByCat(String name, String editeur) {
+        ArrayList<Edition> listeEditions = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = " SELECT  DISTINCT(P.ID_EDITION), EUR.EDITION"
+                        + " FROM PRODUIT P "
+                        + " INNER JOIN EDITION EUR ON P.ID_EDITION = EUR.ID_EDITION "
+                        + " WHERE P.ID_CATEGORIE= '" + name + "' AND P.ID_EDITEUR = '" + editeur + "'";
+
+                System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                Edition edit;
+                while (rs.next()) {
+                    edit = new Edition();
+                    edit.setId_Edition(rs.getString("ID_EDITION"));
+                    edit.setEdition(rs.getString("EDITION"));
+
+                    listeEditions.add(edit);
+                }
+                // return listeEditeurs;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeEditions;
+    }
+
     public static ArrayList<Produit> getListeMostViewProduits() {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
@@ -143,6 +206,43 @@ public class ProduitDAO {
                         + " ORDER BY NBCONSULT DESC"
                         + " FETCH FIRST 6 ROWS ONLY";
                 //System.out.println(requette);
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(requette);
+                Produit prod;
+                while (rs.next()) {
+                    prod = new Produit();
+                    prod.setCodeProduit(rs.getString("CODE_PRODUIT"));
+                    prod.setProduit(rs.getString("PRODUIT"));
+                    prod.setDateRelease(rs.getString("DATE_RELEASE"));
+                    prod.setPrix(rs.getDouble("PRIX"));
+                    prod.setPlateforme(rs.getString("PLATEFORME"));
+                    prod.setEditeur(rs.getString("ID_EDITEUR"));
+                    prod.setEdition(rs.getString("ID_EDITION"));
+                    prod.setLangue(rs.getString("LANGUE"));
+                    prod.setImage(rs.getString("IMAGE"));
+                    prod.setDisponibilite(rs.getShort("DISPONIBILITE"));
+                    prod.setNbconsulte(rs.getInt("NBCONSULT"));
+                    listeProduits.add(prod);
+                }
+                return listeProduits;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return listeProduits;
+    }
+
+    public static ArrayList<Produit> rechercheProduits(String cat, String editeur,String edition) {
+        ArrayList<Produit> listeProduits = new ArrayList();
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String requette = "SELECT *"
+                        + " FROM PRODUIT"
+                        + " WHERE ID_CATEGORIE= '" + cat + "' AND ID_EDITEUR = '" + editeur + "' AND ID_EDITION = '" + edition + "'";
+                System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -211,8 +311,7 @@ public class ProduitDAO {
         return listeProduits;
     }
 
-    
-        public static ArrayList<Produit> getListeDesProduitsByEditeur(String idEditeur) {
+    public static ArrayList<Produit> getListeDesProduitsByEditeur(String idEditeur) {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
@@ -251,8 +350,8 @@ public class ProduitDAO {
         }
         return listeProduits;
     }
-    
-        public static ArrayList<Produit> getListeDesProduitsByEdition(String idEdition) {
+
+    public static ArrayList<Produit> getListeDesProduitsByEdition(String idEdition) {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
@@ -291,8 +390,8 @@ public class ProduitDAO {
         }
         return listeProduits;
     }
-    
-           public static ArrayList<Produit> getListeDesProduitsByDispo() {
+
+    public static ArrayList<Produit> getListeDesProduitsByDispo() {
         ArrayList<Produit> listeProduits = new ArrayList();
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
@@ -303,7 +402,7 @@ public class ProduitDAO {
                         + " INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR"
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION"
                         + " WHERE P.DISPONIBILITE = 1";
-               // System.out.println(requette);
+                // System.out.println(requette);
                 Statement statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(requette);
                 Produit prod;
@@ -330,10 +429,8 @@ public class ProduitDAO {
             }
         }
         return listeProduits;
-    } 
-    
-    
-    
+    }
+
 //    public static ArrayList<Produit> getRechercheProduits(String cat, double prixmin, double prixmax, String ordre){
 //        ArrayList<Produit> listeProduits = new ArrayList();
 //        Connection conn = getConnection();

@@ -1,11 +1,13 @@
 package ca.ikeypro.DAO;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Anis
  */
-public class Produit {
-    
+public class Produit implements Serializable{
+     private static final long serialVersionUID = 7536482295622776147L;
      private String codeProduit;
      private String categorie;
      private String editeur;

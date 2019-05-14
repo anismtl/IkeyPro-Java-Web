@@ -53,57 +53,76 @@
                         </h2>
                     </div>
                 </div>
+
+               
+
                 <!-- Shop -->
                 <div class="shop">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <!-- Shop Sidebar -->
-                                <div class="shop_sidebar">
-                                    <div class="sidebar_section filter_by_section">
-                                        <div class="sidebar_title">Filter By</div>
-                                        <div class="sidebar_subtitle">Price</div>
-                                        <div class="filter_price">
-                                            <div id="slider-range" class="slider_range"></div>
-                                            <p>Range: </p>
-                                            <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+                     <!-- Recherche -->
+             <form action="ListeProduits?action=recherche" method="POST">
+                        <div class="container my-5">
+                            <div class="reserverarea position border text-center">
+                                <div class="row text-center">
+                                  
+                                    <div class="col-md-2">
+                                        <h4 class="py-3 px-2">Rechercher<br> Avancé</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="cherchertable">
+                                            <div class="row">
+                                                <div class="col-md-3 ">
+                                                    <div class="book_tabel_item py-3 px-2">
+                                                        <div class="form-group d-flex justify-content-center">
+                                                            <h6>Catégorie</h6>   
+                                                        </div>
+                                                        <div class="input-group  d-flex justify-content-center">
+                                                            <select name="cat" class="wide" id="cat" required><option>--Choisir--</option><option value="Alaska">Alaska</option><option value="Asie">Asie</option><option value="Australie">Australie </option><option value="Bahamas">Bahamas </option><option value="Bermudes">Bermudes</option><option value="Canada">Canada </option><option value="Caraïbes">Caraïbes </option><option value="Cuba">Cuba</option></select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="book_tabel_item py-3 px-2">
+                                                        <div class="form-group  d-flex justify-content-center">
+                                                            <h6>Editeur</h6>   
+                                                        </div>
+                                                        <div class="input-group  d-flex justify-content-center">
+                                                            <select name="editeur2" class="wide" id="des" required><option>--Choisir--</option> </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="book_tabel_item py-3 px-2">
+                                                        <div class="form-group  d-flex justify-content-center">
+                                                            <h6>Edition</h6>   
+                                                        </div>
+                                                        <div class="input-group  d-flex justify-content-center">
+                                                            <select name="edition2" class="wide" id="dur" required><option>--Choisir--</option></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 distan">
+                                                    <div class="book_tabel_item">
+                                                        <div class="form-group  d-flex justify-content-center">
+                                                            <h6></h6>   
+                                                        </div>
+                                                        <button class="btn btncher" type="submit" id="bChercher">Rechercher</button>
+                                                        <!--<a class="btn btncher" href="#" id="bChercher">Rechercher</a>-->
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="sidebar_section">
-                                        <div class="sidebar_subtitle color_subtitle">Color</div>
-                                        <ul class="colors_list">
-                                            <li class="color"><a href="#" style="background: #b19c83;"></a></li>
-                                            <li class="color"><a href="#" style="background: #000000;"></a></li>
-                                            <li class="color"><a href="#" style="background: #999999;"></a></li>
-                                            <li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
-                                            <li class="color"><a href="#" style="background: #df3b3b;"></a></li>
-                                            <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sidebar_section">
-                                        <div class="sidebar_subtitle brands_subtitle">Brands</div>
-                                        <ul class="brands_list">
-                                            <li class="brand"><a href="#">Apple</a></li>
-                                            <li class="brand"><a href="#">Beoplay</a></li>
-                                            <li class="brand"><a href="#">Google</a></li>
-                                            <li class="brand"><a href="#">Meizu</a></li>
-                                            <li class="brand"><a href="#">OnePlus</a></li>
-                                            <li class="brand"><a href="#">Samsung</a></li>
-                                            <li class="brand"><a href="#">Sony</a></li>
-                                            <li class="brand"><a href="#">Xiaomi</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sidebar_section">
-                                        <div class="sidebar_title"><fmt:message key="Pcategories"/></div>
-                                        <ul class="sidebar_categories">
-                                            <c:forEach var = "ligne" items="${ListCat}">
-                                                <li><a href="#">${ligne.categorie}</a></li>
-                                                </c:forEach>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-9">
+                        </div>
+
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-12">
                                 <!-- Shop Content -->
                                 <div class="shop_content">
                                     <div class="shop_bar clearfix">
@@ -211,26 +230,29 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Newsletter -->
-                    <jsp:include page="jspf/newsletter.jsp"/>
-                    <!-- Footer -->
-                    <jsp:include page="jspf/footer.jsp"/>
-                    <script src="js/langues.js"></script>
-                    <script src="js/newsletter.js"></script>
-                    <script src="js/jquery-3.3.1.min.js"></script>
-                    <script src="styles/bootstrap4/popper.js"></script>
-                    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-                    <script src="plugins/greensock/TweenMax.min.js"></script>
-                    <script src="plugins/greensock/TimelineMax.min.js"></script>
-                    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-                    <script src="plugins/greensock/animation.gsap.min.js"></script>
-                    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-                    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-                    <script src="plugins/easing/easing.js"></script>
-                    <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-                    <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-                    <script src="plugins/parallax-js-master/parallax.min.js"></script>
-                    <script src="js/shop_custom.js"></script>
-                    </body>
-                    </html>
-                </fmt:bundle>
+                </div>
+            </div>
+            <!-- Newsletter -->
+            <jsp:include page="jspf/newsletter.jsp"/>
+            <!-- Footer -->
+            <jsp:include page="jspf/footer.jsp"/>
+            <script src="js/langues.js"></script>
+            <script src="js/newsletter.js"></script>
+              <script src="js/recherche.js"></script>
+            <script src="js/jquery-3.3.1.min.js"></script>
+            <script src="styles/bootstrap4/popper.js"></script>
+            <script src="styles/bootstrap4/bootstrap.min.js"></script>
+            <script src="plugins/greensock/TweenMax.min.js"></script>
+            <script src="plugins/greensock/TimelineMax.min.js"></script>
+            <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+            <script src="plugins/greensock/animation.gsap.min.js"></script>
+            <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+            <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+            <script src="plugins/easing/easing.js"></script>
+            <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+            <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+            <script src="plugins/parallax-js-master/parallax.min.js"></script>
+            <script src="js/shop_custom.js"></script>
+        </body>
+    </html>
+</fmt:bundle>

@@ -1,8 +1,11 @@
 package ca.ikeypro.control;
 
 import ca.ikeypro.DAO.Categorie;
+import ca.ikeypro.DAO.Editeur;
+import ca.ikeypro.DAO.Edition;
 import ca.ikeypro.DAO.NewsletterDAO;
 import ca.ikeypro.DAO.Produit;
+import ca.ikeypro.DAO.ProduitDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,49 +42,83 @@ public class Ajax extends HttpServlet {
         String action = request.getParameter("action");
         response.setContentType("application/json");
         switch (action) {
-            case "Inscription":
-                {
-                    String email = request.getParameter("courriel");
-                    String resultat = NewsletterDAO.Inscription(email);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(resultat);
-                    out.print(json);
-                    out.flush();
-                    break;
-                }
-            case "Surpression":
-                {
-                    String email = request.getParameter("courriel");
-                    String resultat = NewsletterDAO.Desabonner(email);
-                    System.out.println(resultat);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(resultat);
-                    out.print(json);
-                    out.flush();
-                    break;
-                }
-            case "Produits":
-                {
-                    List<Produit> ListeMostViewProduits = (List<Produit>) request.getServletContext().getAttribute("ListeMostViewProduits");
-                    Gson gson = new Gson();
-                    String json = gson.toJson(ListeMostViewProduits);
-                    response.setContentType("application/json");
-                    response.setCharacterEncoding("UTF-8");
-                    out.print(json);
-                    out.flush();
-                    break;
-                }
-            case "Categories":
-                {
-                    List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
-                    Gson gson = new Gson();
-                    String json = gson.toJson(ListeCat);
-                    response.setContentType("application/json");
-                    response.setCharacterEncoding("UTF-8");
-                    out.print(json);
-                    out.flush();
-                    break;
-                }
+            case "Inscription": {
+                String email = request.getParameter("courriel");
+                String resultat = NewsletterDAO.Inscription(email);
+                Gson gson = new Gson();
+                String json = gson.toJson(resultat);
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "Surpression": {
+                String email = request.getParameter("courriel");
+                String resultat = NewsletterDAO.Desabonner(email);
+                System.out.println(resultat);
+                Gson gson = new Gson();
+                String json = gson.toJson(resultat);
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "Produits": {
+                List<Produit> ListeMostViewProduits = (List<Produit>) request.getServletContext().getAttribute("ListeMostViewProduits");
+                Gson gson = new Gson();
+                String json = gson.toJson(ListeMostViewProduits);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "Categories": {
+                List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+                Gson gson = new Gson();
+                String json = gson.toJson(ListeCat);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "RechCat": {
+                List<Categorie> ListeCat = (List<Categorie>) request.getServletContext().getAttribute("ListCat");
+                Gson gson = new Gson();
+                String json = gson.toJson(ListeCat);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "RechEditeur": {
+                String cat = request.getParameter("cat");
+                List<Editeur> ListeCat = ProduitDAO.getListeDistinctEditeurByCat(cat);
+                System.out.println(cat);
+                Gson gson = new Gson();
+                String json = gson.toJson(ListeCat);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+                break;
+            }
+            case "RechEdition": {
+                String cat = request.getParameter("cat");
+                String editeur = request.getParameter("editeur");
+                System.out.println("cat: " + cat);
+                System.out.println("editeur: " + editeur);
+                List<Edition> ListeCat = ProduitDAO.getListeDistinctEditionByCat(cat, editeur);
+
+                Gson gson = new Gson();
+                String json = gson.toJson(ListeCat);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+                break;
+            }
+
             case "ChangeLangue":
                 String langue = request.getParameter("langue");
                 if (langue.equals("es")) {
@@ -92,7 +129,7 @@ public class Ajax extends HttpServlet {
                     String json = gson.toJson("ok");
                     out.print(json);
                     out.flush();
-                    
+
                 } else if (langue.equals("fr")) {
                     System.out.println("langue recu:" + langue);
                     session.setAttribute("lang", "fr");
@@ -100,7 +137,7 @@ public class Ajax extends HttpServlet {
                     String json = gson.toJson("ok");
                     out.print(json);
                     out.flush();
-                    
+
                 } else if (langue.equals("en")) {
                     System.out.println("langue recu:" + langue);
                     session.setAttribute("lang", "en");
@@ -108,8 +145,9 @@ public class Ajax extends HttpServlet {
                     String json = gson.toJson("ok");
                     out.print(json);
                     out.flush();
-                    
-                }   break;
+
+                }
+                break;
             default:
                 break;
         }
