@@ -205,9 +205,9 @@ public class ProduitDAO {
                         + " INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION "
                         + " INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE "
                         + " WHERE "
-                        + "       LOWER(EUR.EDITEUR)  = '" + editeur + "' AND "
-                        + "       LOWER(EON.EDITION)  = '" + edition + "' AND "
-                        + "       LOWER(C.CATEGORIE)  = '" + categorie + "'";
+                        + "       EUR.EDITEUR  = '" + editeur + "' AND "
+                        + "       EON.EDITION  = '" + edition + "' AND "
+                        + "       C.CATEGORIE  = '" + categorie + "'";
 
                 System.out.println(requette);
                 Statement statement = conn.createStatement();
