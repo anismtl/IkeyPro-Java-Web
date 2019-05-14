@@ -37,7 +37,7 @@
                                 <div class="cart_items">
                                     <ul class="cart_list">
                                         <li class="cart_item clearfix">
-                                            <form name="login" action="Login" method="POST">
+                                            <form action="Login" method="POST">
                                                 <input type="hidden" name="action" value="validerSession" />
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">

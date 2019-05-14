@@ -3,8 +3,12 @@ window.onload = Loading;
 function Loading() {
     getMostViewProduitList();
     getCategoriesList();
+    alerty();
 }
-
+function alerty(){
+  // alert("Salut");
+    swal("Here's a message!");
+}
 
 function getMostViewProduitList() {
 

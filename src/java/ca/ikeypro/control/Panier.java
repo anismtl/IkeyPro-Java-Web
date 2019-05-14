@@ -207,7 +207,7 @@ public class Panier extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 String url = "/WEB-INF/login.jsp";
-                session.setAttribute("origine", "ch");
+                session.setAttribute("origine", "checkout");
                 ServletContext sc = getServletContext();
                 RequestDispatcher rd = sc.getRequestDispatcher(url);
                 rd.forward(request, response);

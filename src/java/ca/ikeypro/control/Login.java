@@ -5,6 +5,7 @@ import ca.ikeypro.DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,21 +31,35 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            String courriel = request.getParameter("user").toLowerCase();
+            String courriel = request.getParameter("user");
             String pw = request.getParameter("pass");
-            String location = "/WEB-INF/register.jsp";
-            Client client = ClientDAO.find(courriel, pw);
-            session.setAttribute("client", client);
-            if (client != null) {
-                String origine = (String) session.getAttribute("origine");
-                location = "/WEB-INF/iKeyPro.jsp";
-                if (origine.equals("ch")) {
-                    location = "/WEB-INF/panier.jsp";
-                    session.removeAttribute("origine");
-                }
-                System.out.println("Le login du client a été un succès:" + client.toString());
-            } else {
-                System.out.println("LE CLIENT N'EXISTE PAS!!!");
+            String location = "/";
+            String Resultat = ClientDAO.find2(courriel, pw);
+
+            switch (Resultat) {
+                case "CORRECT":
+                    String origine = (String) session.getAttribute("origine");
+                    Client client = ClientDAO.getClient(courriel);
+                    session.setAttribute("client", client);
+
+                    if (origine != null) {
+                        location = "/WEB-INF/panier.jsp";
+                        session.removeAttribute("origine");
+                    } else {
+                        location = "/index.jsp";
+                    }
+
+                    break;
+                case "USER":
+                    request.setAttribute("usererror", "Ce user nexiste pas");
+                    location = "/WEB-INF/login.jsp";
+                    break;
+                case "PASS":
+                    request.setAttribute("passerror", "Mot de passe incorrect");
+                    location = "/WEB-INF/login.jsp";
+                    break;
+                default:
+                    break;
             }
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(location);
