@@ -1,5 +1,7 @@
 package ca.ikeypro.control;
 
+import ca.ikeypro.DAO.CategorieDAO;
+import ca.ikeypro.DAO.EditeurDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,46 +39,46 @@ public class ListeProduits extends HttpServlet {
                 case "categorie": {
                     String categorie = request.getParameter("cat");
                     List<Produit> ListeProd = ProduitDAO.getListeDesProduitsByCat(categorie);
-                    session.setAttribute("ListeProdEditeur", ListeProd);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
+                    String titre =CategorieDAO.getCategorie(categorie);
+                    System.out.println("titre1:"+titre);
+                    session.setAttribute("ListePro", ListeProd);
+                    request.setAttribute("titre", titre);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                     dispatcher.forward(request, response);
                     break;
                 }
                 case "editeur": {
                     String editeur = request.getParameter("edit");
                     List<Produit> ListeProdEditeur = ProduitDAO.getListeDesProduitsByEditeur(editeur);
-                    session.setAttribute("ListeProdEditeur", ListeProdEditeur);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
+                    String titre=EditeurDAO.getEditeur(editeur);
+                    session.setAttribute("ListePro", ListeProdEditeur);
+                     request.setAttribute("titre", titre);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                     dispatcher.forward(request, response);
                     break;
                 }
                 case "edition": {
                     String edition = request.getParameter("edition");
                     List<Produit> ListeProdEdition = ProduitDAO.getListeDesProduitsByEdition(edition);
-                    session.setAttribute("ListeProdEditeur", ListeProdEdition);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
+                    request.setAttribute("titre", edition);
+                    session.setAttribute("ListePro", ListeProdEdition);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                     dispatcher.forward(request, response);
                     break;
                 }
 
                 case "recherche": {
                     String edition2 = request.getParameter("edition2");
-                    String editeur2= request.getParameter("editeur2");
-                    String cat= request.getParameter("cat");
+                    String editeur2 = request.getParameter("editeur2");
+                    String cat = request.getParameter("cat");
                     List<Produit> ListeProdEditeur = ProduitDAO.rechercheProduits(cat, editeur2, edition2);
-                    session.setAttribute("ListeProdEditeur", ListeProdEditeur);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editeurs.jsp");
+                    request.setAttribute("titre", "Recherche");
+                    session.setAttribute("ListePro", ListeProdEditeur);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/shop.jsp");
                     dispatcher.forward(request, response);
                     break;
                 }
 
-                case "lastDispo": {
-                    List<Produit> ListeProdLastDispo = ProduitDAO.getListeDesProduitsByDispo();
-                    session.setAttribute("ListeProdLastDispo", ListeProdLastDispo);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/lastDispo.jsp");
-                    dispatcher.forward(request, response);
-                    break;
-                }
                 default:
                     break;
             }

@@ -37,4 +37,25 @@ public class CategorieDAO {
         }
         return listeCategorie;
     }
+    
+    public static String getCategorie(String id) {
+        String categorie="";
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT CATEGORIE FROM CATEGORIE WHERE ID_CATEGORIE ='" + id + "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
+                if (rs.next()) {
+                    categorie = rs.getString("CATEGORIE");
+                }
+                return categorie;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return categorie;
+    }
 }

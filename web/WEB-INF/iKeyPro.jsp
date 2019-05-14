@@ -25,7 +25,7 @@
             <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
             <link rel="stylesheet" type="text/css" href="styles/responsive.css">
             <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-            
+
         </head>
         <body>
             <div class="super_container">
@@ -41,7 +41,7 @@
                             <div class="col-lg-5 offset-lg-4 fill_height">
                                 <div class="banner_content">
                                     <h2 class="banner_text"><fmt:message key="PSlogan"/></h2>
-                                    <div class="banner_price"><span>${ProduitVedette.prix}</span>${ProduitVedette.prix*0.5}</div>
+                                    <div class="banner_price"><span>${ProduitVedette.prix*2}</span>${ProduitVedette.prix}</div>
                                     <div class="banner_product_name">${ProduitVedette.produit}</div>
                                     <div class="button banner_button"><a href="GererProduit?id=${ProduitVedette.codeProduit}"><fmt:message key="PShopNow"/></a></div>
                                 </div>
@@ -105,30 +105,30 @@
                         <!-- Banner 2 Slider -->
                         <div class="owl-carousel owl-theme banner_2_slider">
                             <!-- Banner 2 Slider Item -->
-                           <c:forEach var = "ligne" items="${ListeAllProduitsPublicite}">
-                            <div class="owl-item">
-                                <div class="banner_2_item">
-                                    <div class="container fill_height">
-                                        <div class="row fill_height">
-                                            <div class="col-lg-4 col-md-6 fill_height">
-                                                <div class="banner_2_content">
-                                                    <div class="banner_2_category"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.editeur}</div>
-                                                    <div class="banner_2_title"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
-                                                    <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-                                                    <div class="trends_price">${ligne.prix}$</div>
-                                                    <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                    <div class="button banner_2_button"><a href="GererProduit?id=${ligne.codeProduit}"><fmt:message key="PExplorre"/></a></div>
+                            <c:forEach var = "ligne" items="${ListeAllProduitsPublicite}">
+                                <div class="owl-item">
+                                    <div class="banner_2_item">
+                                        <div class="container fill_height">
+                                            <div class="row fill_height">
+                                                <div class="col-lg-4 col-md-6 fill_height">
+                                                    <div class="banner_2_content">
+                                                        <div class="banner_2_category"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.editeur}</div>
+                                                        <div class="banner_2_title"><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div>
+                                                        <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
+                                                        <div class="trends_price">${ligne.prix}$</div>
+                                                        <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                        <div class="button banner_2_button"><a href="GererProduit?id=${ligne.codeProduit}"><fmt:message key="PExplorre"/></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-6 fill_height">
+                                                    <div class="banner_2_image_container">
+                                                        <div class="banner_2_image"><img src="images/P${ligne.image}" alt=""></div>
+                                                    </div>                                                
                                                 </div>
                                             </div>
-                                            <div class="col-lg-8 col-md-6 fill_height">
-                                                <div class="banner_2_image_container">
-                                                    <div class="banner_2_image"><img src="images/P${ligne.image}" alt=""></div>
-                                                </div>                                                
-                                            </div>
-                                        </div>
-                                    </div>			
+                                        </div>			
+                                    </div>
                                 </div>
-                            </div>
                             </c:forEach>
                         </div>
                     </div>
@@ -155,25 +155,29 @@
                                                     <c:forEach var = "ligne" items="${ListeAllProduits}">
                                                         <c:choose>
                                                             <c:when test="${ligne.dateRelease == 2019}"> 
-                                                                <div class="arrivals_slider_item">
-                                                                    <div class="border_active"></div>
-                                                                    <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                                                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/${ligne.image}" alt=""></div>
-                                                                        <div class="product_content">
-                                                                            <div class="product_price">${ligne.prix}$</div>
-                                                                            <div class="product_name"><div><a>${ligne.editeur}</a></div></div>
-                                                                            <div class="product_name"><div><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div></div>
-                                                                            <div class="product_extras">
-                                                                                <div class="product_color">
+                                                            
+
+                                                                    <div class="arrivals_slider_item">
+                                                                        <div class="border_active"></div>
+                                                                        <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/${ligne.image}" alt=""></div>
+                                                                            <div class="product_content">
+                                                                                <div class="product_price">${ligne.prix}$</div>
+                                                                                <div class="product_name"><div><a>${ligne.editeur}</a></div></div>
+                                                                                <div class="product_name"><div><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}</a></div></div>
+                                                                                <div class="product_extras">
+                                                                                    <div class="product_color">
+                                                                                    </div>
+                                                                           
+                                                                                    <button class="product_cart_button"><fmt:message key="PAddToCart"/></button>
                                                                                 </div>
-                                                                                <button class="product_cart_button"><fmt:message key="PAddToCart"/></button>
                                                                             </div>
+                                                                            <ul class="product_marks">
+                                                                                <li class="product_mark product_new"><fmt:message key="PNew"/></li>
+                                                                            </ul>
                                                                         </div>
-                                                                        <ul class="product_marks">
-                                                                            <li class="product_mark product_new"><fmt:message key="PNew"/></li>
-                                                                        </ul>
                                                                     </div>
-                                                                </div>
+                                                             
                                                             </c:when>
                                                         </c:choose>
                                                     </c:forEach>
@@ -233,10 +237,10 @@
                             </div>
                             <!-- Trends Slider -->                            
                             <div class="col-lg-9">
-                            <div class="trends_slider_container">
-                            <!-- Trends Slider -->
-                             <div class="owl-carousel owl-theme trends_slider">
-                                <c:forEach var = "ligne" items="${ListeProduitsRechecheCookie}">
+                                <div class="trends_slider_container">
+                                    <!-- Trends Slider -->
+                                    <div class="owl-carousel owl-theme trends_slider">
+                                        <c:forEach var = "ligne" items="${ListeProduitsRechecheCookie}">
                                             <!-- Trends Slider Item -->
                                             <div class="owl-item">
                                                 <div class="trends_item is_new">
@@ -254,9 +258,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                    </c:forEach>  
+                                        </c:forEach>  
+                                    </div>
                                 </div>
-                            </div>
                             </div>                                                     
                         </div>
                     </div>

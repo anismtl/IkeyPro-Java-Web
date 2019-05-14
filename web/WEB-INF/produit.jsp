@@ -45,11 +45,11 @@
                                     <div class="product_category"><b>${prod.editeur}</b></div>
                                     <div class="product_name">${prod.produit}</div>
                                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                    <div class="product_text"> <a><b><fmt:message key="PVersion"/> :</b></as> ${prod.edition}  <br/>
-                                            <b><fmt:message key="PPlateforme"/> : </b></as> ${prod.plateforme}  <br/>
-                                            <b><fmt:message key="PLangue"/> :</b></as> ${prod.langue}  <br/>
-                                            <b><fmt:message key="PReleaseDate"/> : </b></as> ${prod.dateRelease}  <br/>
-                                            <b><fmt:message key="PEdition"/> :</b></as> ${prod.edition}  <br/>
+                                    <div class="product_text"> <a><b><fmt:message key="PVersion"/> :</b></a> ${prod.edition}  <br/>
+                                            <a><b><fmt:message key="PPlateforme"/> : </b></a> ${prod.plateforme}  <br/>
+                                            <a> <b><fmt:message key="PLangue"/> :</b></a> ${prod.langue}  <br/>
+                                            <a> <b><fmt:message key="PReleaseDate"/> : </b></a> ${prod.dateRelease}  <br/>
+                                            <a> <b><fmt:message key="PEdition"/> :</b></a> ${prod.edition}  <br/>
                                     </div>
                                     <div class="order_info d-flex flex-row">
                                         <form name="ProduitForm" action="Panier" method="POST">
@@ -142,6 +142,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <!-- Newsletter -->
                 <jsp:include page="jspf/newsletter.jsp"/>

@@ -39,5 +39,26 @@ public class EditeurDAO {
         }
         return listeEditeurs;
     }
+    
+        public static String getEditeur(String id) {
+        String editeur="";
+        Connection conn = DataManager.getInstance().getConnection();
+        if (conn != null) {
+            try {
+                String req = "SELECT EDITEUR FROM EDITEUR WHERE ID_EDITEUR ='" + id + "'";
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(req);
+                if (rs.next()) {
+                    editeur = rs.getString("EDITEUR");
+                }
+                return editeur;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                DataManager.getInstance().closeConnection();
+            }
+        }
+        return editeur;
+    }
 
 }
