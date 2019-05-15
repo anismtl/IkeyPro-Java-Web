@@ -192,17 +192,25 @@
                                         <div class="col-lg-3">
                                             <div class="arrivals_single clearfix">
                                                 <div class="d-flex flex-column align-items-center justify-content-center">
-                                                    <div class="arrivals_single_image"><img src="images/new_single.png" alt=""></div>
+                                                    
+                                                    <div class="arrivals_single_image"><img src="images/43.jpg" alt=""></div>
                                                     <div class="arrivals_single_content">
-                                                        <div class="arrivals_single_category"><a href="#">Smartphones</a></div>
+                                                        <div class="arrivals_single_category"><a href="#">Microsoft</a></div>
                                                         <div class="arrivals_single_name_container clearfix">
-                                                            <div class="arrivals_single_name"><a href="#">LUNA Smartphone</a></div>
-                                                            <div class="arrivals_single_price text-right">379$</div>
+                                                            <div class="arrivals_single_name"><a href="GererProduit?id=43">Project Professional 2019</a></div>
+                                                            <div class="arrivals_single_price text-right">1330.0$</div>
                                                         </div>
                                                         <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                        <form action="#"><button class="arrivals_single_button"><fmt:message key="PAddToCart"/></button></form>
+                                                        <form name="SingleForm" action="Panier" method="POST">
+                                                              <input type="hidden" name="id" value="43">
+                                                    <input type="hidden" name="name" value="Project Professional 2019">
+                                                    <input type="hidden" name="prix" value="1330">
+                                                    <input type="hidden" name="image" value="43.jpg">
+                                                    <input type="hidden" name="qty" value="1">
+                                                    <input type="hidden" name="action" value="ADD">
+                                                            <button class="arrivals_single_button"><fmt:message key="PAddToCart"/></button></form>
                                                     </div>
-                                                    <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
+                                                   
                                                     <ul class="arrivals_single_marks product_marks">
                                                         <li class="arrivals_single_mark product_mark product_new"><fmt:message key="PNew"/></li>
                                                     </ul>
