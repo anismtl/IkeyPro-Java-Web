@@ -8,6 +8,8 @@
 <%@ page errorPage="/WEB-INF/erreur/erreur.jsp" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
@@ -154,7 +156,7 @@
                                                     <!-- Slider Item -->
                                                     <c:forEach var = "ligne" items="${ListeAllProduits}">
                                                         <c:choose>
-                                                            <c:when test="${ligne.dateRelease == 2019}"> 
+                                                            <c:when test="${ligne.dateRelease == year}"> 
                                                             
 
                                                                     <div class="arrivals_slider_item">

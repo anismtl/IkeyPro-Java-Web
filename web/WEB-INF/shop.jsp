@@ -8,6 +8,8 @@
 <%@ page errorPage="/WEB-INF/erreur/erreur.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib  uri= "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
 <fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : sessionScope.langD}" />
 <fmt:bundle basename="app">
     <!DOCTYPE html>
@@ -143,7 +145,7 @@
                                                     </div>
                                                     <ul class="product_marks">
                                                         <c:choose>
-                                                            <c:when test="${ligne.dateRelease == 2019}"> 
+                                                            <c:when test="${ligne.dateRelease == year}"> 
                                                                 <li class="product_mark product_new">new</li> 
                                                                 </c:when>
                                                             </c:choose>
