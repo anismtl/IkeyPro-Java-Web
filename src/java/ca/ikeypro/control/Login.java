@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
             String courriel = request.getParameter("user");
             String pw = request.getParameter("pass");
             String location = "/";
-            String Resultat = ClientDAO.find2(courriel, pw);
+            String Resultat = ClientDAO.VerifierUser(courriel, pw);
 
             switch (Resultat) {
                 case "CORRECT":

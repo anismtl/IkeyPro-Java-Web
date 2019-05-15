@@ -60,8 +60,8 @@ public class ClientDAO {
         }
     }
 
-    public static String find2(String user, String password) {
-        Client client = null;
+    public static String VerifierUser(String user, String password) {
+        
         String message = null;
         Connection conn = DataManager.getInstance().getConnection();
         if (conn != null) {
