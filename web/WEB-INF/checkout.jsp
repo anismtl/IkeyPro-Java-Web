@@ -121,8 +121,7 @@
                                         <div class="cart_buttons">
                                             <a type="button" class="btn btn-lg btn-light" href="Panier?action=AFFICHER" role="button">Panier</a>
                                             <button type="submit" class="button cart_button_checkout">PayPal Payer</button>
-                                            <a class="nav-link active show" data-toggle="pill" href="#nav-tab-paypal">
-		<i class="fab fa-paypal"></i>  Paypal</a></li>
+                                          
                                         </div>
                                     </form>
                                 </div>
