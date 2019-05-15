@@ -34,7 +34,7 @@
                         <div class="col-lg-10 offset-lg-1">
                             <div class="cart_container">
                                 <div class="cart_title"><fmt:message key="PSignIn"/></div>
-                                <div class="cart_items">
+                                <div class="cart_items" >
                                     <ul class="cart_list">
                                         <li class="cart_item clearfix">
                                             <form action="Login" method="POST">
@@ -42,18 +42,19 @@
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationServer01"><fmt:message key="PNomDutilisateur"/></label>
-                                                        <input type="text" class="form-control" name="user" placeholder="Nom d'utilisateur" value="" required>${usererror}
+                                                        <input type="email" class="form-control" name="user" placeholder="<fmt:message key="PNomDutilisateur"/>" value="" required>${usererror}
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationServer02"><fmt:message key="PMotDePasse"/></label>
-                                                        <input type="password" class="form-control" name="pass" placeholder="Mot-de-passee" value="" required>${passerror}
+                                                        <input type="password" class="form-control" name="pass" placeholder="<fmt:message key="PMotDePasse"/>" value="" required>${passerror}
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationServer03"><fmt:message key="PForgotPassword"/></label>
+                                                       
+                                                        <a   href="Affichage?action=register" role="button">Non enregistré <fmt:message key="PRegister"/></a>
                                                     </div>
                                                 </div>
                                                 <button class="btn btn-primary" type="submit"><fmt:message key="PSignIn"/></button>

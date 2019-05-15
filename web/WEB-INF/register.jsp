@@ -50,7 +50,7 @@
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationServer01"><fmt:message key="PNomDutilisateur"/></label>
-                                                    <input type="text" class="form-control" name="user" placeholder='<fmt:message key="PNomDutilisateur"/>' value="" required>${resultat}
+                                                    <input type="email" class="form-control" name="user" placeholder='<fmt:message key="PNomDutilisateur"/>' value="" required>${resultat}
                                                 </div>
                                             </div>
                                             <div class="form-row">

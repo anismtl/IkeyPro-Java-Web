@@ -59,10 +59,6 @@ public class Register extends HttpServlet {
                     rd.forward(request, response);
                     break;
                 default:
-                    Url = "/WEB-INF/erreur/erreur.jsp";
-                    ServletContext sci = getServletContext();
-                    RequestDispatcher rdi = sci.getRequestDispatcher(Url);
-                    rdi.forward(request, response);
                     break;
             }
 
